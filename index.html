@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudos — IBBC Ferraz de Vasconcelos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0b1626;
+    --navy-deep: #070f1c;
+    --gold: #b8933a;
+    --gold-soft: #d9be7c;
+    --cream: #f3efe6;
+    --slate: #8393ab;
+    --slate-dim: #4d5a70;
+    --line: rgba(184,147,58,0.25);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:var(--navy-deep);
+    color:var(--cream);
+    font-family:'Inter',system-ui,sans-serif;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:80px 32px 100px 32px;
+  }
+  .brand{
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--gold);
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  h1{
+    font-family:'Source Serif 4', Georgia, serif;
+    font-weight:600;
+    font-size:38px;
+    line-height:1.2;
+    margin:0 0 14px 0;
+    color:#fff;
+  }
+  .sub{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--slate);
+    max-width:520px;
+    margin:0 0 56px 0;
+  }
+  .section-label{
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin:0 0 18px 0;
+  }
+  .list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:44px;
+  }
+  a.card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    text-decoration:none;
+    color:inherit;
+    padding:20px 24px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:rgba(184,147,58,0.04);
+    transition:border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  a.card:hover{
+    border-color:var(--gold);
+    background:rgba(184,147,58,0.09);
+    transform:translateY(-1px);
+  }
+  .card-text h2{
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 6px 0;
+    color:#fff;
+  }
+  .card-text p{
+    font-size:13.5px;
+    line-height:1.5;
+    color:var(--slate);
+    margin:0;
+    max-width:440px;
+  }
+  .arrow{
+    flex-shrink:0;
+    font-size:20px;
+    color:var(--gold);
+  }
+  .tag{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .empty{
+    padding:22px 24px;
+    border:1px dashed var(--line);
+    border-radius:12px;
+    color:var(--slate-dim);
+    font-size:13.5px;
+    line-height:1.6;
+  }
+  footer{
+    font-size:11.5px;
+    color:var(--slate-dim);
+    letter-spacing:0.02em;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">IBBC · Extensão de Ferraz de Vasconcelos</div>
+    <h1>Estudos e materiais de curso</h1>
+    <p class="sub">Índice de trabalhos, ensaios e apresentações desenvolvidos ao longo do curso de Teologia. Novos materiais são adicionados aqui conforme entregues.</p>
+
+    <div class="section-label">Trabalhos disponíveis</div>
+    <div class="list">
+      <a class="card" href="ensaio_tcc.html">
+        <div class="card-text">
+          <div class="tag">Ética Cristã</div>
+          <h2>A Pena de Morte à Luz da Ética Cristã</h2>
+          <p>Simulador de apresentação com modo de estudo para ensaio e memorização do TCC.</p>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <div class="section-label">Em breve</div>
+    <div class="empty">Próximos estudos entram aqui — basta adicionar o arquivo ao repositório e criar um novo card acima apontando para ele.</div>
+
+    <br>
+    <footer>Curso de Teologia · Disciplina de Ética Cristã</footer>
+  </div>
+</body>
+</html>
