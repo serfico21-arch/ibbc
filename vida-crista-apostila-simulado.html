@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vida Cristã — Apostila e Simulado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f6f1e6;
+  --papel2:#efe7d7;
+  --tinta:#221e18;
+  --tinta-suave:#544c3e;
+  --verde:#1f4d3a;
+  --verde-claro:#2f6b52;
+  --ouro:#a8791f;
+  --vinho:#7d2b25;
+  --linha:#d8cdb6;
+  --sombra:0 2px 0 var(--linha), 0 18px 40px -28px rgba(34,30,24,.6);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65;
+  background-image:radial-gradient(circle at 12% 8%, rgba(31,77,58,.06), transparent 45%),
+                   radial-gradient(circle at 88% 92%, rgba(168,121,31,.08), transparent 45%);
+}
+header.capa{
+  background:var(--papel2);color:var(--verde);padding:38px 22px 30px;
+  border-bottom:6px solid var(--ouro);
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.capa h1{
+  font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(28px,6vw,46px);margin:0 0 6px;line-height:1.05;
+}
+header.capa .sub{font-style:italic;opacity:.85;margin:0;color:var(--tinta-suave)}
+header.capa .tag{
+  display:inline-block;margin-top:14px;font-family:'Archivo',sans-serif;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--linha);padding:5px 12px;border-radius:2px;color:var(--tinta-suave);
+}
+nav.abas{
+  position:sticky;top:0;z-index:20;background:var(--papel2);
+  border-bottom:1px solid var(--linha);display:flex;gap:0;
+}
+nav.abas button{
+  flex:1;background:none;border:0;padding:15px 8px;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);
+  border-bottom:3px solid transparent;transition:.2s;
+}
+nav.abas button.on{color:var(--verde);border-bottom-color:var(--ouro);background:var(--papel)}
+main{padding:34px 0 80px}
+section.painel{display:none;animation:sobe .35s ease both}
+section.painel.on{display:block}
+@keyframes sobe{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+h2.cap{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ouro);margin:44px 0 6px;
+}
+h3{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,4vw,27px);
+  line-height:1.2;margin:0 0 14px;color:var(--verde);
+}
+h4{font-family:'Archivo',sans-serif;font-size:17px;margin:26px 0 6px;color:var(--tinta)}
+p{margin:0 0 13px}
+ul,ol{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+.bloco{
+  background:#fffdf7;border:1px solid var(--linha);border-left:4px solid var(--verde);
+  padding:22px 24px;margin:0 0 26px;box-shadow:var(--sombra);
+}
+.versiculo{
+  font-style:italic;color:var(--tinta-suave);border-left:3px solid var(--ouro);
+  padding:6px 0 6px 14px;margin:12px 0;
+}
+.chave{background:linear-gradient(transparent 62%, rgba(168,121,31,.32) 62%);font-weight:600}
+.grade{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:16px}
+.card{background:var(--papel2);border:1px solid var(--linha);padding:14px 16px}
+.card b{font-family:'Archivo',sans-serif;display:block;color:var(--verde);font-size:14px;letter-spacing:.04em}
+
+.pg{
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-suave);display:block;margin:-8px 0 12px;
+}
+.recmarca{
+  display:inline-block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--ouro);color:#fffdf7;padding:4px 10px;margin:0 0 14px;
+}
+.recq{border-top:1px solid var(--linha);padding-top:14px;margin-top:14px}
+.recq:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.recq .pergunta{font-weight:600;margin-bottom:8px}
+.recq .pergunta b{color:var(--ouro);font-family:'Archivo',sans-serif;font-size:13px;margin-right:6px}
+.recq .resposta{display:none;background:var(--papel2);border-left:3px solid var(--verde);padding:10px 14px;font-size:16px}
+.recq .resposta.on{display:block}
+.recq button.ver{
+  background:none;border:1px solid var(--verde);color:var(--verde);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;margin-bottom:8px;
+}
+.recq button.ver:hover{background:var(--verde);color:#f6f1e6}
+
+/* simulado */
+.rodadas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 30px}
+.rodada{
+  text-align:left;background:#fffdf7;border:1px solid var(--linha);cursor:pointer;
+  padding:13px 14px;font-family:'Spectral',serif;font-size:15px;transition:.18s;
+}
+.rodada:hover{transform:translateY(-2px);border-color:var(--verde);box-shadow:var(--sombra)}
+.rodada span{
+  display:block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ouro);margin-bottom:3px;
+}
+.rodada em{display:block;font-size:12px;color:var(--tinta-suave);font-style:normal;margin-top:4px}
+.rodada.feita{border-left:4px solid var(--verde-claro)}
+.barra{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--papel2);color:var(--verde);border:1px solid var(--linha);
+  padding:14px 18px;margin-bottom:22px;
+}
+.barra .titulo{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px}
+.barra .placar{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.08em}
+.q{background:#fffdf7;border:1px solid var(--linha);padding:20px 22px;margin-bottom:16px;box-shadow:var(--sombra)}
+.q .num{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--ouro);text-transform:uppercase}
+.q .enunciado{font-weight:600;margin:6px 0 14px}
+.alt{
+  display:block;width:100%;text-align:left;background:var(--papel);border:1px solid var(--linha);
+  padding:11px 14px;margin-bottom:9px;cursor:pointer;font-family:'Spectral',serif;font-size:16px;
+  color:var(--tinta);transition:.15s;
+}
+.alt:hover:not(:disabled){border-color:var(--verde);background:#fff}
+.alt:disabled{cursor:default;opacity:.95}
+.alt.certa{background:#e6f0e5;border-color:var(--verde);border-left:4px solid var(--verde)}
+.alt.errada{background:#f6e4e2;border-color:var(--vinho);border-left:4px solid var(--vinho);text-decoration:line-through}
+.expl{margin-top:10px;font-size:15px;color:var(--tinta-suave);border-top:1px dashed var(--linha);padding-top:10px;display:none}
+.expl.on{display:block}
+.expl b{color:var(--verde)}
+.botoes{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 10px}
+button.acao{
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;padding:13px 20px;border:1px solid var(--verde);
+  background:#fffdf7;color:var(--verde);cursor:pointer;transition:.18s;
+}
+button.acao.vazado{background:transparent;color:var(--verde)}
+button.acao:hover{background:var(--verde);color:#fffdf7;opacity:1}
+.resultado{
+  background:#eef3ea;color:var(--verde);border:1px solid var(--verde-claro);
+  padding:26px;text-align:center;margin-top:20px;display:none;
+}
+.resultado.on{display:block}
+.resultado .nota{font-family:'Archivo',sans-serif;font-size:44px;font-weight:800;line-height:1}
+.resultado .msg{font-style:italic;margin-top:8px}
+footer{border-top:1px solid var(--linha);padding:24px 0;text-align:center;color:var(--tinta-suave);font-size:14px}
+@media(max-width:600px){body{font-size:16px}.bloco,.q{padding:16px}}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="wrap">
+    <h1>Vida Cristã</h1>
+    <p class="sub">Apostila de estudo completa + simulado — o que é vida cristã, andar no Espírito e as bases da vida cristã</p>
+    <span class="tag">Curso de Teologia · Disciplina de Vida Cristã · p. 63–101</span>
+  </div>
+</header>
+
+<nav class="abas">
+  <button class="on" data-alvo="apostila">Apostila</button>
+  <button data-alvo="recaps">Recapitulações</button>
+  <button data-alvo="simulado">Simulado</button>
+</nav>
+
+<main class="wrap">
+
+<!-- ====================== APOSTILA ====================== -->
+<section class="painel on" id="apostila">
+  <div class="bloco">
+    <h3>Introdução</h3>
+    <span class="pg">Apostila p. 63</span>
+    <p>A disciplina de Vida Cristã é um direcionamento de Deus para um tempo em que está em moda "ser cristão", mas poucos verdadeiramente vivem a vida cristã. Muitos se dizem cristãos por terem nascido em família cristã, por terem recebido o batismo ou por serem meros frequentadores de cultos — mas <span class="chave">nenhuma dessas alternativas constitui, por si só, um cristão ou uma vida cristã</span>.</p>
+    <p>A base é a instrução de Paulo a Timóteo: "Tem cuidado de ti mesmo e da doutrina" (1Tm 4.16). A vida cristã é muito mais que palavras vazias; ela tem que produzir resultados efetivos. Vida cristã não é viver religiosamente, mas é <span class="chave">o próprio Cristo vivendo em nós</span>.</p>
+    <p>O conteúdo foi dividido em quatro partes: <b>1)</b> o que é vida cristã; <b>2)</b> o que é ser cristão (e o que não é); <b>3)</b> o princípio da vida cristã — andar no Espírito; <b>4)</b> as bases da vida cristã — oração, Palavra, jejum, igreja e dinheiro.</p>
+  </div>
+
+  <h2 class="cap">Capítulo 1</h2>
+  <div class="bloco">
+    <h3>1. O que é vida cristã?</h3>
+    <span class="pg">Apostila p. 64</span>
+    <p>Segundo Watchman Nee, a vida cristã normal é algo muito diferente da vida do cristão comum, e sua análise nos leva a perguntar se tal vida já foi vivida sobre a terra, a não ser, unicamente, pelo próprio Filho de Deus. Paulo dá sua definição de vida cristã em Gálatas 2.20: <span class="chave">"não mais eu, mas Cristo"</span> — o plano normal de Deus para o cristão é resumido em: <i>"vivo, não mais eu, mas Cristo vive a sua vida em mim"</i>.</p>
+    <p>Deus usa o critério de nos tirar do caminho, colocando Cristo no nosso lugar, através de duas substituições: uma substituição <b>na Cruz</b>, que assegura o nosso perdão, e uma substituição <b>interior</b>, que assegura a nossa vitória.</p>
+    <p>Há muitos que enxergam e vivem o cristianismo como uma série de regras, mandamentos, tradições e doutrinas humanas. Esse tipo de fé não passa de filosofia e religião — não é vida cristã, não tem poder para refrear os impulsos da carne. <span class="chave">Cristianismo, como experiência real, é um RELACIONAMENTO de intimidade com Cristo</span>: é "estar em Cristo" (Cl 2.5-10). A realidade encontra-se em Cristo, e por isso o cristianismo é avesso a expressões de religiosidade, legalismo e métodos.</p>
+  </div>
+
+  <h2 class="cap">Capítulo 2</h2>
+  <div class="bloco">
+    <h3>2. O que é ser cristão?</h3>
+    <span class="pg">Apostila p. 66</span>
+    <p>"Mas, a todos quantos o receberam, deu-lhes o poder de serem feitos filhos de Deus; a saber: aos que creem no seu nome; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do homem, mas de Deus" (Jo 1.12-13). Tomando as duas primeiras e as duas últimas palavras do versículo 13, temos: "os... nasceram... de Deus" — <span class="chave">o cristão é aquele que nasce de Deus</span>.</p>
+    <p>O termo "cristão" foi gerado em meio à zombaria e ridículo, em Antioquia da Síria (At 11.26). Aparece apenas três vezes no Novo Testamento e nenhuma no Velho Testamento (At 11.26; At 26.28; 1Pe 4.16). Ser cristão, nos primeiros séculos, significava com frequência enfrentar a arena, feras selvagens e a negação de si mesmo — a porta estreita, o caminho apertado, tomar a cruz e seguir a Jesus.</p>
+
+    <h4>2.1.1 É unir-se com Cristo</h4>
+    <span class="pg">Apostila p. 66</span>
+    <p>A palavra <i>cristão</i> é uma combinação de duas outras: Cristo e homem. Quando um homem ou mulher se une a Cristo, forma-se um <i>cristão</i>. <span class="chave">O pecador recebe o Salvador, e o Salvador recebe o pecador</span>. O cristão é um homem ou mulher unido a Cristo.</p>
+
+    <h4>2.1.2 É nascer de novo</h4>
+    <span class="pg">Apostila p. 66</span>
+    <p>Quando Jesus falou a Nicodemos, disse: "Se alguém não nascer de novo, não pode ver o reino de Deus" (Jo 3.3). Segundo Jesus, o cristão é aquele que nasceu de novo — <span class="chave">é a única forma de entrar na família de Deus</span>; precisamos nascer de novo.</p>
+
+    <h4>2.1.3 É receber a Cristo como salvador</h4>
+    <span class="pg">Apostila p. 67 · cai na Recapitulação 2</span>
+    <p>Receber a Cristo é ter fé nEle, crendo que Ele é filho de Deus sem pecado, que morreu voluntariamente pelas nossas faltas, a fim de nos libertar da morte espiritual e do juízo, e para que tivéssemos vida eterna. A questão crucial é: <span class="chave">você já tomou esta decisão? Já recebeu a Jesus Cristo?</span></p>
+  </div>
+
+  <div class="bloco">
+    <h3>2.2 O que o cristão não é</h3>
+    <span class="pg">Apostila p. 68</span>
+    <p>O mero parentesco com cristãos não faz de nós um cristão. Deus não tem netos. O apóstolo João declara três erros ainda comuns hoje: "os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do homem, mas de Deus" (Jo 1.13).</p>
+
+    <h4>2.2.1 O nascimento natural não faz de nós um cristão</h4>
+    <p>"...não nasceram do sangue." Não nos tornamos cristãos através de nossos pais terrenos. Ter pais santos é uma grande herança, mas não torna ninguém cristão. Os expoentes do nazismo gabavam-se de seu "puro sangue ariano" — isso também não é bíblico. <span class="chave">O nascimento natural não faz de nós um cristão.</span></p>
+
+    <h4>2.2.2 As boas obras não fazem de nós um cristão</h4>
+    <p>"...nem da vontade da carne." O maior erro talvez seja crer que a salvação resulta do esforço pessoal — seguir a Regra de Ouro, viver com decência, ou apoiar-se na atividade religiosa. Paulo afirma: <span class="chave">"pela graça sois salvos, mediante a fé; e isto não vem de vós, é dom de Deus; não de obras, para que ninguém se glorie"</span> (Ef 2.8-9). A salvação não é algo que você faz, mas alguém que você recebe: a salvação é Jesus Cristo.</p>
+
+    <h4>2.2.3 Os sacramentos religiosos não fazem de nós um cristão</h4>
+    <span class="pg">Apostila p. 69 · cai na Recapitulação 3</span>
+    <p>"...nem da vontade do homem." Há pessoas que se alicerçam na ordenança do batismo em lugar da fé em Cristo. Homem algum pode fazer de você um cristão, por mais importante ou piedoso que seja — nenhuma ordenança da igreja pode perdoar pecados. Um evangelista certa vez respondeu a um vagabundo que dizia ter sido salvo pelo SENHOR: "parece que fui eu mesmo quem o salvou; se tivesse sido o SENHOR Jesus, você não estaria nessa situação". <span class="chave">Ser cristão é receber a Cristo</span> — o cristão é aquele que <i>nasce de Deus</i>.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>2.3 O que o cristão deveria ser</h3>
+    <span class="pg">Apostila p. 70–71 · cai na Recapitulação 4</span>
+    <p>Salvação e santificação são coisas simultâneas para o apóstolo Paulo. Imediatamente depois de crer, ele perguntou: "SENHOR, que queres que eu faça?" (At 9.6) — todo cristão deve entregar sua vida inteira a Cristo, "oferecei-vos a Deus" (Rm 6.13). Segundo Adolph Deissman, a palavra <i>cristão</i> tem o significado de <span class="chave">"escravo de Cristo"</span>.</p>
+    <p>Deus pede a cada cristão que desista de suas próprias soluções para os problemas da vida e aceite o caminho da fé: "Não se prenda a nada — ceda tudo". É um grande erro pensar que podemos andar a esmo pela vida cristã. Segundo Samuel Rutherford: <i>"Você não vai ser transportado ao céu, deitado ociosamente num colchão de penas"</i>. Tertuliano advertiu: <i>"Aquele que tem medo de sofrer, não pode pertencer Àquele que sofreu"</i>.</p>
+    <p>O chamado de Cristo foi firme e não convencional. Jesus disse: "Não penseis que vim trazer paz à terra; não vim trazer paz, mas espada" (Mt 10.34). A vida cristã é bela, mas nem tudo é festa — Jesus nunca ocultou suas cicatrizes, mas também jamais conquistou discípulos com falsas promessas.</p>
+  </div>
+
+  <h2 class="cap">Capítulo 3</h2>
+  <div class="bloco">
+    <h3>3. O princípio da vida cristã — andar no Espírito</h3>
+    <span class="pg">Apostila p. 72</span>
+    <p>Este tema, por ser extenso, foi dividido em: <b>1)</b> o precioso sangue de Cristo (para Deus, para a nossa consciência, para Satanás); <b>2)</b> a cruz de Cristo (sabendo, considerando-se, apresentando-nos, andando no Espírito, as duas leis, enchendo-se do Espírito).</p>
+    <p>O homem tem basicamente um problema: <b>a independência</b>. Essa independência se consuma em uma série de complicações, que justamente são os nossos pecados (desobediência, blasfêmia, mentira, fornicação etc.).</p>
+  </div>
+
+  <div class="bloco">
+    <h3>3.1 O precioso sangue de Cristo</h3>
+    <h4>3.1.1 O sangue é primariamente para Deus</h4>
+    <span class="pg">Apostila p. 73</span>
+    <p>É a santidade de Deus, a justiça de Deus, que exige que uma vida sem pecado seja dada em favor do homem. Deus requer que o sangue seja apresentado para satisfazer a sua própria justiça: "Vendo eu o Sangue passarei por cima de vós" (Êx 12.13). No AT, o sangue de animais satisfazia temporariamente a justiça de Deus; na nova aliança, não há outra coisa que satisfaça essa justiça senão o sangue de Cristo (Rm 3.24-26). <span class="chave">Por meio do sangue temos livre acesso ao SENHOR.</span></p>
+
+    <h4>3.1.2 O sangue satisfaz a nossa consciência</h4>
+    <span class="pg">Apostila p. 74</span>
+    <p>Algumas vezes chegamos a imaginar que nossos pecados são maiores que a eficácia do sangue. Isso acontece porque: <b>1)</b> não sabemos o valor que Deus dá ao sangue; <b>2)</b> não aceitamos a avaliação que Deus faz do sangue; <b>3)</b> muitas vezes não avaliamos o sangue pela visão que Deus tem dele. "Sabendo que não foi com coisas corruptíveis, como prata ou ouro... mas com precioso sangue de Cristo" (1Pe 1.18,19). <span class="chave">Devemos ter nossa consciência purificada pelo sangue</span>, não importa o que nossos sentimentos digam.</p>
+
+    <h4>3.1.3 O sangue vence as acusações de Satanás</h4>
+    <span class="pg">Apostila p. 74–75 · cai na Recapitulação 5</span>
+    <p>A Bíblia diz que Satanás é "o acusador dos irmãos" (Ap 12.10). O sangue coloca Deus ao lado do homem, removendo a barreira que os nossos pecados haviam introduzido. "O sangue de Jesus, Seu Filho, nos purifica de todo pecado" (1Jo 1.7) — cada pecado, um por um, à medida que andamos na luz. <span class="chave">Com os pecados perdoados não há acusação de Satanás que prevaleça</span>. "E eles o venceram pelo sangue do Cordeiro e pela palavra do seu testemunho; e não amaram as suas vidas até a morte" (Ap 12.11).</p>
+  </div>
+
+  <div class="bloco">
+    <h3>3.2 A cruz de Cristo</h3>
+    <span class="pg">Apostila p. 75–78</span>
+    <p>O sangue trata objetivamente com os nossos pecados, mas isso não basta para caminharmos rumo ao propósito de Deus. Não somos pecadores porque cometemos pecados; cometemos pecados porque somos pecadores — é mais constituição do que ação. <span class="chave">A cruz nos liberta daquilo que somos.</span> Há quatro condições ou passos: sabendo; considerando-se; apresentando-nos; andando no Espírito.</p>
+
+    <h4>1. Sabendo</h4>
+    <span class="pg">Apostila p. 76 · cai na Recapitulação 6</span>
+    <p>"...sabendo isto, que o nosso velho homem foi crucificado com ele, para que o corpo do pecado fosse desfeito" (Rm 6.6). <b>Quem foi crucificado?</b> Não o pecado em si (que é o princípio ativo), mas o servo do pecado, o <span class="chave">velho homem</span> — aquele em quem o pecado tinha toda a liberdade de agir. <b>Quando fomos crucificados?</b> No passado, no batismo: "ignorais que todos quantos fomos batizados em Cristo Jesus fomos batizados na sua morte?" (Rm 6.3,4a).</p>
+
+    <h4>2. Considerando-se</h4>
+    <span class="pg">Apostila p. 77</span>
+    <p>"Assim também vós considerai-vos como mortos para o pecado, mas vivos para Deus, em Cristo Jesus" (Rm 6.11). Primeiro é preciso <b>saber</b>, depois <b>considerar</b>. No grego, considerar é atribuir, imputar — a ideia de fazer as contas: <b>a)</b> tomar a atitude de que nossa inclusão na crucificação de Jesus é um fato verdadeiro; <b>b)</b> ter fé prática, aplicando o que sabemos, sem dar ouvidos aos sussurros acusadores do Diabo.</p>
+
+    <h4>3. Apresentando-nos</h4>
+    <span class="pg">Apostila p. 77–78</span>
+    <p>"Não reine, portanto, o pecado em vosso corpo mortal... nem tampouco apresenteis os vossos membros ao pecado... mas apresentai-vos a Deus, como revividos dentre os mortos" (Rm 6.12,13). Basicamente, "apresentar-se" é <b>ser separado para o SENHOR</b> — nossos pés, mãos e corpo deixam de nos pertencer e tornam-se instrumentos de justiça: "apresentai agora os vossos membros como servos da justiça para santificação" (Rm 6.19). É a verdadeira santificação, um ato inicial e fundamental, seguido de uma atitude diária de oferecer-nos a Deus.</p>
+  </div>
+
+  <div class="bloco">
+    <h3>3.3 O andar no Espírito</h3>
+    <span class="pg">Apostila p. 78</span>
+    <p>"...para que a justa exigência da lei se cumprisse em nós, que não andamos segundo a carne, mas segundo o Espírito... Porque a inclinação da carne é morte; mas a inclinação do Espírito é vida e paz" (Rm 8.3-7).</p>
+
+    <h4>3.3.1 As duas leis espirituais</h4>
+    <span class="pg">Apostila p. 79–80 · cai na Recapitulação 7</span>
+    <p>Uma lei é uma generalização examinada até que se prove que não há exceção — como a lei da gravidade, que se manifesta sempre da mesma forma. Existem também leis espirituais.</p>
+    <p><b>1. A lei do pecado e da morte</b> — "a lei do Espírito da vida, em Cristo Jesus, te livrou da lei do pecado e da morte" (Rm 7.25;8.2). Paulo descreve essa lei em Romanos 7.19-23: <span class="chave">mesmo querendo fazer o bem, o mal está presente</span> — é uma lei que nos empurra para baixo, como a gravidade. A cruz nos livrou do "homem do pecado", mas não eliminou essa lei; podemos anular seu efeito com uma lei superior.</p>
+    <p><b>2. A lei do Espírito da vida</b> (Rm 8.11-13) — assim como existe a lei da gravidade, existe também a lei da aerodinâmica, que a sobrepuja enquanto atua sobre o avião. Da mesma forma, <span class="chave">a lei do Espírito é superior à do pecado e da morte</span>. Ela opera no terreno da dependência irrestrita de Deus. Andar no Espírito: <b>a)</b> primeiramente não é um trabalho, é um andar; <b>b)</b> em segundo lugar, implica em sujeição a Ele — as iniciativas da minha vida devem ficar com Ele.</p>
+
+    <h4>3.3.2 Enchendo-se do Espírito</h4>
+    <span class="pg">Apostila p. 81</span>
+    <p>O "batismo com o Espírito Santo" não é a mesma coisa que ser "cheio do Espírito Santo". Duas palavras gregas diferentes são traduzidas da mesma forma em português: <b><i>pimpleimi</i></b> (Lc 1.15,41,67,68; At 2.3,4 etc.) traz a ideia de um enchimento <span class="chave">momentâneo</span> para cumprir uma obra determinada, relacionado ao poder do batismo com o Espírito. <b><i>pleiros</i></b> (Lc 4.1; At 6.3; 7.55; 11.24; Ef 5.18) significa "ser cheio", mas como uma <span class="chave">continuidade</span> — relacionado não à obra, mas à vida.</p>
+    <p>"E não vos embriagueis com vinho, no qual há devassidão, mas enchei-vos do Espírito, falando entre vós em salmos, hinos e cânticos espirituais... sempre dando graças por tudo a Deus... sujeitando-vos uns aos outros no temor de Cristo" (Ef 5.18-21). Três maneiras de nos enchermos do Espírito:</p>
+    <ol>
+      <li><b>Falando entre vós</b> — não conseguimos ir muito longe isoladamente; precisamos de um coração aberto e inspirado no amor a Deus e ao irmão.</li>
+      <li><b>Sempre dando graças a Deus por tudo</b> — mantendo atitude de louvor e gratidão, aceitando as determinações de Deus sem murmurações. É o aspecto subjetivo da cruz, diário e constante.</li>
+      <li><b>Sujeitando-vos uns aos outros</b> — quando nos esvaziamos de defesas e orgulho, Deus pode encher-nos com o Seu Espírito.</li>
+    </ol>
+  </div>
+
+  <h2 class="cap">Capítulo 4</h2>
+  <div class="bloco">
+    <h3>4. As bases da vida cristã</h3>
+    <span class="pg">Apostila p. 83–84</span>
+    <p>A necessidade da oração, da Palavra, do jejum, e a importância da igreja e do dinheiro.</p>
+
+    <h4>4.1 O papel da oração na vida cristã</h4>
+    <p><b>4.1.1 O que é oração e qual a sua importância?</b> (Fp 4.6; Mt 7.7-11) Deus conhece todas as coisas, mas quer que lhe peçamos — não quer agir sozinho. <span class="chave">Pela oração trabalhamos com Deus pelo cumprimento de Sua vontade.</span> Funciona assim: Deus concebe a sua vontade; Ele revela a sua vontade; o homem pede a Deus por sua vontade (Mt 6.10); Deus cumpre a sua vontade. Devemos pedir em nome de Jesus (Jo 14.13,14; 16.23-24) — pedir de acordo com os interesses dEle.</p>
+    <p><b>4.1.2 Como Jesus ensinou a orar?</b> sinceridade (Mt 6.5,6); simplicidade; humildade (Lc 18.9-14); persistência (Lc 11.5-8); intensidade, com desejo intenso (Lc 11.9-10).</p>
+  </div>
+
+  <div class="bloco">
+    <h4>4.1.3 Alguns conselhos práticos</h4>
+    <span class="pg">Apostila p. 85</span>
+    <p><b>1. Orar sozinho</b> (Mt 6.5-6) — tenha um tempo específico, de preferência pela manhã, quando há silêncio (Sl 5.1-3); trate com o coração antes; faça uma lista de oração prática, incluindo familiares, líderes, governantes e até inimigos.</p>
+    <p><b>2. Oração junto com os irmãos</b> (Mt 18.19-20; At 2.42; 4.23-31) — devemos ficar sensíveis à direção do Espírito; todos podem e devem orar por um mesmo assunto e participar, pois a oração da igreja é primordial para o cumprimento do propósito de Deus (At 2.1-4; 4.31; 12.5-9; 13.1-4).</p>
+    <p><span class="chave">"Orai sem cessar" (1Ts 5.17)</span> — "Não andeis ansiosos por coisa alguma; antes em tudo sejam os vossos pedidos conhecidos diante de Deus pela oração... e a paz de Deus... guardará os vossos corações" (Fp 4.6,7).</p>
+  </div>
+
+  <div class="bloco">
+    <h4>4.2 O papel da palavra na vida cristã</h4>
+    <span class="pg">Apostila p. 86</span>
+    <p>"...nem só de pão viverá o homem, mas de tudo o que procede da boca do SENHOR" (Dt 8.3).</p>
+    <p><b>4.2.1 O que a Palavra de Deus produz em nós?</b> orientação (Sl 119.105); estabilidade (Ef 4.14); sabedoria (Sl 119.99-100); vitória contra o pecado (Sl 119.11); paz (Sl 119.165); esperança (Rm 15.4); revelação (Hb 4.12).</p>
+    <p><b>4.2.2 O que nós devemos fazer com a Palavra de Deus?</b> desejar (1Pe 2.2); temer com tremor (Is 66.2); examinar (At 17.11); buscar (Is 34.16); guardar no coração (Dt 11.18; Cl 3.16); praticar (Jo 15.7; Tg 1.22-25); ensinar (Dt 11.19).</p>
+    <p><b>4.2.3 Como devemos ler a Palavra de Deus</b> (p. 87): <b>1)</b> começar pelos Evangelhos, lendo-os ao menos duas vezes, depois Atos, as epístolas e o Apocalipse; <b>2)</b> leitura <i>devocional</i> (poucos versículos, meditando, "ruminando") e <i>sistemática</i> (o todo, de maneira ordenada); <b>3)</b> ler com oração, pedindo que o Espírito descortine a Palavra; <b>4)</b> memorizar as verdades centrais; <b>5)</b> ler primordialmente o Novo Testamento, pois nele estão as realidades, não as sombras (Cl 2.16,17).</p>
+  </div>
+
+  <div class="bloco">
+    <h4>4.3 O papel do jejum na vida cristã</h4>
+    <span class="pg">Apostila p. 88 · cai na Recapitulação 11</span>
+    <p><b>4.3.1 Tipos de jejum:</b></p>
+    <ol>
+      <li><b>Normal</b> (Mt 4.2) — abstenção de alimentos sólidos e líquidos, com exceção de água, por um ou mais dias.</li>
+      <li><b>Absoluto</b> (At 9.9; Dt 9.9; 1Rs 19.8) — abstenção total de comida e água; não deve durar muito tempo, pois é prejudicial à saúde (o jejum de Moisés e de Elias, 40 dias, foi sobrenatural).</li>
+      <li><b>Parcial</b> (Dn 10.3) — restrição na dieta diária, não uma abstenção completa.</li>
+    </ol>
+    <p><b>4.3.2 Propósitos do jejum:</b> <b>1)</b> santificação individual (Sl 69.10; 35.13) — corretivo divino que quebra o orgulho; <b>2)</b> para que Deus nos ouça (Esd 8.21-23; Ne 9.1-3); <b>3)</b> para fazer com que Deus mude a direção das coisas (Jn 3.4-10); <b>4)</b> para soltar os cativos e derrotar Satanás (Is 58.6; 49.24-25); <b>5)</b> para receber revelação (Dn 9.2-3;21-22); <b>6)</b> para subjugar o corpo (1Co 9.27; Êx 16.3; Nm 11.4-5).</p>
+  </div>
+
+  <div class="bloco">
+    <h4>4.4 O papel da igreja na vida cristã</h4>
+    <span class="pg">Apostila p. 89–92</span>
+    <p>"Também vós, como pedras que vivem, sois edificados casa espiritual" (1Pe 2.5). "A Bíblia ignora a religião solitária" (John Wesley). Todo cristão precisa da comunhão da igreja para o seu crescimento espiritual; <span class="chave">você precisa da igreja e a igreja precisa de você.</span></p>
+    <p><b>4.4.2 Por que a igreja é importante?</b> É uma organização divina que jamais será destruída, tendo Cristo como alicerce (Ef 1.22-23): "...e pôs todas as cousas debaixo dos seus pés e o deu... como cabeça sobre todas as cousas à igreja, a qual é o seu corpo". "Porque ninguém pode lançar outro fundamento, além do que foi posto, o qual é Jesus Cristo" (1Co 3.11).</p>
+    <p><b>4.4.3 O que é a igreja?</b> A palavra grega <i>ekklesia</i>, traduzida "igreja", é composta de <i>ek</i> ("fora de") e <i>kaléo</i> ("chamar") — pessoas "chamadas para fora", separadas por Deus para Si mesmo. Refere-se ao Corpo de Cristo (a Igreja universal) e também à congregação local de crentes.</p>
+    <p><b>4.4.4 A igreja apostólica</b> (p. 91) — em Atos 2.41, houve um acréscimo de quase três mil pessoas no Pentecoste. "Não deixemos de congregar-nos, como é costume de alguns" (Hb 10.25). Martinho Lutero: <i>"Reunir-se com o povo de Deus em adoração comum ao Pai é tão necessário para a vida cristã quanto a oração"</i>.</p>
+    <p><b>4.4.5 Por que ser membro da igreja?</b> (p. 91–92) — mesmo com falhas, a igreja é o veículo de Deus para nos transportar através dos mares turbulentos da vida; é um instrumento de treinamento espiritual e comunhão.</p>
+    <p><b>4.4.6 Qual é o ministério da igreja?</b> (p. 92) — a igreja de Atos 2.41-47 possuía: membros salvos (v.41); fiéis (v.42); dispostos a sacrificar-se (vs.44-45); serviçais (v.46); cheios do Espírito (v.47). A missão e ministério da igreja estão resumidos na Grande Comissão: "Ide, portanto, fazei discípulos de todas as nações..." (Mt 28.19-20).</p>
+  </div>
+
+  <div class="bloco">
+    <h4>4.5 O dinheiro e a vida cristã</h4>
+    <span class="pg">Apostila p. 93–95 · cai na Recapitulação 13</span>
+    <p>"Porque tudo vem de ti, e das tuas mãos to damos... toda esta abundância... vem da tua mão, e é toda tua" (1Cr 29.14-16). <i>"O dinheiro revela onde estão os nossos interesses; ele pode dirigir nossas atitudes; e sempre nos expõe ao perigo de adorá-lo... o dinheiro não só fala, como 'grita'."</i> (Leslie B. Flynn)</p>
+    <p><b>4.5.1 O dízimo</b> (p. 94) — segundo a Bíblia, é um décimo dos bens que possuímos. "Não estamos sob a lei, mas sob a graça" é verdadeiro, mas o evangelho da graça vai <span class="chave">além</span> da lei, não aquém dela. A lei declarava um décimo como o mínimo; sob a graça, o cristão deseja dar, no mínimo, o que era exigido sob a Lei. <span class="chave">O dízimo é o início, o ponto de partida — não o alvo</span>. A contribuição deve ser sistemática (1Co 16.2) e feita com alegria, não com tristeza ou por necessidade (2Co 9.7).</p>
+    <p><b>4.5.2 O exemplo de Cristo</b> (p. 95) — "sendo rico, se fez pobre por amor de vós, para que pela sua pobreza vos tornásseis ricos" (2Co 8.9). Quatro verdades:</p>
+    <ol>
+      <li><b>Ele era rico</b> — dono de toda a criação, rico em poder, sabedoria e vida.</li>
+      <li><b>Nós somos pobres</b> — nada possuíamos com que defender nossa causa (Rm 3.10-17).</li>
+      <li><b>Ele tornou-se pobre</b> — nasceu num estábulo e morreu como um mendigo, crucificado — "por amor de vós".</li>
+      <li><b>Nós nos tornamos ricos</b> — filhos e herdeiros de Deus, coerdeiros com Cristo.</li>
+    </ol>
+  </div>
+
+  <div class="bloco">
+    <h3>Conclusão</h3>
+    <span class="pg">Apostila p. 99</span>
+    <p>A vida cristã está relacionada à renúncia. "Se alguém quer vir após mim, a si mesmo se negue, tome sua cruz e siga-me" (Mt 16.24). Paulo registrou: "Estou crucificado com Cristo; logo, já não sou eu quem vive, mas Cristo vive em mim" (Gl 2.19-20).</p>
+    <p><span class="chave">Não podemos considerar cristão aquele que não se uniu a Cristo, que não nasceu de novo e não recebeu a Cristo como salvador.</span> A vida cristã consiste em nos tornarmos escravos de Cristo, gozando das bênçãos que Ele conquistou na Cruz — sabendo que nenhum mérito poderia vir de qualquer homem, a não ser do Homem Perfeito. Se seguirmos o princípio de andar no Espírito, considerando diariamente as bases da vida cristã, seremos verdadeiros cristãos, vivendo com excelência a vida cristã.</p>
+  </div>
+</section>
+
+<!-- ====================== RECAPITULAÇÕES ====================== -->
+<section class="painel" id="recaps">
+<div class="bloco"><h3>Recapitulações da apostila — com respostas</h3>
+<p>Todas as recapitulações do material, na ordem em que aparecem no livro. Clique em <b>Ver resposta</b> para conferir a resposta modelo.</p>
+<p style="color:var(--tinta-suave);font-style:italic">Dica de estudo: escreva a resposta no caderno antes de abrir — é assim que o professor cobra.</p></div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 1</span>
+<span class="pg">Apostila p. 65 — referente ao item 1</span>
+<div class="recq"><div class="pergunta"><b>1R1)</b> Faça um resumo sobre o que é vida cristã.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Vida cristã não é seguir regras, mandamentos e tradições humanas — isso é mera religiosidade, sem poder para refrear os impulsos da carne. Vida cristã é <b>Cristo vivendo a sua vida em mim</b> (Gl 2.20), um relacionamento de intimidade com Cristo, "estar em Cristo" (Cl 2.5-10). É o plano normal de Deus, em que Ele nos tira do caminho e coloca Cristo em nosso lugar, garantindo nosso perdão (substituição na cruz) e nossa vitória (substituição interior).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 2</span>
+<span class="pg">Apostila p. 67 — referente ao item 2.1</span>
+<div class="recq"><div class="pergunta"><b>1R2)</b> Explique os conceitos abaixo: Ser cristão é / Unir-se com Cristo / Nascer de novo / Receber Cristo como Salvador.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Ser cristão é</b> nascer de Deus (Jo 1.13) — ser uma combinação de Cristo e homem. <b>Unir-se com Cristo</b>: o pecador recebe o Salvador, e o Salvador recebe o pecador; é a união entre Cristo e a pessoa. <b>Nascer de novo</b>: é a única forma de entrar na família de Deus e ver o Seu reino (Jo 3.3) — um nascimento espiritual, não físico. <b>Receber Cristo como Salvador</b>: é ter fé nEle, crendo que é o filho de Deus sem pecado que morreu voluntariamente por nossas faltas, para nos libertar da morte espiritual e nos dar vida eterna.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 3</span>
+<span class="pg">Apostila p. 69 — referente ao item 2.2</span>
+<div class="recq"><div class="pergunta"><b>1R3)</b> Complete: "Às vezes ___ melhor o lado ___ de uma questão, considerando o seu lado ___. O simples relacionamento com os remidos não traz a ___. O mero parentesco com cristãos não faz de nós um ___. A salvação de Deus não vem pela ___ natural. Deus não tem ___. João 1.13 mostra três erros que existem ainda hoje: 'os quais não nasceram do ___', nem da vontade da carne, nem da ___ do homem, mas de Deus."</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">compreendemos / positivo / negativo / redenção / cristão / geração / netos / sangue / vontade.</div></div>
+<div class="recq"><div class="pergunta"><b>2R3)</b> Cite os três aspectos que não fazem de nós um cristão e explique um deles.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O <b>nascimento natural</b> (não nasceram do sangue), as <b>boas obras</b> (não da vontade da carne) e os <b>sacramentos religiosos</b> (não da vontade do homem). Explicando o primeiro: ter pais cristãos ou pertencer a uma família de fé é uma grande herança, mas não torna ninguém cristão — o povo judeu se apoiava em "Abraão é nosso pai", mas isso não os salvava; Deus não tem netos, cada pessoa precisa nascer de novo por si mesma.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 4</span>
+<span class="pg">Apostila p. 71 — referente ao item 2.3</span>
+<div class="recq"><div class="pergunta"><b>1R4)</b> Discorra sobre o que o cristão deveria ser.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O cristão deveria entregar sua vida inteira a Cristo, como Paulo, perguntando "SENHOR, que queres que eu faça?" — a palavra <i>cristão</i> carrega o sentido de "escravo de Cristo". Deveria desistir de suas próprias soluções para os problemas da vida e ceder tudo a Deus, sem viver ociosamente ("colchão de penas"), estando disposto a sofrer, pois "aquele que tem medo de sofrer não pode pertencer Àquele que sofreu" (Tertuliano). O chamado de Cristo é firme e não convencional, exigindo negação de si mesmo e disposição para carregar a cruz.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 5</span>
+<span class="pg">Apostila p. 75 — referente ao item 3.1</span>
+<div class="recq"><div class="pergunta"><b>1R5)</b> Qual a importância do sangue de Cristo para: Deus / Para o Homem / Para Satanás?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Para Deus:</b> satisfaz a Sua justiça e santidade — é o único meio de propiciação, pelo qual Deus se torna justo e justificador de quem tem fé em Jesus (Rm 3.24-26). <b>Para o homem:</b> resolve o problema da separação de Deus e satisfaz/purifica a nossa consciência, não importa o que nossos sentimentos digam (1Pe 1.18,19). <b>Para Satanás:</b> vence as suas acusações — "o acusador dos irmãos" (Ap 12.10) é vencido pelo sangue do Cordeiro e pela palavra do testemunho (Ap 12.11), pois com os pecados perdoados não há acusação que prevaleça.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 6</span>
+<span class="pg">Apostila p. 78 — referente ao item 3.2</span>
+<div class="recq"><div class="pergunta"><b>1R6)</b> Explique: "A cruz nos liberta daquilo que somos. Como ela atua?"</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O sangue trata objetivamente dos nossos <b>pecados</b> (o que fizemos); a cruz trata do <b>pecador</b> (quem somos), pois não pecamos por cometer pecados, mas cometemos pecados por sermos pecadores por constituição. A cruz atua em quatro passos: <b>sabendo</b> que nosso velho homem foi crucificado com Cristo (Rm 6.6), fato ocorrido no passado, no batismo (Rm 6.3,4a); <b>considerando-se</b> morto para o pecado e vivo para Deus (Rm 6.11), por fé prática; <b>apresentando-se</b> a Deus como instrumento de justiça (Rm 6.12,13); e <b>andando no Espírito</b>. Assim ela nos liberta da constituição pecaminosa, não apenas dos atos isolados.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 7</span>
+<span class="pg">Apostila p. 81 — referente ao item 3.3</span>
+<div class="recq"><div class="pergunta"><b>1R7)</b> O que é lei? Dê um exemplo.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Lei, a rigor, é uma generalização examinada até que se prove que não há exceção — algo que ocorre repetidamente e sempre de maneira já observada. Exemplo: a lei da gravidade — se cair um lenço em qualquer lugar do globo, ele cairá no chão.</div></div>
+<div class="recq"><div class="pergunta"><b>2R7)</b> O que você entende por lei do pecado e da morte?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">É uma lei espiritual que opera dentro de nós, herdada pela queda, que nos empurra para o pecado assim como a lei da gravidade nos empurra para baixo — mesmo o crente, querendo fazer o bem, encontra o mal presente (Rm 7.19-23). A cruz nos livrou do "homem do pecado", mas não eliminou essa lei; seu efeito, porém, pode ser anulado por uma lei superior.</div></div>
+<div class="recq"><div class="pergunta"><b>3R7)</b> O que você entende por lei do Espírito da vida?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">É uma lei superior à do pecado e da morte, dada pelo Espírito que habita em nós, que "há de vivificar também os vossos corpos mortais" (Rm 8.11-13) — assim como a lei da aerodinâmica sobrepuja a da gravidade enquanto o avião voa. Ela opera no terreno da dependência irrestrita de Deus, manifestando-se quando abdicamos de nossas próprias vontades.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 8</span>
+<span class="pg">Apostila p. 89 — referente ao item 3.3.2</span>
+<div class="recq"><div class="pergunta"><b>1R8)</b> Explique os significados das palavras: Pimpleimi / Pleiros.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Pimpleimi</b>: palavra grega que traz a ideia de um enchimento <b>momentâneo</b>, para cumprir uma determinada obra — tem mais a ver com o batismo com o Espírito Santo, que nos dá poder. <b>Pleiros</b>: significa "ser cheio", mas não como experiência pontual, e sim como <b>continuidade</b> — relacionada não à obra, mas à vida; é o encher-se contínuo com o Espírito Santo.</div></div>
+<div class="recq"><div class="pergunta"><b>2R8)</b> Em Efésios 5.18-21 encontramos como proceder para nos enchermos continuamente do Espírito. Liste os passos apresentados.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>1.</b> Falando entre vós (salmos, hinos e cânticos espirituais); <b>2.</b> Sempre dando graças a Deus por tudo; <b>3.</b> Sujeitando-vos uns aos outros no temor de Cristo.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 9</span>
+<span class="pg">Apostila p. 86 — referente ao item 4.1</span>
+<div class="recq"><div class="pergunta"><b>1R9)</b> Por que a oração é importante para a vida cristã? Justifique com referências bíblicas.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Porque Deus não quer agir sozinho — Ele quer que Seus filhos trabalhem com Ele através da oração para o cumprimento de Sua vontade (Mt 6.10; Fp 4.6). Devemos pedir em nome de Jesus, de acordo com os interesses dEle (Jo 14.13,14; 16.23-24). A oração, tanto individual (Mt 6.5-6) quanto em conjunto com os irmãos, é o meio pelo qual experimentamos o poder de Deus, como no dia de Pentecostes (At 2.1-4) e na libertação de Pedro (At 12.5-9); somos instruídos a orar sem cessar (1Ts 5.17).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 10</span>
+<span class="pg">Apostila p. 87 — referente ao item 4.2</span>
+<div class="recq"><div class="pergunta"><b>1R10)</b> O que a Palavra de Deus produz em nós?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Orientação (Sl 119.105); estabilidade (Ef 4.14); sabedoria (Sl 119.99-100); vitória contra o pecado (Sl 119.11); paz (Sl 119.165); esperança (Rm 15.4); revelação (Hb 4.12).</div></div>
+<div class="recq"><div class="pergunta"><b>2R10)</b> O que nós devemos fazer com a Palavra de Deus?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Desejar (1Pe 2.2); temer com tremor (Is 66.2); examinar (At 17.11); buscar (Is 34.16); guardar no coração (Dt 11.18; Cl 3.16); praticar (Jo 15.7; Tg 1.22-25); ensinar (Dt 11.19).</div></div>
+<div class="recq"><div class="pergunta"><b>3R10)</b> Como devemos ler a Palavra de Deus?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Começar pelos Evangelhos, lendo-os no mínimo duas vezes, depois o livro de Atos, as epístolas e, por último, o Apocalipse. Alternar leitura <b>devocional</b> (poucos versículos, meditando, "ruminando") e <b>sistemática</b> (o texto como um todo, de forma ordenada, sem perder o contexto). Ler com oração, pedindo que o Espírito Santo descortine a Palavra; memorizar as verdades centrais; e ler primordialmente o Novo Testamento, pois nele estão as realidades, e não as sombras (Cl 2.16,17).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 11</span>
+<span class="pg">Apostila p. 89 — referente ao item 4.3</span>
+<div class="recq"><div class="pergunta"><b>1R11)</b> Explique quais são os tipos de jejuns.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Normal</b> (Mt 4.2): abstenção de alimentos sólidos e líquidos, com exceção de água, por um ou mais dias. <b>Absoluto</b> (At 9.9; Dt 9.9; 1Rs 19.8): abstenção total de comida e água; não deve durar muito tempo, pois é prejudicial à saúde — o de Moisés e Elias, por 40 dias, foi sobrenatural. <b>Parcial</b> (Dn 10.3): restrição na dieta diária, e não uma abstenção completa.</div></div>
+<div class="recq"><div class="pergunta"><b>2R11)</b> Quais são os propósitos do jejum?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>1.</b> Santificação individual — corretivo divino que quebra o orgulho e humilha a alma; <b>2.</b> Para que Deus nos ouça — o jejum dá poder às orações; <b>3.</b> Para fazer com que Deus mude a direção das coisas; <b>4.</b> Para soltar os cativos e derrotar Satanás; <b>5.</b> Para receber revelação; <b>6.</b> Para subjugar o corpo, disciplinando-o e submetendo os apetites físicos ao espiritual.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 12</span>
+<span class="pg">Apostila p. 93 — referente ao item 4.4</span>
+<div class="recq"><div class="pergunta"><b>1R12)</b> Faça um resumo sobre a importância da igreja na vida cristã.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">A igreja é uma organização divina fundada por Cristo (Mt 16.18), que jamais será destruída — ela é o Corpo de Cristo, sendo Ele a cabeça sobre todas as coisas (Ef 1.22-23), composta de "pedras vivas" edificadas em casa espiritual (1Pe 2.5). Todo cristão precisa da comunhão da igreja para o seu crescimento espiritual, treinamento e exercício dos dons; e a igreja, por sua vez, precisa de cada membro. Sua missão e ministério estão resumidos na Grande Comissão: fazer discípulos de todas as nações (Mt 28.19-20).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 13</span>
+<span class="pg">Apostila p. 96 — referente ao item 4.5</span>
+<div class="recq"><div class="pergunta"><b>1R13)</b> Qual a importância do dinheiro na vida cristã?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O dinheiro revela onde estão os nossos interesses, pode dirigir nossas atitudes e sempre nos expõe ao perigo de adorá-lo — "não só fala, como grita" (Leslie B. Flynn). Contribuir não é um fardo nem uma simples obrigação para o cristão, mas um privilégio glorioso (1Cr 29.14-16); tudo vem de Deus, e a nós cabe apenas devolver com alegria.</div></div>
+<div class="recq"><div class="pergunta"><b>2R13)</b> Qual posicionamento devemos assumir referente ao dízimo no tempo da graça?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Não estamos sob a lei, mas sob a graça — porém o evangelho da graça vai além da lei, nunca aquém dela. Sob a Lei, o dízimo (um décimo) era o mínimo exigido; sob a graça, ele é o <b>ponto de partida</b>, não o alvo — o cristão deseja dar tanto ou mais do que era exigido sob a Lei, com alegria e de forma sistemática, proporcional à sua prosperidade (1Co 16.2; 2Co 9.7).</div></div>
+<div class="recq"><div class="pergunta"><b>3R13)</b> Explique as quatro verdades que Cristo exemplificou com sua própria vida a respeito da generosidade.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>1) Ele era rico</b> — dono de toda a criação, rico em poder, sabedoria e vida; <b>2) Nós somos pobres</b> — nada possuíamos para defender nossa causa diante de Deus (Rm 3.10-17); <b>3) Ele tornou-se pobre</b> — nasceu num estábulo, não tinha onde reclinar a cabeça e morreu como um mendigo na cruz, "por amor de vós" (2Co 8.9); <b>4) Nós nos tornamos ricos</b> — somos filhos, herdeiros e coerdeiros de Deus, tão ricos quanto o próprio Jesus Cristo.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Revisão geral</span>
+<span class="pg">Apostila p. 99–101</span>
+<p>A Revisão Geral reúne, em 22 questões, todo o conteúdo já cobrado nas Recapitulações 1 a 13 acima — desde "Faça um resumo sobre o que é vida cristã" e os conceitos de ser cristão, passando pelo sangue e a cruz de Cristo, as duas leis espirituais, pimpleimi e pleiros, oração, Palavra, jejum, igreja e dízimo, até "Explique as 4 verdades que Cristo exemplificou... a respeito da generosidade". Use as respostas das Recapitulações correspondentes acima para revisar cada uma dessas questões antes da prova.</p>
+</div>
+
+</section>
+
+<!-- ====================== SIMULADO ====================== -->
+<section class="painel" id="simulado">
+  <div id="menu">
+    <h3>Simulado — 10 rodadas × 10 questões</h3>
+    <p>Cada questão tem 3 alternativas e explicação com a referência da apostila. Escolha a rodada:</p>
+    <div class="rodadas" id="listaRodadas"></div>
+    <div class="botoes"><button class="acao vazado" onclick="zerar()">Zerar meu progresso</button></div>
+  </div>
+
+  <div id="prova" style="display:none">
+    <div class="barra">
+      <div class="titulo" id="tituloRodada"></div>
+      <div class="placar" id="placar">0 / 10</div>
+    </div>
+    <div id="questoes"></div>
+    <div class="resultado" id="resultado">
+      <div class="nota" id="nota"></div>
+      <div class="msg" id="msg"></div>
+    </div>
+    <div class="botoes">
+      <button class="acao" onclick="voltar()">Voltar às rodadas</button>
+      <button class="acao vazado" onclick="refazer()">Refazer esta rodada</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">Vida Cristã — material de estudo baseado na apostila (p. 63–101). Bons estudos!</footer>
+
+<script>
+const abas=document.querySelectorAll('nav.abas button');
+abas.forEach(b=>b.onclick=()=>{
+  abas.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  document.querySelectorAll('.painel').forEach(p=>p.classList.remove('on'));
+  document.getElementById(b.dataset.alvo).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+const RODADAS=[
+{t:"Rodada 1 — O que é vida cristã / O que é ser cristão",d:"Cap. 1 e 2.1 — Gl 2.20, unir-se, nascer de novo, receber a Cristo",q:[
+ {p:"Segundo a apostila, a definição de vida cristã dada por Paulo em Gálatas 2.20 resume-se em:",o:["\"vivo, não mais eu, mas Cristo vive a sua vida em mim\"","\"tudo posso naquele que me fortalece\"","\"o justo viverá pela fé\""],c:0,e:"Página 64."},
+ {p:"Segundo o texto, o cristianismo, como experiência real, é definido como:",o:["Uma série de regras e tradições humanas","Um relacionamento de intimidade com Cristo — \"estar em Cristo\"","Uma filosofia religiosa sem compromisso pessoal"],c:1,e:"Cl 2.5-10 (p. 64)."},
+ {p:"O termo \"cristão\" foi gerado em meio a zombaria e ridículo, na cidade de:",o:["Antioquia da Síria","Jerusalém","Roma"],c:0,e:"At 11.26 (p. 66)."},
+ {p:"Segundo João 1.12-13, o cristão é aquele que:",o:["Nasceu do sangue","Nasceu de Deus","Nasceu da vontade do homem"],c:1,e:"Página 66."},
+ {p:"\"Unir-se com Cristo\", segundo a apostila, significa que:",o:["O pecador recebe o Salvador, e o Salvador recebe o pecador","Basta frequentar a igreja regularmente","É necessário guardar o sábado"],c:0,e:"Página 66."},
+ {p:"Segundo Jesus, em João 3.3, para ver o reino de Deus é necessário:",o:["Ser batizado nas águas","Nascer de novo","Guardar os mandamentos do Antigo Testamento"],c:1,e:"Página 66."},
+ {p:"\"Receber a Cristo como Salvador\" é, segundo a apostila:",o:["Apenas admirar seus ensinamentos morais","Seguir uma religião organizada","Ter fé nEle, crendo que é filho de Deus sem pecado que morreu por nós"],c:2,e:"Página 67."},
+ {p:"Segundo a Introdução, o conteúdo da disciplina de Vida Cristã foi dividido em:",o:["Três partes","Quatro partes","Cinco partes"],c:1,e:"Página 63."},
+ {p:"O texto de 1 Timóteo 4.16, citado na Introdução, instrui Timóteo a ter cuidado:",o:["De si mesmo e da doutrina","Apenas das finanças da igreja","Apenas dos líderes religiosos"],c:0,e:"Página 63."},
+ {p:"O termo \"cristão\" aparece no Novo Testamento, segundo a apostila:",o:["Apenas três vezes, e nenhuma vez no Velho Testamento","Dezenas de vezes em ambos os Testamentos","Apenas no livro de Atos"],c:0,e:"At 11.26; 26.28; 1Pe 4.16 (p. 66)."}
+]},
+{t:"Rodada 2 — O que o cristão não é / deveria ser",d:"Cap. 2.2 e 2.3 — nascimento, obras, sacramentos, chamado firme",q:[
+ {p:"Segundo João 1.13, um dos erros sobre a origem da salvação é achar que ela vem:",o:["Do sangue, isto é, da geração natural","Da graça de Deus","Da fé em Cristo"],c:0,e:"Página 68."},
+ {p:"Ter nascido em uma família cristã, segundo a apostila:",o:["Faz automaticamente da pessoa um cristão","Não faz de nós um cristão — Deus não tem netos","É o único requisito necessário"],c:1,e:"Página 68."},
+ {p:"Sobre a salvação pelo esforço pessoal, Efésios 2.8-9 afirma que a salvação é:",o:["Conquistada por mérito próprio","Dom de Deus, não de obras","Resultado da atividade religiosa"],c:1,e:"Página 68."},
+ {p:"Segundo a apostila, a frase \"a salvação é um oferecimento, e não uma exigência\" significa que:",o:["Precisamos seguir a Regra de Ouro para sermos salvos","A salvação não está baseada no que fazemos, mas no que Jesus fez","O batismo é o que nos salva"],c:1,e:"Página 68."},
+ {p:"Na ilustração do evangelista sobre o vagabundo que dizia \"foi o SENHOR quem me salvou\", a resposta dada foi:",o:["\"Parece que fui eu mesmo quem o salvou\"","\"De fato, foi o SENHOR\"","\"Você está mentindo\""],c:0,e:"Página 69."},
+ {p:"Segundo a apostila, nenhuma ordenança da igreja, por mais importante que seja, pode:",o:["Substituir a pregação","Perdoar pecados","Edificar a comunhão"],c:1,e:"Página 69."},
+ {p:"Segundo Adolph Deissman, citado na apostila, a palavra \"cristão\" carrega o significado de:",o:["Rei e sacerdote","Escravo de Cristo","Discípulo comum"],c:1,e:"Página 70."},
+ {p:"O exemplo de Abraão e Hagar, na apostila, é usado para ilustrar:",o:["Um ato de fé genuína e exemplar","O caminho tortuoso do homem, em vez do caminho de Deus","A bênção automática do dízimo"],c:1,e:"Página 70."},
+ {p:"Segundo Tertuliano, citado no texto: \"Aquele que tem medo de sofrer, não pode pertencer:",o:["A uma igreja organizada","Àquele que sofreu","A uma denominação específica"],c:1,e:"Página 71."},
+ {p:"O chamado de Cristo, segundo a apostila, foi descrito como:",o:["Manso, convencional e sem exigências","Firme e não convencional","Restrito apenas aos líderes religiosos"],c:1,e:"Mt 10.34; Lc 9.57-62 (p. 71)."}
+]},
+{t:"Rodada 3 — O precioso sangue de Cristo",d:"Cap. 3.1 — para Deus, para a consciência, para Satanás",q:[
+ {p:"Segundo a apostila, o homem tem basicamente um problema, do qual nascem os pecados:",o:["A pobreza material","A independência","A ignorância"],c:1,e:"Página 72."},
+ {p:"No Antigo Testamento, o sangue de animais satisfazia a justiça de Deus:",o:["Definitivamente e para sempre","Apenas de forma temporária","Apenas para os sacerdotes"],c:1,e:"Hb 9.13 (p. 73)."},
+ {p:"Segundo Êxodo 12.13, citado na apostila, Deus disse: \"Vendo eu o sangue...\"",o:["\"...passarei por cima de vós\"","\"...vos abandonarei\"","\"...vos julgarei com rigor\""],c:0,e:"Página 73."},
+ {p:"Um dos motivos, segundo a apostila, pelos quais não avaliamos corretamente o sangue de Cristo é:",o:["Não sabermos o valor que Deus dá ao sangue","Sabermos demais sobre o assunto","Não termos pecado algum a confessar"],c:0,e:"Página 74."},
+ {p:"Segundo 1Pedro 1.18,19, citado na apostila, fomos resgatados não com prata ou ouro, mas com:",o:["O precioso sangue de Cristo","Boas obras acumuladas","O pagamento do dízimo"],c:0,e:"Página 74."},
+ {p:"Com base em Apocalipse 12.10, Satanás é chamado, na apostila, de:",o:["O pai da mentira, apenas","O acusador dos irmãos","O príncipe da paz"],c:1,e:"Página 74."},
+ {p:"Segundo 1João 1.7, o sangue de Jesus nos purifica:",o:["De todo pecado","Apenas dos pecados cometidos em público","Apenas uma única vez na vida"],c:0,e:"Página 75."},
+ {p:"O fundamento para vencer as acusações de Satanás, segundo a apostila, é:",o:["Nossa boa conduta e esforço próprio","O sangue de Cristo, e não nossos sentimentos","Ignorar completamente a consciência"],c:1,e:"Página 75."},
+ {p:"Segundo Apocalipse 12.11, os irmãos venceram Satanás pelo sangue do Cordeiro e:",o:["Pela palavra do seu testemunho","Pela força e mérito próprios","Pela intervenção dos anjos"],c:0,e:"Página 75."},
+ {p:"O sangue de Cristo resolve, segundo a apostila, primariamente o problema da:",o:["Nossa separação de Deus","Escassez de recursos materiais","Falta de conhecimento teológico"],c:0,e:"Página 73."}
+]},
+{t:"Rodada 4 — A cruz de Cristo e o andar no Espírito",d:"Cap. 3.2 e 3.3 — sabendo, considerando-se, apresentando-nos, duas leis",q:[
+ {p:"Segundo a apostila, enquanto o sangue trata dos nossos pecados, a cruz trata:",o:["Do próprio pecador, daquilo que somos","Apenas dos pecados cometidos em público","Somente da Lei de Moisés"],c:0,e:"Página 75."},
+ {p:"Segundo Romanos 6.6, o que foi crucificado com Cristo foi:",o:["O Espírito Santo","O nosso velho homem","A Lei de Moisés por completo"],c:1,e:"Página 76."},
+ {p:"Segundo a apostila, fomos crucificados com Cristo, no passado, no momento:",o:["Do nosso nascimento físico","Do nosso batismo (Rm 6.3,4a)","Da nossa morte física"],c:1,e:"Página 76."},
+ {p:"\"Considerar-se\", no grego, traz a ideia de:",o:["Esquecer o passado","Atribuir, imputar, fazer as contas","Negar a própria fé"],c:1,e:"Página 77."},
+ {p:"Segundo Romanos 6.12,13, depois de saber e considerar-se, o próximo passo é:",o:["Apresentar-se a Deus como instrumento de justiça","Duvidar constantemente da salvação","Voltar a viver segundo a carne"],c:0,e:"Página 77."},
+ {p:"\"Apresentar-se\", segundo a apostila, é a verdadeira:",o:["Evangelização pessoal","Santificação, num sentido inicial e fundamental","Confissão pública de pecados"],c:1,e:"Rm 6.19 (p. 78)."},
+ {p:"A \"lei do pecado e da morte\" (Rm 7.19-23) é descrita como uma lei que:",o:["Nos empurra para o pecado, mesmo quando queremos o bem","Deixou de existir totalmente para o cristão","Só afeta pessoas não convertidas"],c:0,e:"Página 79."},
+ {p:"A \"lei do Espírito da vida\" é comparada, na apostila, à lei:",o:["Da gravidade","Da aerodinâmica, que sobrepuja a da gravidade enquanto atua","Da inércia"],c:1,e:"Página 80."},
+ {p:"Segundo a apostila, andar no Espírito implica, em primeiro lugar, que:",o:["Não é um trabalho, mas um andar","É um esforço opressivo e contínuo","Exige uma nova conversão diária"],c:0,e:"Página 80."},
+ {p:"A palavra grega \"pleiros\", usada em Efésios 5.18, refere-se:",o:["A um enchimento pontual, ligado ao batismo com o Espírito","A \"ser cheio\" como experiência contínua, ligada à vida","Apenas ao dom de línguas"],c:1,e:"Página 81."}
+]},
+{t:"Rodada 5 — Oração e a Palavra de Deus",d:"Cap. 4.1 e 4.2 — como Jesus ensinou a orar, o que a Palavra produz",q:[
+ {p:"Segundo a apostila, Deus não quer agir sozinho porque:",o:["Ele quer que Seus filhos trabalhem com Ele através da oração","Ele não tem poder para agir por conta própria","A oração é apenas um ritual sem efeito real"],c:0,e:"Página 84."},
+ {p:"Segundo o princípio descrito na apostila, depois que Deus concebe e revela Sua vontade, o passo seguinte é:",o:["O homem pedir a Deus por essa vontade (Mt 6.10)","A vontade se cumprir automaticamente, sem oração","Esperar até que Deus mude de ideia"],c:0,e:"Página 84."},
+ {p:"Um dos elementos de como Jesus ensinou a orar (Lc 18.9-14) é a:",o:["Arrogância diante de Deus","Humildade","Indiferença quanto ao resultado"],c:1,e:"Página 84."},
+ {p:"Segundo os \"conselhos práticos\", o melhor horário para a oração, para a maioria das pessoas, é:",o:["À noite, antes de dormir","Pela manhã, quando há silêncio","Durante o trabalho, em qualquer momento"],c:1,e:"Página 85."},
+ {p:"\"Orai sem cessar\" é uma instrução encontrada em:",o:["1 Tessalonicenses 5.17","Gênesis 1.1","Apocalipse 22"],c:0,e:"Página 85."},
+ {p:"Segundo Deuteronômio 8.3, citado na apostila, o homem não viverá só de pão, mas de:",o:["Água pura","Tudo o que procede da boca do SENHOR","Trabalho árduo"],c:1,e:"Página 86."},
+ {p:"Entre o que a Palavra de Deus produz em nós, segundo a apostila, está listado:",o:["Confusão espiritual","Sabedoria (Sl 119.99-100)","Orgulho pessoal"],c:1,e:"Página 86."},
+ {p:"Entre o que devemos fazer com a Palavra de Deus está:",o:["Ignorá-la quando for difícil de entender","Guardá-la no coração (Dt 11.18)","Ouvi-la apenas aos domingos"],c:1,e:"Página 86."},
+ {p:"Segundo a apostila, devemos começar a leitura bíblica sistemática:",o:["Pelo Apocalipse","Pelos Evangelhos","Pelo livro de Jó"],c:1,e:"Página 87."},
+ {p:"A leitura \"devocional\" da Palavra, segundo a apostila, se caracteriza por:",o:["Ler capítulos inteiros rapidamente, sem pausas","Ler poucos versículos, meditando e \"ruminando\"","Apenas ouvir sermões gravados"],c:1,e:"Página 87."}
+]},
+{t:"Rodada 6 — Jejum, igreja e dinheiro",d:"Cap. 4.3, 4.4 e 4.5 — tipos e propósitos do jejum, a igreja, o dízimo",q:[
+ {p:"O jejum \"Normal\", segundo a apostila (Mt 4.2), consiste na abstenção de:",o:["Alimentos sólidos e líquidos, com exceção de água","Apenas carne vermelha","Apenas doces e açúcar"],c:0,e:"Página 88."},
+ {p:"O jejum \"Absoluto\" é a abstenção total de comida e água, e segundo a apostila:",o:["Pode durar qualquer tempo, sem restrição","Não deve durar muito tempo, pois é prejudicial à saúde","É o único tipo de jejum válido biblicamente"],c:1,e:"Página 88."},
+ {p:"Entre os propósitos do jejum listados na apostila está:",o:["Para soltar os cativos e derrotar Satanás (Is 58.6)","Para impressionar as outras pessoas","Para perder peso rapidamente"],c:0,e:"Página 88."},
+ {p:"Segundo Efésios 1.22-23, citado na apostila, Deus Pai deu Cristo à igreja, a qual é:",o:["Seu corpo, a plenitude dAquele que a tudo enche","Apenas um prédio consagrado","Uma organização puramente humana"],c:0,e:"Página 90."},
+ {p:"A palavra grega \"ekklesia\", traduzida como \"igreja\", é composta por termos que significam:",o:["\"Fora de\" + \"chamar\"","\"Dentro de\" + \"guardar\"","\"Acima de\" + \"reinar\""],c:0,e:"Página 90."},
+ {p:"Segundo Atos 2.41-47, a primeira igreja em Jerusalém teve um acréscimo de aproximadamente:",o:["Três mil pessoas","Trezentas pessoas","Trinta mil pessoas"],c:0,e:"Página 91."},
+ {p:"Segundo a apostila, a Grande Comissão (Mt 28.19-20) resume a missão da igreja como:",o:["Apenas ações de caridade social","A evangelização do mundo, fazendo discípulos de todas as nações","A construção de templos suntuosos"],c:1,e:"Página 92."},
+ {p:"Segundo Leslie B. Flynn, citado na apostila, o dinheiro:",o:["Não tem nenhuma relação com a fé cristã","Revela onde estão os nossos interesses e \"grita\"","É irrelevante para a vida espiritual"],c:1,e:"Página 93."},
+ {p:"Segundo a apostila, sob a graça, o dízimo (um décimo, exigido pela Lei) deve ser encarado como:",o:["O alvo final da generosidade cristã","O mínimo, o ponto de partida — e não o alvo","Uma prática abolida e proibida"],c:1,e:"Página 94."},
+ {p:"Entre as quatro verdades exemplificadas por Cristo a respeito da generosidade está:",o:["\"Ele era rico\" e \"Ele tornou-se pobre por amor de vós\" (2Co 8.9)","\"Ele era pobre desde toda a eternidade\"","\"Ele nunca deu nada a ninguém\""],c:0,e:"Página 95."}
+]},
+{t:"Rodada 7 — Vida cristã e ser cristão (aprofundamento)",d:"Cap. 1 e 2 em detalhe — substituições, Atos 26.28, o chamado firme",q:[
+ {p:"Segundo a apostila, Deus usa o critério de nos tirar do caminho e colocar Cristo em nosso lugar através de duas substituições, que são:",o:["Uma substituição na Cruz (perdão) e uma substituição interior (vitória)","Uma substituição no batismo e outra na Ceia do SENHOR","Uma substituição apenas na oração diária"],c:0,e:"Página 64."},
+ {p:"O \"cristianismo\" vivido apenas como filosofia e religião, sem valor para uma verdadeira vida espiritual, é caracterizado, segundo a apostila, por:",o:["Regras, mandamentos, tradições e doutrinas humanas","Um relacionamento de intimidade com Cristo","A prática constante do jejum absoluto"],c:0,e:"Página 64."},
+ {p:"Tomando a primeira e a última palavra-chave de João 1.13, a apostila chega à definição de que o cristão é aquele que:",o:["Nasceu... de Deus","Creu... na Lei","Seguiu... a tradição dos pais"],c:0,e:"Página 66."},
+ {p:"Em Atos 26.28, ao ouvir Paulo, o rei Agripa respondeu:",o:["\"Por pouco me persuades a me fazer cristão\"","\"Não creio em nada disso que dizes\"","\"Serei crucificado como Paulo\""],c:0,e:"Página 66."},
+ {p:"Segundo 1Pedro 4.16, citado na apostila, sofrer como cristão não deve causar vergonha, mas sim:",o:["Glorificação a Deus por esse nome","Revolta contra a igreja","Indiferença total ao sofrimento"],c:0,e:"Página 66."},
+ {p:"Ser cristão, nos primeiros séculos, significava com frequência enfrentar:",o:["Apenas debates filosóficos acadêmicos","A arena, feras selvagens e a negação de si mesmo","Exclusivamente perseguição política, sem risco pessoal"],c:1,e:"Página 66."},
+ {p:"Segundo a apostila, Sara, mulher de Abraão, em sua velhice, deu à luz Isaque, o que representa:",o:["O caminho tortuoso do homem, fora da vontade de Deus","O cumprimento do eterno plano de Deus","Um erro histórico sem consequência"],c:1,e:"Página 70."},
+ {p:"Jesus respondeu a um dos que queria segui-lo, mas antes queria sepultar seu pai:",o:["\"Deixa aos mortos o sepultar os seus próprios mortos\"","\"Tudo bem, pode ir, eu espero\"","\"Isso não é urgente, faça com calma\""],c:0,e:"Lc 9.59-60 (p. 71)."},
+ {p:"Segundo a apostila, artistas e poetas frequentemente retrataram Jesus de forma:",o:["Fiel às Escrituras, como firme e forte","Falsa — manso, suave e sentimental, em lugar de majestoso e santo","Idêntica à descrição do livro de Apocalipse"],c:1,e:"Página 71."},
+ {p:"Segundo a apostila, \"salvação\" e \"santificação\" são, para o apóstolo Paulo, coisas:",o:["Simultâneas","Separadas por muitos anos de vida cristã","Sem nenhuma relação entre si"],c:0,e:"Página 70."}
+]},
+{t:"Rodada 8 — O sangue e a cruz de Cristo (aprofundamento)",d:"Cap. 3.1 e 3.2 em detalhe — Romanos, justificação, o velho homem",q:[
+ {p:"Segundo a divisão da carta aos Romanos citada na apostila, do capítulo 1.1 até 5.11 Paulo trata:",o:["Dos atos pecaminosos do homem — o \"pecado\" cometido","Apenas da lei do Espírito da vida","Do ministério da igreja apostólica"],c:0,e:"Página 72."},
+ {p:"E a partir do capítulo 5.12, Paulo passa a tratar:",o:["Da atitude do homem — sua natureza pecaminosa, \"o pecado\"","Do calendário de festas judaicas","Do ministério pessoal de Timóteo"],c:0,e:"Página 72."},
+ {p:"Segundo a apostila, para visualizarmos o quanto Deus dá valor ao sangue, é necessário:",o:["Esquecer o valor que nós mesmos damos ao sangue","Ignorar por completo o Antigo Testamento","Duvidar da eficácia do sangue de Cristo"],c:0,e:"Página 73."},
+ {p:"Romanos 3.24-26, citado na apostila, afirma que somos justificados gratuitamente pela graça, mediante a redenção que há:",o:["Em Cristo Jesus","Somente na Lei de Moisés","Apenas nos profetas do Antigo Testamento"],c:0,e:"Página 73."},
+ {p:"Segundo a apostila, quando confessamos o pecado, pondo-o na luz:",o:["Precisamos confessá-lo repetidas vezes até nos sentirmos perdoados","O sangue de Cristo já atuou, sem depender de nossos sentimentos","A confissão não produz efeito algum"],c:1,e:"Página 74."},
+ {p:"Segundo a apostila, o pecado oferece a Satanás uma possibilidade de:",o:["Acusação diante de Deus","Bênção sobre o pecador","Nenhum poder algum"],c:0,e:"Página 75."},
+ {p:"Segundo Romanos 6.6, o propósito de o velho homem ser crucificado com Cristo é:",o:["Que o corpo do pecado fosse desfeito, para não servirmos mais ao pecado","Que fôssemos ressuscitados fisicamente de imediato","Que a Lei de Moisés fosse revogada por completo"],c:0,e:"Página 76."},
+ {p:"Segundo a apostila, o alvo da crucificação não é o pecado como princípio ativo, mas sim:",o:["O empregado do pecado — o velho homem","O próprio Diabo, pessoalmente","A Lei de Moisés como um todo"],c:0,e:"Página 76."},
+ {p:"Segundo a apostila, \"considerar-se\" não é apenas saber, mas:",o:["Tomar a atitude de crer que nossa inclusão na crucificação de Jesus é um fato verdadeiro","Duvidar constantemente da própria fé","Ignorar completamente o assunto"],c:0,e:"Página 77."},
+ {p:"Segundo a apostila, diferente das promessas — que dependem de nossa fé — os fatos de Deus:",o:["Também dependem inteiramente de nossa fé para acontecerem","Permanecem fatos, quer creiamos neles ou não","Nunca se realizam sem muita oração"],c:1,e:"Página 77."}
+]},
+{t:"Rodada 9 — Oração, Palavra e jejum (aprofundamento)",d:"Cap. 4.1, 4.2 e 4.3 em detalhe — pedir em nome de Jesus, praticar a Palavra",q:[
+ {p:"Segundo a apostila, se Deus concebe e revela a Sua vontade, mas o homem não a pede em oração:",o:["A vontade de Deus se cumpre do mesmo jeito, sem depender disso","A vontade de Deus não se cumprirá (Is 45.11; Ez 36.37)","Deus se irrita, mas a cumpre mesmo assim"],c:1,e:"Página 84."},
+ {p:"Pedir \"em nome de Jesus\", segundo a apostila, significa:",o:["Apenas repetir a frase \"em nome de Jesus\" ao final da oração","Pedir de acordo com os interesses e a vontade dEle","Pedir qualquer coisa, sem nenhum critério"],c:1,e:"Página 84."},
+ {p:"Segundo os conselhos práticos, antes de orar por qualquer assunto devemos:",o:["Tratar com o coração — ter a consciência completamente limpa","Preparar uma longa lista de reivindicações","Aguardar o culto de domingo para orar"],c:0,e:"Página 85."},
+ {p:"A lista de oração sugerida na apostila deve incluir familiares, líderes da igreja, governantes e também:",o:["Inimigos — aqueles que perseguem por causa da justiça","Apenas os membros da própria família","Somente memórias e recordações do passado"],c:0,e:"Página 85."},
+ {p:"Segundo a apostila, quando a igreja ora unida, coisas importantes aconteceram, como:",o:["O recebimento do batismo com o Espírito Santo e a libertação de Pedro da prisão","A criação do calendário litúrgico cristão","A divisão entre judeus e gentios na igreja"],c:0,e:"Página 85."},
+ {p:"Segundo Hebreus 4.12, citado na apostila, entre o que a Palavra de Deus produz em nós está a:",o:["Revelação","Confusão espiritual","O esquecimento das promessas"],c:0,e:"Página 86."},
+ {p:"Segundo Tiago 1.22-25, citado na apostila, devemos ser da Palavra:",o:["Apenas ouvintes atentos","Praticantes, e não somente ouvintes","Críticos exigentes e desconfiados"],c:1,e:"Página 86."},
+ {p:"Segundo a apostila, ao nos distanciarmos da leitura constante da Palavra de Deus, corremos o risco de cair em:",o:["Fanatismo ou misticismo","Excesso de estudo bíblico organizado","Nada de relevante para a fé"],c:0,e:"Página 87."},
+ {p:"O jejum, segundo a apostila, ajuda a disciplinar o corpo porque:",o:["Os apetites do corpo são lícitos, mas devem ficar sob controle, com o físico submisso ao espiritual","O corpo é intrinsecamente mau e deve ser sempre negado","Comer é, em qualquer circunstância, pecado"],c:0,e:"1Co 9.27 (p. 89)."},
+ {p:"Segundo a apostila, alguns grupos ditos \"cristãos\" afirmam que o jejum não é necessário na graça, o que contraria as palavras de Jesus em:",o:["Mateus 6.16, \"Quando jejuardes\"","João 3.16","Apocalipse 21"],c:0,e:"Página 89."}
+]},
+{t:"Rodada 10 — Igreja, dinheiro e revisão geral",d:"Cap. 4.4, 4.5 e Conclusão em detalhe — a igreja local, a contribuição macedônica",q:[
+ {p:"Segundo P.T. Forsythe, citado na apostila, a igreja local é chamada de:",o:["\"O fruto da igreja universal\"","\"Uma organização sem importância\"","\"Um prédio qualquer, sem valor espiritual\""],c:0,e:"Página 91."},
+ {p:"No dia de Pentecostes, segundo Atos 2.41, o acréscimo à igreja de Jerusalém se deu através de pessoas que:",o:["Aceitaram a Palavra e foram batizadas","Apenas assistiram passivamente ao ocorrido","Fugiram amedrontadas do local"],c:0,e:"Página 91."},
+ {p:"Segundo a apostila, embora a filiação a uma igreja local tenha pouco a ver com a salvação, do ponto de vista prático a igreja é comparada a:",o:["Um avião ou navio que nos transporta através dos mares turbulentos da vida","Um obstáculo desnecessário à fé pessoal","Uma tradição cultural sem sentido"],c:0,e:"Página 91."},
+ {p:"Segundo Martinho Lutero, citado na apostila, reunir-se com o povo de Deus em adoração comum é:",o:["Opcional, apenas para o cristão já maduro","Tão necessário para a vida cristã quanto a oração","Apenas um costume cultural sem importância"],c:1,e:"Página 91."},
+ {p:"Segundo a apostila, a igreja de Atos 2.41-47 possuía, entre outras características, membros:",o:["Serviçais e cheios do Espírito","Exclusivamente ricos e influentes","Apenas pessoas idosas e experientes"],c:0,e:"Página 92."},
+ {p:"Segundo 1Coríntios 3.11, citado na apostila, ninguém pode lançar outro fundamento além do que foi posto, o qual é:",o:["Jesus Cristo","A tradição da igreja local","Os apóstolos, individualmente"],c:0,e:"Página 90."},
+ {p:"Segundo a apostila, a contribuição cristã não pode ser separada:",o:["Do Evangelho, que na verdade significa \"dar\"","Da situação econômica do país","Do calendário litúrgico da igreja"],c:0,e:"Página 93."},
+ {p:"Segundo 2Coríntios 8.5, citado na apostila, os cristãos da Macedônia, ao contribuir, deram-se a si mesmos:",o:["Primeiro ao SENHOR, depois aos irmãos, pela vontade de Deus","Apenas por obrigação social imposta","Somente depois de muita insistência alheia"],c:0,e:"Página 94."},
+ {p:"Segundo Paulo, em 2Coríntios 9.7, citado na apostila, cada um deve contribuir como tiver proposto no coração, pois Deus ama:",o:["Quem dá com alegria","Quem dá apenas por necessidade","Quem dá com tristeza, mas dá"],c:0,e:"Página 94."},
+ {p:"Segundo a Conclusão da apostila, a vida cristã está fundamentalmente relacionada à:",o:["Renúncia — negar-se a si mesmo, tomar a cruz e seguir a Cristo","Busca por conforto e estabilidade material","Independência total em relação às Escrituras"],c:0,e:"Mt 16.24; Gl 2.19-20 (p. 99)."}
+]}
+];
+
+function verResp(b){const r=b.nextElementSibling;r.classList.toggle('on');b.textContent=r.classList.contains('on')?'Ocultar resposta':'Ver resposta';}
+let atual=-1, acertos=0, respondidas=0;
+const feitas={};
+
+function montarMenu(){
+  const el=document.getElementById('listaRodadas');
+  el.innerHTML='';
+  RODADAS.forEach((r,i)=>{
+    const b=document.createElement('button');
+    b.className='rodada'+(feitas[i]!==undefined?' feita':'');
+    b.innerHTML='<span>Rodada '+(i+1)+'</span>'+r.t.split('—')[1].trim()+'<em>'+r.d+(feitas[i]!==undefined?' · última nota: '+feitas[i]+'/10':'')+'</em>';
+    b.onclick=()=>abrir(i);
+    el.appendChild(b);
+  });
+}
+function abrir(i){
+  atual=i;acertos=0;respondidas=0;
+  document.getElementById('menu').style.display='none';
+  document.getElementById('prova').style.display='block';
+  document.getElementById('tituloRodada').textContent=RODADAS[i].t;
+  document.getElementById('placar').textContent='0 / 10';
+  document.getElementById('resultado').classList.remove('on');
+  const c=document.getElementById('questoes');c.innerHTML='';
+  RODADAS[i].q.forEach((q,qi)=>{
+    const d=document.createElement('div');d.className='q';
+    let html='<div class="num">Questão '+(qi+1)+'</div><div class="enunciado">'+q.p+'</div>';
+    q.o.forEach((o,oi)=>{html+='<button class="alt" data-q="'+qi+'" data-o="'+oi+'">'+String.fromCharCode(97+oi)+') '+o+'</button>';});
+    html+='<div class="expl" id="expl-'+qi+'"><b>Resposta:</b> '+q.e+'</div>';
+    d.innerHTML=html;c.appendChild(d);
+  });
+  c.querySelectorAll('.alt').forEach(b=>b.onclick=()=>responder(b));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function responder(b){
+  const qi=+b.dataset.q, oi=+b.dataset.o, q=RODADAS[atual].q[qi];
+  const pai=b.parentElement;
+  pai.querySelectorAll('.alt').forEach((x,k)=>{
+    x.disabled=true;
+    if(k===q.c)x.classList.add('certa');
+    else if(k===oi)x.classList.add('errada');
+  });
+  document.getElementById('expl-'+qi).classList.add('on');
+  respondidas++; if(oi===q.c)acertos++;
+  document.getElementById('placar').textContent=acertos+' / 10';
+  if(respondidas===10)finalizar();
+}
+function finalizar(){
+  feitas[atual]=acertos;
+  const r=document.getElementById('resultado');
+  document.getElementById('nota').textContent=acertos+'/10';
+  let m;
+  if(acertos===10)m='Perfeito. Essa rodada está dominada.';
+  else if(acertos>=8)m='Muito bom. Revise só as questões marcadas em vermelho.';
+  else if(acertos>=6)m='Está no caminho. Releia a seção da apostila e refaça.';
+  else m='Volte à apostila desta rodada antes de tentar de novo — leia com calma e repita.';
+  document.getElementById('msg').textContent=m;
+  r.classList.add('on');
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+  montarMenu();
+}
+function voltar(){
+  document.getElementById('prova').style.display='none';
+  document.getElementById('menu').style.display='block';
+  montarMenu();window.scrollTo({top:0,behavior:'smooth'});
+}
+function refazer(){abrir(atual);}
+function zerar(){for(const k in feitas)delete feitas[k];montarMenu();}
+montarMenu();
+</script>
+</body>
+</html>
