@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Pena de Morte à Luz da Ética Cristã</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f2ea; --panel:#fffdf9; --ink:#2f2a22; --ink-soft:#5f5849;
+    --clay:#c17a54; --clay-soft:#e7c3ad; --clay-deep:#7a4426;
+    --sage:#5f7a67; --sage-soft:#d9e3da; --sage-deep:#334539;
+    --sky:#5c7690; --line: rgba(47,42,34,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--ink);font-family:'Inter',system-ui,sans-serif;color:var(--ink);}
+  .deck{position:relative;width:100vw;height:100vh;}
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column; justify-content:center;
+    padding:6vh 9vw; background:var(--bg);
+  }
+  .slide.active{display:flex;}
+  .slide.cover{ background: linear-gradient(175deg, #efe8da, #e2d5bc); justify-content:center; }
+
+  .tag{ display:inline-flex; align-items:center; gap:8px; font-size:1.15vw; font-weight:600; color:var(--ink-soft); margin-bottom:1.4vh; }
+  .tag .dot{width:9px;height:9px;border-radius:50%;}
+  .tag.favor .dot{background:var(--clay);} .tag.favor{color:var(--clay-deep);}
+  .tag.resposta .dot{background:var(--sage);} .tag.resposta{color:var(--sage-deep);}
+  .tag.contexto .dot{background:var(--sky);}
+
+  h1,h2{font-family:'Source Serif 4', Georgia, serif; font-weight:600; color:var(--ink); margin:0 0 0.5em 0;}
+  .slide h1{font-size:5.4vw; line-height:1.12; max-width:90%;}
+  .slide h2{font-size:3.8vw; line-height:1.15; max-width:94%;}
+  .slide p{font-size:2.4vw; line-height:1.45; color:var(--ink); margin:0.4em 0; max-width:90%;}
+  .slide p.soft{color:var(--ink-soft);}
+  .slide p.lead{font-size:2.9vw; font-weight:600;}
+  .brand{font-size:1.15vw; color:var(--clay-deep); font-weight:600; margin-bottom:2vh;}
+
+  .quote{
+    font-family:'Source Serif 4', Georgia, serif; font-style:italic;
+    background:var(--panel); border:1px solid var(--line); border-left:6px solid var(--clay);
+    border-radius:6px; padding:1em 1.4em; font-size:2.3vw; line-height:1.35;
+    max-width:92%; margin:0.6em 0; color:var(--ink);
+  }
+  .slide.resp-tone .quote{border-left-color:var(--sage);}
+  .quote cite{display:block; font-style:normal; font-size:0.6em; color:var(--ink-soft); margin-top:0.4em;}
+
+  .destaque{
+    font-size:2.3vw; font-weight:600; line-height:1.35;
+    background: var(--sage-soft); color:var(--sage-deep);
+    border-radius:10px; padding:0.85em 1.1em; max-width:92%; margin-top:0.5em;
+  }
+
+  ul.points{font-size:2.2vw; line-height:1.5; max-width:94%; padding-left:1.1em; color:var(--ink);}
+  ul.points li{margin-bottom:0.35em;}
+
+  .provoc{ background:var(--ink); color:#f3ede1; justify-content:center; }
+  .provoc .eyebrow{ font-size:1.6vw; color:#c9beac; margin-bottom:2vh; }
+  .provoc p{font-family:'Source Serif 4', Georgia, serif; font-size:3.3vw; font-weight:600; line-height:1.28; max-width:90%; color:#f3ede1; margin:0.35em 0;}
+  .provoc .close{font-family:'Inter',sans-serif; font-size:1.9vw; font-weight:400; color:#c9beac; margin-top:2.2vh;}
+
+  .pagenum{position:absolute; left:9vw; bottom:4vh; font-size:1.05vw; color:var(--ink-soft); opacity:0.6;}
+
+  .refs{columns:2; column-gap:3vw; font-size:1.9vw; line-height:1.85; max-width:92%; color:var(--ink);}
+
+  .pairslide{justify-content:flex-start; gap:1.4vh; padding-top:5vh;}
+  .box{border-radius:12px; padding:1.5vh 2vw; max-width:96%;}
+  .argbox{background:var(--clay-soft);}
+  .refbox{background:var(--sage-soft);}
+  .boxlabel{font-size:1.7vw; font-weight:700; margin-bottom:0.6vh;}
+  .argbox .boxlabel{color:var(--clay-deep);}
+  .refbox .boxlabel{color:var(--sage-deep);}
+  .box .quote{font-size:2.1vw; margin:0.35vh 0; background:rgba(255,255,255,0.55); border-left-color:var(--clay-deep); padding:0.6em 1em;}
+  .refbox .quote{border-left-color:var(--sage-deep);}
+  .box p{font-size:1.9vw; line-height:1.35; margin:0.3vh 0; max-width:100%; color:var(--ink);}
+  .box .destaque{font-size:1.85vw; padding:0.6em 0.9em; margin-top:0.3vh;}
+
+  .nav{position:fixed; bottom:20px; right:24px; display:flex; gap:10px; z-index:10;}
+  .nav button{ font-family:'Inter',sans-serif; background:rgba(0,0,0,0.6); color:#f3ede1; border:1px solid rgba(255,255,255,0.25); border-radius:8px; padding:8px 16px; font-size:14px; cursor:pointer; }
+  .nav button:hover{background:rgba(0,0,0,0.8);}
+  .counter{position:fixed; bottom:24px; left:24px; color:#cfc6b6; font-family:'Inter',sans-serif; font-size:13px; z-index:10;}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <section class="slide cover active">
+    <div class="brand">Ética Cristã · Curso de Teologia</div>
+    <h1>A Pena de Morte à Luz da Ética Cristã</h1>
+    <p class="soft" style="font-size:2vw; font-style:italic;">O que a Bíblia inteira — não um versículo isolado — tem a dizer sobre matar quem matou</p>
+  </section>
+
+  <section class="slide provoc">
+    <div class="eyebrow">Três perguntas para começar</div>
+    <p>1. Um assassino confesso ainda merece viver?</p>
+    <p>2. Se a Lei manda "vida por vida", por que Jesus perdoou quem merecia morrer?</p>
+    <p>3. A Igreja pode pregar uma pena que o próprio Jesus recusou aplicar?</p>
+    <div class="close">Guarde essas perguntas. Vamos responder cada uma.</div>
+  </section>
+
+  <section class="slide">
+    <div class="tag contexto"><span class="dot"></span>Introdução</div>
+    <h2>Uma coisa, dois lados, uma Bíblia</h2>
+    <p class="lead">Os dois lados desse debate citam a mesma Bíblia.</p>
+    <p>Isso já diz algo: o problema não é falta de versículo. É como lemos os versículos — isolados, ou dentro da história inteira que termina em Jesus.</p>
+    <div class="destaque">Nossa tese: lida por inteiro, a Bíblia aponta contra a pena de morte. E vamos provar isso pegando os próprios textos usados a favor.</div>
+    <div class="pagenum">1</div>
+  </section>
+
+  <section class="slide pairslide">
+    <div class="tag favor"><span class="dot"></span>Round 1</div>
+    <h2 style="font-size:2.9vw;">"Vida por vida"</h2>
+    <div class="box argbox">
+      <div class="boxlabel">O que os defensores citam</div>
+      <div class="quote">"Quem derramar sangue de homem, pelo homem terá o seu sangue derramado; porque Deus fez o homem à sua imagem." <cite>Gênesis 9:6</cite></div>
+      <p>Argumento: Deus instituiu isso para toda a humanidade, logo após o dilúvio. Parece definitivo.</p>
+    </div>
+    <div class="box refbox">
+      <div class="boxlabel">O detalhe que muda tudo</div>
+      <p>Leia o final da frase de novo: não é "porque o crime é grande". É <b>"porque o homem foi feito à imagem de Deus"</b>.</p>
+      <div class="destaque">O motivo é o valor da vida — e esse mesmo valor continua ali depois do crime. O texto que "prova" a pena de morte, na verdade, prova a razão para não aplicá-la.</div>
+    </div>
+    <div class="pagenum">2</div>
+  </section>
+
+  <section class="slide pairslide">
+    <div class="tag favor"><span class="dot"></span>Round 2</div>
+    <h2 style="font-size:2.9vw;">"Sem resgate", "olho por olho"</h2>
+    <div class="box argbox">
+      <div class="boxlabel">O que os defensores citam</div>
+      <div class="quote">"Não aceitareis resgate pela vida do homicida... certamente será morto." <cite>Números 35:31</cite></div>
+      <p>Argumento: a Lei era clara e sem exceção para quem matasse de propósito.</p>
+    </div>
+    <div class="box refbox">
+      <div class="boxlabel">O detalhe que muda tudo</div>
+      <p>Essa mesma Lei distinguia <b>morte dolosa</b> (intenção) de <b>morte culposa</b> (acidente) — e criava cidades de refúgio para proteger quem matasse sem querer (Números 35:22-25).</p>
+      <div class="destaque">Ou seja: mesmo a Lei mais rígida de Israel já sabia que julgar intenção é difícil. Hoje, com tribunais que erram, esse cuidado devia crescer — não desaparecer.</div>
+    </div>
+    <div class="pagenum">3</div>
+  </section>
+
+  <section class="slide pairslide">
+    <div class="tag favor"><span class="dot"></span>Round 3</div>
+    <h2 style="font-size:2.9vw;">"A espada" do Estado</h2>
+    <div class="box argbox">
+      <div class="boxlabel">O que os defensores citam</div>
+      <div class="quote">"A autoridade... não porta a espada em vão; é serva de Deus, para castigar o que faz o mal." <cite>Romanos 13:4</cite></div>
+      <p>Argumento: se o próprio Paulo reconhece o poder do Estado de punir, por que a Igreja questionaria a pena máxima?</p>
+    </div>
+    <div class="box refbox">
+      <div class="boxlabel">O detalhe que muda tudo</div>
+      <ul class="points">
+        <li>O texto legitima a autoridade civil — não manda a Igreja defender a execução;</li>
+        <li>"Espada" era símbolo geral de poder, não uma ordem específica de matar;</li>
+        <li>Reconhecer que o Estado <i>pode</i> punir é diferente de dizer que <i>deve</i> matar.</li>
+      </ul>
+      <div class="destaque">E juízes erram. Um erro na prisão se corrige. Um erro na pena de morte, não.</div>
+    </div>
+    <div class="pagenum">4</div>
+  </section>
+
+  <section class="slide">
+    <div class="tag contexto"><span class="dot"></span>A virada</div>
+    <h2>Por que a Lei era assim — e por que mudou</h2>
+    <p>A Lei de Moisés organizava um povo em formação, num mundo violento. Suas regras severas cumpriam um papel ali.</p>
+    <div class="quote">"Não vim para revogar a Lei, vim para cumpri-la." <cite>Mateus 5:17</cite></div>
+    <p class="lead">Jesus não joga a Lei fora. Ele mostra o que sempre esteve por trás dela.</p>
+    <div class="pagenum">5</div>
+  </section>
+
+  <section class="slide resp-tone">
+    <div class="tag resposta"><span class="dot"></span>Cena 1 · Jesus em ação</div>
+    <h2>Uma pedra na mão, e Jesus no meio</h2>
+    <p>Uma mulher é arrastada até ele. A Lei manda apedrejá-la (Levítico 20:10). É uma armadilha: perdoar parece desobedecer a Lei; condenar contradiz sua mensagem.</p>
+    <div class="quote">"Quem de vocês estiver sem pecado, atire nela a primeira pedra." <cite>João 8:7</cite></div>
+    <p class="lead">Um a um, todos vão embora. Ninguém joga a pedra.</p>
+    <div class="destaque">Se o próprio autor da Lei escolheu não aplicar a pena máxima, com que autoridade a Igreja pediria isso hoje?</div>
+    <div class="pagenum">6</div>
+  </section>
+
+  <section class="slide resp-tone">
+    <div class="tag resposta"><span class="dot"></span>Cena 2 · Jesus ensina</div>
+    <h2>Superando "olho por olho"</h2>
+    <div class="quote">"Ouviram que foi dito: olho por olho, dente por dente. Mas eu digo: não revidem o mal." <cite>Mateus 5:38-39</cite></div>
+    <p>"Olho por olho" é a lógica por trás de "vida por vida": o castigo do tamanho do crime. Jesus não afrouxa essa lógica — ele a substitui por um padrão mais alto, que chega a incluir o inimigo (Mateus 5:44).</p>
+    <div class="pagenum">7</div>
+  </section>
+
+  <section class="slide">
+    <div class="tag contexto"><span class="dot"></span>A prova viva</div>
+    <h2>O homem que quase não virou apóstolo</h2>
+    <p>Antes de escrever boa parte do Novo Testamento, Paulo perseguia cristãos até a morte.</p>
+    <div class="quote">"Saulo estava presente e concordava com a morte de Estêvão." <cite>Atos 8:1</cite></div>
+    <p class="lead">Se a lógica da eliminação tivesse vencido, quantas cartas da Bíblia não existiriam?</p>
+    <div class="pagenum">8</div>
+  </section>
+
+  <section class="slide resp-tone">
+    <div class="tag resposta"><span class="dot"></span>Peso final</div>
+    <h2>Uma pena que não admite erro</h2>
+    <p>A vida é dom de Deus (Romanos 3:23 nos lembra: todos erramos — inclusive os juízes).</p>
+    <div class="destaque">Já houve gente condenada à morte e, anos depois, provada inocente. A prisão se corrige. A morte, não. Vale a pena apostar uma vida na infalibilidade de um tribunal?</div>
+    <div class="pagenum">9</div>
+  </section>
+
+  <section class="slide">
+    <div class="tag contexto"><span class="dot"></span>O caminho que sobra</div>
+    <h2>Justiça sem vingança</h2>
+    <p>Dizer não à pena de morte não é dizer sim ao crime. Prisão, reparação à vítima, proteção da sociedade — a justiça pode ser firme sem ser definitiva.</p>
+    <div class="quote">"Não tenho prazer na morte do ímpio, mas em que se converta do seu caminho e viva." <cite>Ezequiel 33:11</cite></div>
+    <div class="pagenum">10</div>
+  </section>
+
+  <section class="slide cover">
+    <div class="brand">Conclusão</div>
+    <h2 style="font-size:3.4vw;">Voltando às três perguntas do início</h2>
+    <p style="font-size:2vw; max-width:92%;">Um assassino ainda merece viver? A mulher adúltera também merecia morrer — e Jesus disse não. A Bíblia manda "vida por vida"? O mesmo texto revela a razão para não aplicá-la. A Igreja pode pregar o que Jesus recusou fazer? Não sem contradizer o próprio evangelho que prega.</p>
+    <p style="font-size:2.15vw; max-width:92%; font-weight:600; color:var(--sage-deep); margin-top:1vh;">A misericórdia não enfraquece a justiça de Deus — ela é o seu cumprimento mais alto.</p>
+    <div class="quote" style="margin-top:1.2vh;">"A misericórdia triunfa sobre o juízo." <cite>Tiago 2:13</cite></div>
+  </section>
+
+  <section class="slide">
+    <h2 style="font-size:2.8vw;">Referências bíblicas</h2>
+    <div class="refs">
+      <p>Gênesis 1:27; 9:6</p>
+      <p>Êxodo 21:12-14</p>
+      <p>Números 35:22-25, 31</p>
+      <p>Levítico 20:10</p>
+      <p>Mateus 5:17, 38-39, 44</p>
+      <p>João 8:1-11</p>
+      <p>Atos 8:1</p>
+      <p>Romanos 3:23; 6:23; 13:1-4</p>
+      <p>Ezequiel 33:11</p>
+      <p>Tiago 2:13</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">◀ Anterior</button>
+  <button onclick="nextSlide()">Próximo ▶</button>
+</div>
+<div class="counter" id="counter">1 / 14</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  function showSlide(i){
+    slides[current].classList.remove('active');
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current+1) + ' / ' + slides.length;
+  }
+  function nextSlide(){ showSlide(current+1); }
+  function prevSlide(){ showSlide(current-1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+</script>
+
+</body>
+</html>
