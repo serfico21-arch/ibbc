@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Pena de Morte à Luz da Ética Cristã</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f2ea; --panel:#fffdf9; --ink:#2f2a22; --ink-soft:#5f5849;
+    --clay:#c17a54; --clay-soft:#e7c3ad; --clay-deep:#7a4426;
+    --sage:#5f7a67; --sage-soft:#d9e3da; --sage-deep:#334539;
+    --sky:#5c7690; --line: rgba(47,42,34,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--ink);font-family:'Inter',system-ui,sans-serif;color:var(--ink);}
+  .deck{position:relative;width:100vw;height:100vh;}
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column; justify-content:center;
+    padding:6vh 9vw; background:var(--bg);
+  }
+  .slide.active{display:flex;}
+  .slide.cover{ background: linear-gradient(175deg, #efe8da, #e2d5bc); justify-content:center; }
+
+  .tag{ display:inline-flex; align-items:center; gap:8px; font-size:1.15vw; font-weight:600; color:var(--ink-soft); margin-bottom:1.4vh; }
+  .tag .dot{width:9px;height:9px;border-radius:50%;}
+  .tag.favor .dot{background:var(--clay);} .tag.favor{color:var(--clay-deep);}
+  .tag.resposta .dot{background:var(--sage);} .tag.resposta{color:var(--sage-deep);}
+  .tag.contexto .dot{background:var(--sky);}
+
+  h1,h2{font-family:'Source Serif 4', Georgia, serif; font-weight:600; color:var(--ink); margin:0 0 0.5em 0;}
+  .slide h1{font-size:5.4vw; line-height:1.12; max-width:90%;}
+  .slide h2{font-size:3.8vw; line-height:1.15; max-width:94%;}
+  .slide p{font-size:2.4vw; line-height:1.45; color:var(--ink); margin:0.4em 0; max-width:90%;}
+  .slide p.soft{color:var(--ink-soft);}
+  .slide p.lead{font-size:2.9vw; font-weight:600;}
+  .brand{font-size:1.15vw; color:var(--clay-deep); font-weight:600; margin-bottom:2vh;}
+
+  .quote{
+    font-family:'Source Serif 4', Georgia, serif; font-style:italic;
+    background:var(--panel); border:1px solid var(--line); border-left:6px solid var(--clay);
+    border-radius:6px; padding:1em 1.4em; font-size:2.3vw; line-height:1.35;
+    max-width:92%; margin:0.6em 0; color:var(--ink);
+  }
+  .slide.resp-tone .quote{border-left-color:var(--sage);}
+  .quote cite{display:block; font-style:normal; font-size:0.6em; color:var(--ink-soft); margin-top:0.4em;}
+
+  .destaque{
+    font-size:2.3vw; font-weight:600; line-height:1.35;
+    background: var(--sage-soft); color:var(--sage-deep);
+    border-radius:10px; padding:0.85em 1.1em; max-width:92%; margin-top:0.5em;
+  }
+
+  ul.points{font-size:2.2vw; line-height:1.5; max-width:94%; padding-left:1.1em; color:var(--ink);}
+  ul.points li{margin-bottom:0.35em;}
+
+  .provoc{ background:var(--ink); color:#f3ede1; justify-content:center; }
+  .provoc .eyebrow{ font-size:1.6vw; color:#c9beac; margin-bottom:2vh; }
+  .provoc p{font-family:'Source Serif 4', Georgia, serif; font-size:3.3vw; font-weight:600; line-height:1.28; max-width:90%; color:#f3ede1; margin:0.35em 0;}
+  .provoc .close{font-family:'Inter',sans-serif; font-size:1.9vw; font-weight:400; color:#c9beac; margin-top:2.2vh;}
+
+  .pagenum{position:absolute; left:9vw; bottom:4vh; font-size:1.05vw; color:var(--ink-soft); opacity:0.6;}
+
+  .refs{columns:2; column-gap:3vw; font-size:1.9vw; line-height:1.85; max-width:92%; color:var(--ink);}
+
+  .pairslide{justify-content:flex-start; gap:1.4vh; padding-top:5vh;}
+  .box{border-radius:12px; padding:1.5vh 2vw; max-width:96%;}
+  .argbox{background:var(--clay-soft);}
+  .refbox{background:var(--sage-soft);}
+  .boxlabel{font-size:1.7vw; font-weight:700; margin-bottom:0.6vh;}
+  .argbox .boxlabel{color:var(--clay-deep);}
+  .refbox .boxlabel{color:var(--sage-deep);}
+  .box .quote{font-size:2.1vw; margin:0.35vh 0; background:rgba(255,255,255,0.55); border-left-color:var(--clay-deep); padding:0.6em 1em;}
+  .refbox .quote{border-left-color:var(--sage-deep);}
+  .box p{font-size:1.9vw; line-height:1.35; margin:0.3vh 0; max-width:100%; color:var(--ink);}
+  .box .destaque{font-size:1.85vw; padding:0.6em 0.9em; margin-top:0.3vh;}
+
+  .nav{position:fixed; bottom:20px; right:24px; display:flex; gap:10px; z-index:10;}
+  .nav button{ font-family:'Inter',sans-serif; background:rgba(0,0,0,0.6); color:#f3ede1; border:1px solid rgba(255,255,255,0.25); border-radius:8px; padding:8px 16px; font-size:14px; cursor:pointer; }
+  .nav button:hover{background:rgba(0,0,0,0.8);}
+  .counter{position:fixed; bottom:24px; left:24px; color:#cfc6b6; font-family:'Inter',sans-serif; font-size:13px; z-index:10;}
+
+  .speaker{position:absolute; top:3.5vh; right:4vw; background:var(--ink); color:#f3ede1; font-size:1.3vw; font-weight:600; padding:0.5em 1.1em; border-radius:999px;}
+  .speaker.favor{background:var(--clay-deep);} .speaker.contra{background:var(--sage-deep);}
+  .bigbox{border-radius:16px; padding:3vh 3vw; max-width:100%; margin-top:1vh;}
+  .bigbox.favor{background:var(--clay-soft);} .bigbox.contra{background:var(--sage-soft);}
+  .bigbox .boxlabel{font-size:1.8vw; font-weight:700; margin-bottom:1.2vh;}
+  .bigbox.favor .boxlabel{color:var(--clay-deep);} .bigbox.contra .boxlabel{color:var(--sage-deep);}
+  .bigbox .quote{font-size:2.6vw; background:rgba(255,255,255,0.6); max-width:100%;}
+  .bigbox.contra .quote{border-left-color:var(--sage-deep);} .bigbox.favor .quote{border-left-color:var(--clay-deep);}
+  .bigbox p{font-size:2.6vw; line-height:1.4; max-width:100%; margin:0.5em 0;}
+  .bigbox ul.points{font-size:2.5vw; max-width:100%;}
+  .bigbox .destaque{font-size:2.5vw; background:rgba(255,255,255,0.65); max-width:100%;}
+  .recap{font-size:1.7vw; color:var(--ink-soft); margin:0 0 1vh 0; max-width:100%;}
+  .slide.divider{background:linear-gradient(175deg,#efe8da,#e2d5bc); text-align:left;}
+  .slide.divider.favor{background:var(--clay-soft);} .slide.divider.contra{background:var(--sage-soft);}
+  .versiculo{font-size:1.2vw; line-height:1.4; color:var(--ink-soft); margin:0.2em 0 1.2vh 0; max-width:100%;}
+  .versiculo b{color:var(--ink);}
+  .plateia{flex-direction:row; align-items:center; gap:4vw;}
+  .plateia.active{display:flex;}
+  .plateia .txt{flex:1;}
+  .plateia .dedo{font-size:17vw; line-height:1; animation:cutuca 1.6s ease-in-out infinite; filter:drop-shadow(0 0 2vw rgba(193,122,84,0.35));}
+  .plateia .final{font-family:'Source Serif 4',Georgia,serif; font-size:4.2vw; font-weight:700; color:var(--clay-soft); margin-top:2.5vh;}
+  .plateia .fechamento{font-family:'Inter',sans-serif; font-size:2vw; font-weight:400; color:#c9beac; margin-top:2vh;}
+  @keyframes cutuca{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-1.5vh) scale(1.06);}}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<section class="slide cover active">
+<div class="brand">Ética Cristã · Curso de Teologia</div><h1>A Pena de Morte à Luz da Ética Cristã</h1><p class="soft" style="font-size:2vw; font-style:italic;">Os dois lados, a Bíblia inteira e o nosso posicionamento</p><p class="soft" style="font-size:1.7vw;">Daniel · Pastor André · Pastor Sergio · Presbítero Marcel</p>
+</section>
+<section class="slide ">
+<div class="tag contexto"><span class="dot"></span>Quem fala em cada parte</div><h2>Divisão da apresentação</h2><ul class="points" style="font-size:2.5vw;"><li><b>Daniel</b> — abertura e perguntas para o debate</li><li><b>Pastor André</b> — apresenta um argumento <b>a favor</b> de cada vez</li><li><b>Pastor Sergio</b> — responde <b>contra</b> na tela seguinte, como num debate, e depois mostra o que Jesus ensinou</li><li><b>Presbítero Marcel</b> — resumo dos dois lados e conclusão</li></ul>
+</section>
+<section class="slide provoc">
+<div class="speaker ">🎤 Daniel</div><div class="eyebrow">Três perguntas para começar</div><p>1. Um assassino confesso ainda merece viver?</p><p>2. Se a Lei manda "vida por vida", por que Jesus perdoou quem merecia morrer?</p><p>3. Se o Estado adotar a pena de morte, o cristão pode dizer que isso é "antibíblico"?</p><div class="close">Vamos ouvir os dois lados — e depois cada um assume o seu posicionamento.</div>
+</section>
+<section class="slide ">
+<div class="speaker ">🎤 Daniel</div><div class="tag contexto"><span class="dot"></span>Introdução</div><h2>Por que esse assunto importa para o cristão</h2><ul class="points" style="font-size:2.4vw;"><li>Não é só política: é sobre como lemos a Bíblia e como tratamos quem errou;</li><li>No Brasil, a Constituição só admite a pena de morte em caso de guerra declarada (art. 5º, XLVII, a);</li><li>Mesmo assim, o tema volta toda vez que um crime choca o país, e o cristão precisa ter uma resposta.</li></ul><div class="destaque">Combinado: argumentos firmes, e respeito total pelo irmão que pensa diferente.</div>
+</section>
+<section class="slide ">
+<div class="speaker ">🎤 Daniel</div><div class="tag contexto"><span class="dot"></span>Introdução</div><h2>Uma coisa, dois lados, uma Bíblia</h2><p class="lead">Os dois lados desse debate citam a mesma Bíblia.</p><p>O problema não é falta de versículo. É como lemos: um versículo solto, ou a Bíblia inteira, que termina em Jesus.</p><div class="destaque">Roteiro: o Pastor André apresenta um argumento a favor e, na tela seguinte, o Pastor Sergio responde, como num debate. No fim, o Sergio mostra o que Jesus ensinou e o Presbítero Marcel conclui.</div>
+</section>
+<section class="slide divider favor">
+<div class="brand">Parte 1 · O debate</div><h1>Argumento e resposta</h1><p class="soft">Pastor André apresenta o argumento a favor. Na tela seguinte, Pastor Sergio responde.</p>
+</section>
+<section class="slide ">
+<div class="speaker favor">🎤 Pastor André</div><div class="tag favor"><span class="dot"></span>Argumento 1</div><h2 style="font-size:3.2vw;">"Vida por vida"</h2><div class="bigbox favor"><div class="boxlabel">Argumento a favor</div><div class="quote">"Quem derramar sangue de homem, pelo homem terá o seu sangue derramado; porque Deus fez o homem à sua imagem." <cite>Gênesis 9:6</cite></div><div class="versiculo"><b>Gênesis 9:6 (ARA):</b> Se alguém derramar o sangue do homem, pelo homem se derramará o seu; porque Deus fez o homem segundo a sua imagem.</div><p>Deus deu essa regra a toda a humanidade, logo depois do dilúvio: quem tira uma vida paga com a própria vida.</p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Resposta 1</div><h2 style="font-size:3.2vw;">"Vida por vida"</h2><p class="recap">O Pastor André citou: Gênesis 9:6.</p><div class="bigbox contra"><div class="boxlabel">Resposta de quem é contra</div><p>O próprio versículo dá o motivo: <b>o ser humano foi feito à imagem de Deus</b>. Ou seja, a vida é muito valiosa.</p><div class="destaque">Quem matou errou, mas continua sendo imagem de Deus. Por isso, a vida dele também deve ser protegida.</div></div>
+</section>
+<section class="slide ">
+<div class="speaker favor">🎤 Pastor André</div><div class="tag favor"><span class="dot"></span>Argumento 2</div><h2 style="font-size:3.2vw;">"Sem resgate"</h2><div class="bigbox favor"><div class="boxlabel">Argumento a favor</div><div class="quote">"Não aceitareis resgate pela vida do homicida... certamente será morto." <cite>Números 35:31</cite></div><div class="versiculo"><b>Números 35:31 (ARA):</b> Não aceitareis resgate pela vida do homicida que é culpado de morte; antes, será morto.</div><p>A Lei era clara: quem mata de propósito deve morrer, sem troca e sem desconto.</p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Resposta 2</div><h2 style="font-size:3.2vw;">"Sem resgate"</h2><p class="recap">O Pastor André citou: Números 35:31.</p><div class="bigbox contra"><div class="boxlabel">Resposta de quem é contra</div><p>A mesma Lei separava quem mata <b>de propósito</b> de quem mata <b>sem querer</b>. Para o acidente, havia as cidades de refúgio (Números 35:22-25).</p><div class="destaque">Até a Lei antiga tinha cuidado para não punir quem não merecia. Hoje os juízes também erram, então o cuidado deve ser ainda maior.</div></div>
+</section>
+<section class="slide ">
+<div class="speaker favor">🎤 Pastor André</div><div class="tag favor"><span class="dot"></span>Argumento 3</div><h2 style="font-size:3.2vw;">"A espada" do Estado</h2><div class="bigbox favor"><div class="boxlabel">Argumento a favor</div><div class="quote">"A autoridade... não porta a espada em vão; é serva de Deus, para castigar o que faz o mal." <cite>Romanos 13:4</cite></div><div class="versiculo"><b>Romanos 13:4 (ARA):</b> Porque ele é ministro de Deus para o teu bem. Entretanto, se fizeres o que é mau, teme; porque não é debalde que ele traz a espada; pois é ministro de Deus, vingador em ira contra aquele que pratica o mal.</div><p>Paulo diz que o governo serve a Deus para punir quem faz o mal. Se o Estado pode punir, pode usar a pena máxima.</p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Resposta 3</div><h2 style="font-size:3.2vw;">"A espada" do Estado</h2><p class="recap">O Pastor André citou: Romanos 13:4.</p><div class="bigbox contra"><div class="boxlabel">Resposta de quem é contra</div><ul class="points"><li>Os dois lados concordam: o Estado tem autoridade para punir;</li><li>A diferença está na palavra "espada": uns entendem como poder de matar; outros, como sinal de autoridade em geral;</li><li>Poder punir não quer dizer que deva punir com a morte.</li></ul><div class="destaque">Juízes erram. Quem foi preso por engano pode ser solto. Quem foi morto, não.</div></div>
+</section>
+<section class="slide ">
+<div class="speaker favor">🎤 Pastor André</div><div class="tag favor"><span class="dot"></span>Argumento 4</div><h2 style="font-size:3.2vw;">O Estado tem autoridade dada por Deus</h2><div class="bigbox favor"><div class="boxlabel">Argumento a favor</div><div class="quote">"Se cometi algum crime digno de morte, não me recuso a morrer." <cite>Atos 25:11 (Paulo)</cite></div><div class="versiculo"><b>Atos 25:11 (ARA):</b> Caso, pois, tenha eu praticado algum mal ou crime digno de morte, estou pronto para morrer; mas, se nada há das coisas de que me acusam, ninguém, para lhes ser agradável, tem o direito de entregar-me a eles. Apelo para César.</div><div class="quote">"Nenhuma autoridade terias sobre mim, se de cima não te fosse dada." <cite>João 19:11 (Jesus a Pilatos)</cite></div><div class="versiculo"><b>João 19:10-11 (ARA):</b> Então, lhe disse Pilatos: Não me respondes? Não sabes que tenho autoridade para te soltar e autoridade para te crucificar? Respondeu Jesus: Nenhuma autoridade terias contra mim, se de cima não te fosse dada; por isso, quem me entregou a ti maior pecado tem.</div><p>Paulo aceitou ser julgado pela lei de Roma, e Jesus disse que a autoridade de Pilatos vinha de Deus. Então, se o país adotar a pena de morte, o cristão não pode dizer que ela é "contra a Bíblia".</p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Resposta 4</div><h2 style="font-size:3.2vw;">Autoridade dada por Deus</h2><p class="recap">O Pastor André citou: Atos 25:11 e João 19:11.</p><div class="bigbox contra"><div class="boxlabel">Resposta de quem é contra</div><p>Ter autoridade não é o mesmo que acertar sempre. Pilatos tinha autoridade e mesmo assim condenou um inocente: Jesus.</p><div class="destaque">O cristão obedece à lei, mas pode debater se a pena é justa e se existe risco de erro.</div></div>
+</section>
+<section class="slide divider contra">
+<div class="brand">Parte 2</div><h1>O que Jesus ensinou</h1><p class="soft">Apresenta: Pastor Sergio</p><p class="soft" style="font-size:1.8vw;">Agora o Pastor Sergio apresenta os argumentos contra, a partir de Jesus.</p>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>O outro lado · leitura de Jesus</div><h2 style="font-size:3.2vw;">Por que a Lei era assim, e por que mudou</h2><div class="bigbox contra"><p>A Lei de Moisés foi dada a um povo que estava começando, num mundo violento. Suas regras duras tinham um papel naquele tempo.</p><div class="quote">"Não vim para revogar a Lei, vim para cumpri-la." <cite>Mateus 5:17</cite></div><div class="versiculo"><b>Mateus 5:17 (ARA):</b> Não penseis que vim revogar a Lei ou os Profetas; não vim para revogar, vim para cumprir.</div><p><b>Jesus não joga a Lei fora. Ele mostra o objetivo dela: proteger a vida e fazer justiça com misericórdia.</b></p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Cena 1 · Jesus em ação</div><h2 style="font-size:3.2vw;">Uma pedra na mão, e Jesus no meio</h2><div class="bigbox contra"><p>Trouxeram a Jesus uma mulher que a Lei mandava apedrejar (Levítico 20:10). Era uma armadilha: se ele perdoasse, parecia desobedecer à Lei; se condenasse, contrariava o que ensinava.</p><div class="quote">"Quem de vocês estiver sem pecado, atire nela a primeira pedra." <cite>João 8:7</cite></div><div class="versiculo"><b>João 8:7 (ARA):</b> E, como insistissem na pergunta, ergueu-se e disse-lhes: Aquele que dentre vós estiver sem pecado seja o primeiro que atire pedra contra ela.</div><p>Um a um, todos foram embora. Ninguém jogou a pedra.</p><div class="destaque">Jesus, que deu a Lei, não mandou matar a mulher. Por isso, este lado pergunta: por que nós mandaríamos?</div></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Cena 2 · Jesus ensina</div><h2 style="font-size:3.2vw;">Superando "olho por olho"</h2><div class="bigbox contra"><div class="quote">"Ouviram que foi dito: olho por olho, dente por dente. Mas eu digo: não revidem o mal." <cite>Mateus 5:38-39</cite></div><div class="versiculo"><b>Mateus 5:38-39, 44 (ARA):</b> Ouvistes que foi dito: Olho por olho, dente por dente. Eu, porém, vos digo: não resistais ao mau; mas, a qualquer que te ferir na face direita, volta-lhe também a outra. [...] Amai os vossos inimigos e orai pelos que vos perseguem.</div><p>"Olho por olho" quer dizer: o castigo igual ao mal feito. Jesus pede mais: não pagar o mal com o mal e até amar o inimigo (Mateus 5:44).</p></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>A prova viva</div><h2 style="font-size:3.2vw;">O homem que quase não virou apóstolo</h2><div class="bigbox contra"><p>Antes de ser apóstolo, Paulo perseguia os cristãos e aprovou a morte de Estêvão.</p><div class="quote">"Saulo estava presente e concordava com a morte de Estêvão." <cite>Atos 8:1</cite></div><div class="versiculo"><b>Atos 8:1 (ARA):</b> Saulo, porém, consentia na morte de Estêvão. Naquele dia levantou-se grande perseguição contra a igreja em Jerusalém; e todos, exceto os apóstolos, foram dispersos pelas regiões da Judeia e Samaria.</div><div class="destaque">Paulo mudou de vida. Se tivesse sido morto antes, não teríamos as cartas dele na Bíblia.</div></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>Peso final</div><h2 style="font-size:3.2vw;">Uma pena que não admite erro</h2><div class="bigbox contra"><p>Romanos 3:23 diz que todos erramos, e isso inclui os juízes.</p><div class="versiculo"><b>Romanos 3:23 (ARA):</b> Pois todos pecaram e carecem da glória de Deus.</div><div class="destaque">Já houve condenados à morte que anos depois foram provados inocentes. Prisão dá para corrigir; morte, não.</div></div>
+</section>
+<section class="slide ">
+<div class="speaker contra">🎤 Pastor Sergio</div><div class="tag resposta"><span class="dot"></span>O caminho que sobra</div><h2 style="font-size:3.2vw;">Justiça sem vingança</h2><div class="bigbox contra"><p>Dizer não à pena de morte não é aceitar o crime. Pode haver prisão, reparação à vítima e proteção da sociedade. A justiça pode ser firme sem ser definitiva.</p><div class="quote">"Não tenho prazer na morte do ímpio, mas em que se converta do seu caminho e viva." <cite>Ezequiel 33:11</cite></div><div class="versiculo"><b>Ezequiel 33:11 (ARA):</b> Dize-lhes: Tão certo como eu vivo, diz o Senhor Deus, não tenho prazer na morte do perverso, mas em que o perverso se converta do seu caminho e viva. Convertei-vos, convertei-vos dos vossos maus caminhos; pois, por que razão morrereis, ó casa de Israel?</div></div>
+</section>
+<section class="slide pairslide">
+<div class="speaker ">🎤 Presbítero Marcel</div><div class="tag contexto"><span class="dot"></span>Parte 3 · Balanço</div><h2 style="font-size:3.2vw;">Os pontos fortes de cada lado</h2><div class="box argbox"><div class="boxlabel">A favor</div><ul class="points" style="font-size:2vw;"><li>Instituída por Deus (Gn 9:6; Nm 35) e prevista na Lei de Israel;</li><li>Paulo e Jesus reconhecem a autoridade do Estado (Rm 13; At 25:11; Jo 19:11);</li><li>Em João 8, Jesus não agia como juiz do Estado: era um caso de perdão pessoal;</li><li>Punir quem tirou a vida também protege a sociedade.</li></ul></div><div class="box refbox"><div class="boxlabel">Contra</div><ul class="points" style="font-size:2vw;"><li>A vida tem valor por ser imagem de Deus, mesmo depois do crime;</li><li>Jesus supera "olho por olho" e perdoa quem a Lei condenava;</li><li>Juízes erram, e a morte não se corrige;</li><li>A morte encerra a chance de arrependimento (Paulo, Ez 33:11).</li></ul></div>
+</section>
+<section class="slide ">
+<div class="speaker ">🎤 Presbítero Marcel</div><div class="tag contexto"><span class="dot"></span>Para refletir</div><h2 style="font-size:3.4vw;">Perguntas que incomodam</h2><ul class="points" style="font-size:2.2vw;"><li>Se a vítima fosse alguém da sua família, você ainda defenderia que o assassino merece viver?</li><li>Se você apoia a pena de morte e um inocente for executado, de quem é esse sangue?</li><li>Perdoar quem matou é misericórdia ou é abandonar a vítima?</li><li>Chamar a pena de morte de "antibíblica", ou de "mandamento bíblico", é ler a Bíblia inteira ou só o versículo que convém?</li></ul><div class="destaque">Quem tem resposta fácil para essas perguntas ainda não pensou o bastante.</div>
+</section>
+<section class="slide provoc plateia">
+<div class="txt"><div class="eyebrow">Posicionamento</div><p>E nós, cristãos, como ficamos?</p><p>Você, que se diz cristão: qual é o seu ponto de vista?</p><div class="final">O que você pensa?</div><p class="fechamento">O assunto é complexo e precisamos debater muito mais a respeito.</p></div><div class="dedo">🫵</div>
+</section>
+<section class="slide cover">
+<div class="speaker ">🎤 Presbítero Marcel</div><div class="brand">Conclusão</div><h2 style="font-size:3.4vw;">Voltando às três perguntas do início</h2><p style="font-size:2vw; max-width:92%;">Um assassino ainda merece viver? A imagem de Deus permanece nele, mas a Bíblia também reconhece o dever do Estado de punir. A Bíblia manda "vida por vida"? Na Lei de Israel sim; o debate é se isso segue em vigor depois de Jesus. O cristão pode chamar a pena de "antibíblica"? Pode debater justiça e risco de erro, mas precisa levar a sério Romanos 13 e a autoridade do Estado.</p><p style="font-size:2.15vw; max-width:92%; font-weight:600; color:var(--sage-deep); margin-top:1vh;">Dois lados com argumentos fortes, uma certeza em comum: a justiça exige prova, e a vida exige respeito.</p>
+</section>
+<section class="slide">
+    <h2 style="font-size:2.8vw;">Referências bíblicas</h2>
+    <div class="refs">
+      <p>Gênesis 1:27; 9:6</p>
+      <p>Êxodo 21:12-14</p>
+      <p>Números 35:22-25, 31</p>
+      <p>Levítico 20:10</p>
+      <p>Mateus 5:17, 38-39, 44</p>
+      <p>João 8:1-11; 19:10-11</p>
+      <p>Atos 8:1; 25:11</p>
+      <p>Romanos 3:23; 6:23; 13:1-4</p>
+      <p>Ezequiel 33:11</p>
+      <p>Tiago 2:13</p>
+    </div>
+  </section>
+
+
+</div>
+
+<div class="nav">
+  <button onclick="prevSlide()">◀ Anterior</button>
+  <button onclick="nextSlide()">Próximo ▶</button>
+</div>
+<div class="counter" id="counter"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  document.getElementById('counter').textContent = '1 / ' + slides.length;
+  function showSlide(i){
+    slides[current].classList.remove('active');
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current+1) + ' / ' + slides.length;
+  }
+  function nextSlide(){ showSlide(current+1); }
+  function prevSlide(){ showSlide(current-1); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+</script>
+
+</body>
+</html>
