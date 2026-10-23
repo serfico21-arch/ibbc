@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulado — Pena de Morte: Defesa e Refutação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f6f1e6;--papel2:#efe7d7;--tinta:#221e18;--tinta-suave:#544c3e;
+  --verde:#1f4d3a;--verde-claro:#2f6b52;--ouro:#a8791f;--vinho:#7d2b25;--linha:#d8cdb6;
+  --sombra:0 2px 0 var(--linha),0 18px 40px -28px rgba(34,30,24,.6);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:'Spectral',Georgia,serif;font-size:18px;line-height:1.65}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.capa{background:var(--verde);color:#f6f1e6;padding:40px 0 30px;border-bottom:6px solid var(--ouro)}
+header.capa h1{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(26px,6vw,42px);line-height:1.08;margin:0 0 8px}
+header.capa .sub{font-style:italic;opacity:.92;margin:0}
+header.capa .tag{display:inline-block;margin-top:14px;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(246,241,230,.45);padding:5px 12px}
+.barra{position:sticky;top:0;z-index:20;background:var(--papel2);border-bottom:1px solid var(--linha)}
+.barra .wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-top:10px;padding-bottom:10px}
+.filtro{font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--verde);color:var(--verde);padding:8px 12px;cursor:pointer}
+.filtro.on{background:var(--verde);color:#f6f1e6}
+.prog{margin-left:auto;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.08em;color:var(--tinta-suave)}
+.trilha{height:4px;background:var(--linha)}
+.trilha i{display:block;height:100%;width:0;background:var(--ouro);transition:width .3s}
+main{padding:26px 0 70px}
+.intro{background:#fffdf7;border:1px solid var(--linha);border-left:4px solid var(--verde);padding:18px 22px;margin:0 0 22px;box-shadow:var(--sombra)}
+.intro p{margin:0 0 10px}.intro p:last-child{margin:0}
+.chave{background:linear-gradient(transparent 62%,rgba(168,121,31,.32) 62%);font-weight:600}
+.v{background:#fffdf7;border:1px solid var(--linha);margin:0 0 16px;box-shadow:var(--sombra)}
+.v .topo{display:flex;gap:10px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--linha);background:var(--papel2)}
+.v .t{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#fff;padding:3px 9px}
+.v .t.at{background:var(--vinho)}.v .t.nt{background:var(--verde-claro)}
+.v .ref{font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;color:var(--verde)}
+.v .n{margin-left:auto;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.14em;color:var(--tinta-suave)}
+.pro{padding:16px 20px;border-left:5px solid var(--vinho)}
+.pro h4,.contra h4{font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 6px}
+.pro h4{color:var(--vinho)}
+.pro p{margin:0 0 8px}
+.pro .txt{font-style:italic;color:var(--tinta-suave)}
+button.ver{margin:0 20px 16px;background:none;border:1px solid var(--verde);color:var(--verde);cursor:pointer;font-family:'Archivo',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px}
+button.ver:hover{background:var(--verde);color:#f6f1e6}
+.contra{display:none;padding:16px 20px;border-left:5px solid var(--verde);background:#eef5ec;border-top:1px dashed var(--linha)}
+.contra.on{display:block}
+.contra h4{color:var(--verde)}
+.contra ul{margin:0 0 10px;padding-left:20px}
+.contra li{margin-bottom:7px}
+.cristo{background:var(--verde);color:#f6f1e6;padding:11px 15px;margin-top:8px;font-size:17px}
+.cristo b{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#e7c777;display:block;margin-bottom:2px}
+.ref2{font-family:'Archivo',sans-serif;font-size:.78em;font-weight:600;color:var(--verde-claro);white-space:nowrap}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
+button.acao{font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;border:1px solid var(--verde);background:var(--verde);color:#f6f1e6;cursor:pointer}
+button.acao.vazado{background:transparent;color:var(--verde)}
+.sintese{background:var(--verde);color:#f6f1e6;padding:24px 26px;margin-top:26px;border-left:6px solid var(--ouro)}
+.sintese h3{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e7c777;margin:0 0 10px}
+.sintese ol{margin:0;padding-left:22px}.sintese li{margin-bottom:8px}
+footer{border-top:1px solid var(--linha);padding:22px 0;text-align:center;color:var(--tinta-suave);font-size:14px}
+@media(max-width:600px){body{font-size:17px}.prog{width:100%;margin:0}}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="wrap">
+    <h1>Simulado: Pena de Morte — Defesa e Refutação</h1>
+    <p class="sub">Cada versículo usado a favor, com a resposta em Cristo</p>
+    <span class="tag">Antigo e Novo Testamento · 30 versículos · TCC de Sérgio Costa</span>
+  </div>
+</header>
+
+<div class="barra">
+  <div class="wrap">
+    <button class="filtro on" data-f="todos">Todos</button>
+    <button class="filtro" data-f="at">Antigo Testamento</button>
+    <button class="filtro" data-f="nt">Novo Testamento</button>
+    <span class="prog" id="prog">0 de 30 respondidos</span>
+  </div>
+  <div class="trilha"><i id="trilha"></i></div>
+</div>
+
+<main class="wrap">
+  <div class="intro">
+    <p><b>Como estudar:</b> leia a <span class="chave">posição a favor</span> (como um defensor da pena de morte usaria o versículo). Pense na sua resposta. Depois clique em <b>Ver a refutação</b>.</p>
+    <p>A resposta sempre aponta para <b>Cristo</b>. O texto trata a posição contrária com seriedade: são os argumentos mais fortes de quem defende a pena de morte, e não um espantalho.</p>
+  </div>
+  <div class="acoes">
+    <button class="acao" id="todas">Mostrar todas as respostas</button>
+    <button class="acao vazado" id="ocultar">Ocultar todas</button>
+    <button class="acao vazado" id="embaralhar">Embaralhar</button>
+  </div>
+  <div id="lista"></div>
+
+  <div class="sintese">
+    <h3>Síntese: os cinco golpes que valem para qualquer versículo</h3>
+    <ol>
+      <li><b>Cristo cumpriu a Lei</b> (Mt 5.17; Rm 10.4; Hb 8.13). Ela foi dada a Israel como nação, e não ao cristão como código penal.</li>
+      <li><b>Coerência:</b> quem cita a Lei para o homicida precisa citá-la também para o filho rebelde, o adúltero e o blasfemo (Dt 21.18-21; Lv 20.10; Lv 24.16).</li>
+      <li><b>O resgate foi pago:</b> o que a Lei não aceitava (Nm 35.31) Deus pagou em Cristo (Mc 10.45; 1Tm 2.6).</li>
+      <li><b>O Estado pode punir</b> (Rm 13), mas o Novo Testamento não ordena a pena de morte nem manda a Igreja pedi-la. A Igreja é chamada a perdoar (Rm 12.19-21).</li>
+      <li><b>A pena de morte condenou o Justo:</b> Jesus foi morto por sentença legal; Tiago, por ordem de Herodes; Estêvão, pelo Sinédrio; e, segundo a tradição, Paulo em Roma. A justiça humana erra.</li>
+    </ol>
+  </div>
+</main>
+
+<footer class="wrap">Simulado do TCC “A Pena de Morte à Luz da Bíblia”. Os versículos são resumidos; confira sempre na sua Bíblia.</footer>
+
+<script>
+const D=[
+/* ---------- ANTIGO TESTAMENTO ---------- */
+{t:'at',r:'Gênesis 9.6',txt:'“Se alguém derramar o sangue do homem, pelo homem se derramará o seu; porque Deus fez o homem segundo a sua imagem.”',
+ p:'Foi dito a Noé, antes de Moisés, e vale para toda a humanidade. O fundamento é a imagem de Deus, que não muda. Logo, a pena de morte para o homicida é permanente.',
+ c:['O versículo está em forma poética, como um princípio sobre o valor da vida. Ele não cria tribunal, não fixa provas e não diz quem executa.','A própria Bíblia não o trata como ordem automática: Caim, o primeiro assassino, foi protegido por Deus (Gn 4.15), e Davi, adúltero e homicida, foi perdoado (2Sm 12.13).','Se o motivo é a imagem de Deus, essa imagem é restaurada em Cristo (Cl 1.15; 3.10). Quem é imagem de Deus deve ser alcançado pela redenção, e não apenas eliminado.','Jesus ouviu o eco desse princípio no jardim e mandou guardar a espada (Mt 26.52).'],
+ x:'A imagem de Deus no homem aponta para o Filho, que veio salvar o que estava perdido (Lc 19.10).'},
+
+{t:'at',r:'Êxodo 21.12',txt:'“Quem ferir a outro, de modo que este morra, também será morto.”',
+ p:'É a ordem direta da Lei contra o homicídio. Deus mesmo decretou a pena capital.',
+ c:['É ordem dada a Israel, uma nação governada por Deus. Os mesmos capítulos mandam matar quem amaldiçoa o pai ou a mãe (Ex 21.15,17).','O verso seguinte já abre exceção para quem mata sem intenção (Ex 21.13), e depois vêm as cidades de refúgio (Nm 35).','Jesus declarou que cumpriu a Lei (Mt 5.17), e a carta aos Hebreus diz que a antiga aliança está envelhecida (Hb 8.13).','Se o argumento vale hoje por ser Lei, vale também para as outras sentenças. Ou toda a Lei, ou nenhuma como código penal (Gl 5.3).'],
+ x:'Cristo é o fim da Lei para todo o que crê (Rm 10.4).'},
+
+{t:'at',r:'Números 35.16-21',txt:'Lista os casos de homicídio com intenção: ferro, pedra, ódio, emboscada. “O homicida certamente será morto.”',
+ p:'A Lei descreve com precisão o crime doloso e ordena a morte. Isso protege o inocente e mostra o peso do homicídio intencional.',
+ c:['Essa precisão é a prova de que a Lei era um sistema judicial para Israel, cheio de regras (Nm 35.24-25), e não um princípio solto para todas as nações.','A mesma Lei distingue o culposo e protege quem matou sem querer. Hoje poucos sistemas teriam a precisão que a Lei exigia.','O Novo Testamento não repete essa tabela nem a entrega à Igreja. Cristo trouxe um padrão maior: o ódio já é pecado no coração (Mt 5.21-22; 1Jo 3.15).'],
+ x:'Jesus leva o assunto do ato ao coração: ele não nos manda executar, mas converter.'},
+
+{t:'at',r:'Números 35.30-31',txt:'A condenação exige mais de uma testemunha. “Não aceitareis resgate pela vida do homicida.”',
+ p:'A Lei proíbe trocar a pena por dinheiro. O assassino não pode comprar a própria vida.',
+ c:['Nenhum homem podia pagar. Mas Deus pagou: “o Filho do Homem veio… para dar a sua vida em resgate de muitos” (Mc 10.45; 1Tm 2.6).','A Lei também exigia testemunhas rigorosas; a justiça moderna, baseada em indícios, não cumpre esse padrão (Dt 17.6).','O que a Lei não podia dar, Cristo deu: “se por um homem entrou o pecado… muito mais a graça” (Rm 5.15-17).'],
+ x:'O resgate que a Lei negava ao homem foi pago por Deus na cruz.'},
+
+{t:'at',r:'Números 35.33',txt:'“A terra não será expiada do sangue que nela for derramado, senão com o sangue daquele que o derramou.”',
+ p:'A terra fica contaminada pelo sangue inocente. Só a morte do assassino a purifica. É questão de justiça diante de Deus.',
+ c:['Quem purifica é o sangue de Cristo: “o sangue de Jesus, seu Filho, nos purifica de todo o pecado” (1Jo 1.7; Hb 9.22; 10.4,10-14).','Em Cristo, Deus reconciliou consigo “todas as coisas… pacificando pelo sangue da sua cruz” (Cl 1.20). A terra e o homem foram reconciliados sem mais um sangue.','Se o sangue do assassino ainda fosse necessário para purificar, o sacrifício de Cristo seria insuficiente — e isso a Escritura nega (Hb 10.14).'],
+ x:'O único sangue que expia é o do Cordeiro de Deus (Jo 1.29).'},
+
+{t:'at',r:'Levítico 24.17,21',txt:'“Quem matar a algum homem será morto.”',
+ p:'A Lei repete a regra duas vezes. A vida humana é protegida pela sentença de morte.',
+ c:['O mesmo capítulo manda apedrejar o blasfemo (Lv 24.16) e aplica “olho por olho” (Lv 24.20). Se o v.17 vale hoje, o v.16 também valeria.','Jesus citou exatamente “olho por olho” e o superou: “não resistais ao mau” e “amai os vossos inimigos” (Mt 5.38-44).','A lei de talião limitava a vingança em Israel. Cristo vai além: abre mão do direito para vencer o mal com o bem (Rm 12.21).'],
+ x:'Jesus pegou a justiça de Israel e a levou à plenitude do amor.'},
+
+{t:'at',r:'Deuteronômio 19.11-13',txt:'O assassino doloso que se refugiou deve ser entregue. “Não o olharás com piedade; tirarás de Israel o sangue inocente.”',
+ p:'Deus proíbe a piedade para o homicida doloso. Misericórdia aqui seria injustiça.',
+ c:['O mandamento é para o juiz de Israel, dentro da teocracia: “tirarás o mal de Israel” (Dt 17.7).','No Novo Testamento a ordem é outra: “sede misericordiosos, como também vosso Pai é misericordioso” (Lc 6.36) e “a misericórdia triunfa sobre o juízo” (Tg 2.13).','Deus mesmo teve “piedade”: nos amou quando ainda éramos pecadores e Cristo morreu por nós (Rm 5.8; Ef 2.4-5).'],
+ x:'A piedade que a Lei proibia ao juiz, Deus a derramou sobre nós na cruz.'},
+
+{t:'at',r:'Deuteronômio 17.6-7',txt:'A condenação exige duas ou três testemunhas; elas lançam as primeiras pedras.',
+ p:'A pena de morte, segundo a Lei, é justa porque cercada de garantias: provas firmes e testemunhas responsáveis.',
+ c:['Hoje se condena por indícios, perícia e delações, e inocentes já foram executados. A própria Lei exigiria muito mais.','As testemunhas lançavam a primeira pedra. Jesus usou esse princípio: “quem dentre vós estiver sem pecado, seja o primeiro que lhe atire pedra” (Jo 8.7).','Ninguém hoje está sem pecado para atirar a primeira pedra (Rm 3.23). Cristo mesmo é o único que poderia, e foi quem disse: “nem eu te condeno”.'],
+ x:'O único sem pecado preferiu perdoar.'},
+
+{t:'at',r:'Deuteronômio 13.5 e 18.20',txt:'O falso profeta e quem incita à idolatria deve morrer.',
+ p:'Deus mandou eliminar quem engana o povo. Proteger a fé exige a pena capital.',
+ c:['Era lei da teocracia: a idolatria era traição ao rei de Israel, que era Deus. A Igreja não é nação, e seu inimigo “não é carne nem sangue” (Ef 6.12).','Jesus proibiu arrancar o joio: “deixai crescer juntos ambos até à ceifa” (Mt 13.24-30). O juízo pertence a Deus.','Quando os discípulos quiseram fogo sobre os que rejeitaram Jesus, ele respondeu: “o Filho do Homem não veio para perder as almas, mas para salvá-las” (Lc 9.54-56).','O falso mestre, no Novo Testamento, é advertido e afastado (Tt 3.10; Gl 1.8), não executado.'],
+ x:'Jesus veio salvar, não destruir (Lc 9.56).'},
+
+{t:'at',r:'Malaquias 3.6',txt:'“Eu, o SENHOR, não mudo.”',
+ p:'Se Deus não muda, sua justiça sobre o homicida também não mudou. O que ele ordenou antes vale agora.',
+ c:['Deus não muda em caráter, mas se revela em etapas: “havendo Deus falado… muitas vezes… nos falou pelo Filho” (Hb 1.1-2).','O mesmo Deus que não muda mudou o sacerdócio e, “necessariamente, também a lei” (Hb 7.12; 8.13). Mudar o código não é mudar o caráter.','O caráter imutável é misericordioso: “o SENHOR é compassivo e misericordioso” (Êx 34.6-7). Isso se vê plenamente em Cristo (Hb 13.8).'],
+ x:'Jesus Cristo é o mesmo ontem, hoje e para sempre (Hb 13.8), e ele perdoou.'},
+
+{t:'at',r:'Ezequiel 18.4,20',txt:'“A alma que pecar, essa morrerá.”',
+ p:'Cada um responde por seu pecado. Deus confirma que o pecador merece a morte.',
+ c:['O mesmo capítulo continua: “Porventura tenho eu prazer na morte do ímpio?… Não é antes que se converta dos seus caminhos e viva?” (Ez 18.23,32).','Em Ezequiel 33.11 Deus repete: “não tenho prazer na morte do ímpio, mas em que se converta”.','Todos merecem a morte espiritual (Rm 3.23). Se o fundamento fosse esse, ninguém sobraria. A resposta de Deus não foi executar, mas morrer por nós (Rm 6.23).'],
+ x:'“Tornai-vos e vivei”: a voz de Deus no profeta é a voz de Cristo na cruz.'},
+
+{t:'at',r:'Salmo 101.8',txt:'Davi: “Cada manhã destruirei todos os ímpios da terra.”',
+ p:'O rei ideal de Israel prometeu eliminar os ímpios. Governar com justiça inclui a espada.',
+ c:['É voto de um rei de Israel em um poema de governo. O próprio Davi se tornou assassino e adúltero e foi perdoado (2Sm 12.13; Sl 51).','O Filho maior de Davi, Cristo, governa com outro estilo: “não esmagará a cana quebrada” (Is 42.3; Mt 12.20).','Cristo reina pelo amor; sua autoridade foi coroada na cruz (Fp 2.8-11).'],
+ x:'O Rei prometido venceu os ímpios convertendo-os, e não os executando.'},
+
+{t:'at',r:'Eclesiastes 8.11',txt:'“Visto como se não executa logo a sentença sobre a má obra, o coração dos filhos dos homens está inteiramente disposto a praticar o mal.”',
+ p:'Punição rápida e dura inibe o crime. A pena de morte teria efeito de dissuasão.',
+ c:['O texto observa um fato da vida e não dá ordem de executar. Ele fala de demora na justiça, não de pena capital.','A Escritura responde pelo outro caminho: “a bondade de Deus te leva ao arrependimento” (Rm 2.4).','Jesus não usou o medo da morte como método, mas o convite: “vinde a mim” (Mt 11.28). E quando houve tragédias, disse: “se não vos arrependerdes, todos de igual modo perecereis” (Lc 13.1-5).'],
+ x:'Dissuasão pelo medo passa; transformação pelo arrependimento permanece.'},
+
+{t:'at',r:'2 Samuel 12.5-6',txt:'Davi, ouvindo a parábola de Natã: “o homem que fez isso é digno de morte.”',
+ p:'O próprio rei de Israel reconheceu a justiça da pena de morte para o grave pecado.',
+ c:['Davi exigiu a morte de outro e, sem saber, condenou a si mesmo. Natã respondeu: “Tu és o homem” (2Sm 12.7).','Ao confessar, Davi ouviu: “O SENHOR perdoou o teu pecado; não morrerás” (2Sm 12.13). Deus poupou o rei que, pela Lei, merecia a morte.','É o aviso de Jesus: “quem dentre vós estiver sem pecado, atire a primeira pedra” (Jo 8.7). O juiz de emoção julga o outro com mais rigor do que a si mesmo (Mt 7.1-5).'],
+ x:'Na hora em que Davi pediu a morte do outro, descobriu que precisava da graça.'},
+
+/* ---------- NOVO TESTAMENTO ---------- */
+{t:'nt',r:'Romanos 13.4',txt:'A autoridade “não traz a espada em vão; é ministro de Deus, vingador para castigar o que pratica o mal.”',
+ p:'Paulo ensina que o Estado recebeu de Deus a espada. Espada é instrumento de morte. Logo, o Estado tem o direito de matar o criminoso.',
+ c:['Admitimos o essencial: o Estado tem o direito de punir o mal. Mas o texto não cita pena de morte nem lista crimes.','Paulo escreveu em Romanos 12.19-21 que o cristão não se vinga: “vence o mal com o bem”. Romanos 13 descreve o governo, e não manda a Igreja pedir execuções.','O Estado “pode” punir, mas isso não é o mesmo que “deve” executar. A mesma autoridade que tem espada tem prisão, multa e reparação.','A autoridade que Paulo descreve foi a mesma que executou Cristo e, segundo a tradição, o próprio Paulo.'],
+ x:'Cristo respeitou a autoridade (Mt 22.21), mas só ele a julgou com justiça perfeita (1Pe 2.23).'},
+
+{t:'nt',r:'Atos 25.11',txt:'Paulo: “Se cometi alguma injustiça ou crime digno de morte, não recuso morrer.”',
+ p:'O apóstolo aceitou a legitimidade da pena capital. Não a condenou nem a chamou de injusta.',
+ c:['Paulo aceita a autoridade, mas defende a própria inocência e apela a César. Ele não elogia a pena de morte; ele nega merecê-la.','Segundo a tradição, Paulo foi executado em Roma por sentença do império. Se for assim, a justiça humana errou com ele.','Estêvão foi apedrejado pelo Sinédrio (At 7) e Tiago morto à espada por Herodes (At 12.2). Isso mostra o risco de dar a autoridades o poder de matar.'],
+ x:'O que Paulo viveu o aproximou de Cristo, que também foi condenado e morto pela lei do império.'},
+
+{t:'nt',r:'Lucas 23.40-41',txt:'O ladrão arrependido: “nós, na verdade, com justiça sofremos, pois recebemos o castigo que os nossos feitos mereciam.”',
+ p:'Jesus estava ao lado e não corrigiu o ladrão nem criticou a pena. Logo, ele aprovou a justiça da sentença.',
+ c:['Jesus não estava ali para julgar o sistema, mas para salvar. Responde ao ladrão com perdão: “hoje estarás comigo no paraíso” (Lc 23.43).','Aquele homem só se converteu porque ainda estava vivo. Cada pessoa executada perde a chance desse “hoje”.','Quem estava no meio dessa execução era o Inocente: a mesma sentença que atingiu o ladrão matou o Filho de Deus (Lc 23.41,47).'],
+ x:'Na cruz, Jesus deu paraíso a um condenado à morte. Esse é o evangelho.'},
+
+{t:'nt',r:'João 19.11',txt:'Jesus a Pilatos: “Nenhum poder terias contra mim, se não te fosse dado de cima.”',
+ p:'Jesus reconhece que a autoridade do Estado vem de Deus. Portanto, ele não nega o direito de condenar.',
+ c:['Jesus reconhece que a autoridade vem de Deus, mas acrescenta: “quem me entregou a ti maior pecado tem”. Autoridade delegada é autoridade responsável.','A frase foi dita por um condenado inocente, e em seguida Pilatos o entregou para ser crucificado. É o maior erro judicial da história.','A autoridade que vem de Deus deve usar o poder como Deus o usa: com justiça e misericórdia (Mq 6.8).'],
+ x:'A pena de morte mais famosa da história foi a do único inocente. Ele, porém, a transformou em redenção.'},
+
+{t:'nt',r:'Mateus 15.4',txt:'Jesus: “Quem maldisser ao pai ou à mãe, morra de morte” (citando Êxodo 21.17).',
+ p:'Jesus citou a lei capital sem criticar a pena. Ele a confirmou como válida.',
+ c:['Jesus citou a lei para condenar a hipocrisia dos fariseus que anulavam a honra aos pais com uma tradição humana (Mt 15.3-6). O ponto era a honra, não a execução.','Em nenhum momento Jesus mandou executar alguém. Quando trouxeram a adúltera, a lei também mandava matar, e ele a deixou ir (Jo 8.11).','Se esse versículo prova que a pena vale hoje, o filho que amaldiçoa os pais deve ser morto. Ninguém defende isso.'],
+ x:'Jesus quer filhos que honrem, e não um tribunal que apedreje.'},
+
+{t:'nt',r:'Mateus 5.17-19',txt:'“Não penseis que vim revogar a Lei… nem um jota ou til se omitirá da Lei.”',
+ p:'Jesus afirma que a Lei permanece. Portanto, suas sentenças continuam válidas.',
+ c:['A frase seguinte é decisiva: “vim… cumprir”, e “até que tudo se cumpra” (Mt 5.18). Cumprir não é ignorar, mas levar à plenitude.','Depois da cruz Jesus disse: “Está consumado” (Jo 19.30), e Paulo ensina que a Lei foi nosso tutor “até Cristo” (Gl 3.24-25).','Na mesma pregação Jesus muda a aplicação da Lei: do olho por olho ao amor aos inimigos (Mt 5.38-44).'],
+ x:'Cumprir é Cristo realizar o que a Lei apontava, e não manter o Sinai como código penal.'},
+
+{t:'nt',r:'Hebreus 10.28',txt:'“Quem violou a lei de Moisés morre sem misericórdia, por depoimento de duas ou três testemunhas.”',
+ p:'O Novo Testamento lembra, sem criticar, que a Lei punia com a morte. Logo, o princípio continua.',
+ c:['O autor usa esse fato como comparação, de forma descendente: se a lei de Moisés era assim, “de quanto maior castigo” é digno quem pisa o Filho de Deus (v.29). O foco é a gravidade de rejeitar Cristo.','O castigo agora pertence a Deus: “a mim pertence a vingança” (v.30). Não é encargo da Igreja.','O mesmo livro diz que a antiga Lei era “sombra dos bens futuros” (Hb 10.1) e que o sacrifício único de Cristo basta (Hb 10.14).'],
+ x:'O Novo Testamento não restaura a pena de Moisés. Ele chama a olhar para o Filho.'},
+
+{t:'nt',r:'Atos 5.1-11',txt:'Ananias e Safira mentem e caem mortos diante de Pedro.',
+ p:'Na própria igreja Deus aplicou a pena de morte. Logo, a morte como juízo para o pecado grave continua no Novo Testamento.',
+ c:['Foi ato direto de Deus. Pedro não pronunciou sentença nem os executou; ele pergunta, e eles caem (At 5.3-5,9-10).','É caso único no livro, e a Igreja em lugar nenhum recebeu ordem de repeti-lo. Para o pecado na igreja, Paulo manda disciplina e perdão (1Co 5.5; 2Co 2.6-8).','Só Deus conhece o coração e pode ser juiz desse modo. Nós somos chamados a orar e restaurar (Gl 6.1).'],
+ x:'O Juiz é Deus; à Igreja cabe anunciar a graça.'},
+
+{t:'nt',r:'1 Pedro 2.13-14',txt:'Sujeitai-vos aos governadores “como enviados por ele para castigo dos malfeitores”.',
+ p:'Pedro confirma que o governo existe para castigar os maus. A pena capital é a forma máxima desse castigo.',
+ c:['“Castigo” não significa morte. O texto não cita pena de morte.','No mesmo capítulo, Pedro ensina o exemplo de Cristo: “quando o injuriavam, não injuriava; quando padecia, não ameaçava” (1Pe 2.21-23).','Pedro conhecia o castigo injusto: seu Mestre foi morto por um governador. Por isso ele fala do Cristo que foi condenado, e não de execuções.'],
+ x:'Pedro nos aponta o Cristo que sofreu injustamente e entregou a causa a Deus.'},
+
+{t:'nt',r:'Mateus 26.52',txt:'“Todos os que lançarem mão da espada, à espada perecerão.”',
+ p:'Jesus resume o princípio da retribuição: quem mata merece ser morto. É a mesma lógica de Gênesis 9.6.',
+ c:['Jesus diz isso a Pedro para mandá-lo guardar a espada, quando ele defendia o próprio Mestre. É advertência contra a violência, e não ordem para o Estado executar.','Logo depois, Jesus curou a orelha do servo ferido (Lc 22.51). Ao inimigo, ele respondeu com cura.','Quem estava preso ali podia chamar “mais de doze legiões de anjos” (Mt 26.53) e escolheu a cruz.'],
+ x:'Jesus preferiu ser morto a matar, e é esse o caminho que ele nos chama a seguir.'},
+
+{t:'nt',r:'Apocalipse 13.10',txt:'“Se alguém matar à espada, necessário é que seja morto à espada.”',
+ p:'Até no último livro da Bíblia aparece o princípio de que o violento será morto. A retribuição continua.',
+ c:['O contexto é uma profecia sobre a perseguição à Igreja pelo império, e a frase termina: “Aqui está a perseverança e a fé dos santos”. Não é ordem à Igreja ou ao Estado.','É o aviso do juízo de Deus sobre os perseguidores, como em Rm 12.19: “minha é a vingança”.','O livro culmina com o Cordeiro que venceu “pelo sangue” e “não amaram a própria vida até à morte” (Ap 12.11): a vitória cristã é entregar-se, não matar.'],
+ x:'A vitória do Apocalipse é a do Cordeiro imolado (Ap 5.6).'},
+
+{t:'nt',r:'1 Timóteo 1.8-10',txt:'“A lei é boa… posta para os transgressores, para os homicidas, parricidas…”',
+ p:'Paulo diz que a Lei existe para punir os homicidas. Ela continua boa e útil, o que inclui suas sentenças.',
+ c:['Paulo diz que a Lei é boa “se alguém dela usa legitimamente” e “não é posta para o justo” (v.8-9). O cristão em Cristo não está sob ela como condenação (Rm 8.1-4).','A frase mostra que a Lei condena o pecado, mas não diz que a Igreja ou o Estado deve aplicar suas penalidades.','O próprio autor, que antes foi “blasfemo, perseguidor e injurioso” (v.13), alcançou misericórdia. A mesma Lei que o condenaria foi cumprida por Cristo em seu favor.'],
+ x:'Paulo, que mereceu a Lei, foi salvo pela graça (1Tm 1.15).'},
+
+{t:'nt',r:'Romanos 1.32',txt:'“Os que tais coisas praticam são dignos de morte.”',
+ p:'Paulo diz com todas as letras que certos pecados são dignos de morte. Ele aprova o princípio da pena capital.',
+ c:['A “morte” de que Paulo fala é o juízo de Deus: “o salário do pecado é a morte, mas o dom gratuito de Deus é a vida eterna em Cristo Jesus” (Rm 6.23).','Todos pecaram (Rm 3.23). Quem julga os outros faz o mesmo (Rm 2.1). Se o texto mandasse executar, ninguém sobraria.','Logo depois Paulo mostra a resposta de Deus: “Cristo morreu por nós, sendo nós ainda pecadores” (Rm 5.8). Ele morreu a morte que era nossa.'],
+ x:'“Digno de morte” somos todos; o Justo morreu em nosso lugar.'},
+
+{t:'nt',r:'João 8.3-5',txt:'Os fariseus: “Moisés nos mandou apedrejar tais mulheres. E tu, que dizes?”',
+ p:'A Lei mandava apedrejar a adúltera. Os acusadores só aplicavam a Lei de Moisés, e Jesus não disse que a Lei estava errada.',
+ c:['Jesus não nega a Lei; ele a aplica às pessoas: “quem estiver sem pecado, atire a primeira pedra” (Jo 8.7). Todos saíram, “a começar pelos mais velhos”.','Ele ficou como o único que podia condenar e disse: “nem eu te condeno; vai e não peques mais” (Jo 8.11).','A armadilha era para pôr Jesus contra Moisés ou contra Roma. Sua resposta mostra o novo caminho: graça e verdade (Jo 1.17).'],
+ x:'“A Lei foi dada por Moisés; a graça e a verdade vieram por Jesus Cristo” (Jo 1.17).'},
+
+{t:'nt',r:'Mateus 21.40-41',txt:'Na parábola dos lavradores, o senhor “dará mísera morte a esses maus”.',
+ p:'Jesus conta uma parábola em que o senhor pune com a morte. Isso mostra que ele aceita a justiça retributiva.',
+ c:['É parábola sobre o juízo de Deus e não instrução sobre tribunais. Quem executa é o Senhor, no fim, e não nós.','Jesus ensinou os seus a deixar o juízo ao Pai: “não julgueis, para que não sejais julgados” (Mt 7.1) e “o joio… até à ceifa” (Mt 13.30).','Na mesma parábola dos lavradores, o Filho é o enviado e entregue à morte. A graça vem pelo sacrifício do Filho (Mt 21.37-39).'],
+ x:'O Juiz do fim é o mesmo que disse: “vinde a mim os que estais cansados”.'},
+
+{t:'nt',r:'Tiago 2.10-11 / Gálatas 3.10',txt:'“Quem guardar toda a lei e tropeçar em um só ponto tornou-se culpado de todos.”',
+ p:'A Lei é uma unidade, e a Escritura confirma que a Lei vale por inteiro. Logo a Lei, com suas penas, permanece.',
+ c:['É exatamente o argumento da coerência: ou se toma a Lei toda, ou nenhuma parte pode ser imposta como código. Quem escolhe só o homicídio “tropeça” no resto.','O Novo Testamento usa a unidade da Lei para mostrar que ninguém consegue cumpri-la (At 15.10; Gl 3.10-11; Rm 3.20) e que precisamos de Cristo, que “nos resgatou da maldição da lei” (Gl 3.13).','Nem o povo judeu conseguiu cumprir a Lei inteira. Por isso Deus nos deu uma nova lei, a do amor (Jo 13.34; Gl 6.2).'],
+ x:'Se a Lei é tudo ou nada, a resposta é Cristo, que cumpriu tudo.'}
+];
+
+const lista=document.getElementById('lista');
+let filtro='todos', vistos=new Set(), ordem=D.map((_,i)=>i);
+document.querySelector('header .tag').textContent='Antigo e Novo Testamento · '+D.length+' versículos · TCC de Sérgio Costa';
+
+function render(){
+  lista.innerHTML='';
+  ordem.forEach(i=>{
+    const d=D[i];
+    if(filtro!=='todos'&&d.t!==filtro)return;
+    const el=document.createElement('article');el.className='v';el.dataset.i=i;
+    el.innerHTML=
+      '<div class="topo"><span class="t '+d.t+'">'+(d.t==='at'?'Antigo Test.':'Novo Test.')+'</span><span class="ref">'+d.r+'</span><span class="n">'+(i+1)+' / '+D.length+'</span></div>'+
+      '<div class="pro"><h4>Posição a favor da pena de morte</h4><p class="txt">'+d.txt+'</p><p>'+d.p+'</p></div>'+
+      '<button class="ver">Ver a refutação em Cristo</button>'+
+      '<div class="contra"><h4>Refutação</h4><ul>'+d.c.map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="cristo"><b>Aponta para Cristo</b>'+d.x+'</div></div>';
+    const btn=el.querySelector('.ver'),box=el.querySelector('.contra');
+    btn.onclick=()=>{box.classList.toggle('on');btn.textContent=box.classList.contains('on')?'Ocultar refutação':'Ver a refutação em Cristo';
+      if(box.classList.contains('on'))vistos.add(i);atualiza();};
+    if(vistos.has(i)&&false){}
+    lista.appendChild(el);
+  });
+  atualiza();
+}
+function atualiza(){
+  document.getElementById('prog').textContent=vistos.size+' de '+D.length+' respondidos';
+  document.getElementById('trilha').style.width=(vistos.size/D.length*100)+'%';
+}
+document.querySelectorAll('.filtro').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filtro').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  filtro=b.dataset.f;render();window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('todas').onclick=()=>{
+  lista.querySelectorAll('.v').forEach(el=>{el.querySelector('.contra').classList.add('on');el.querySelector('.ver').textContent='Ocultar refutação';vistos.add(+el.dataset.i);});atualiza();
+};
+document.getElementById('ocultar').onclick=()=>{
+  lista.querySelectorAll('.v').forEach(el=>{el.querySelector('.contra').classList.remove('on');el.querySelector('.ver').textContent='Ver a refutação em Cristo';});
+};
+document.getElementById('embaralhar').onclick=()=>{
+  for(let i=ordem.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ordem[i],ordem[j]]=[ordem[j],ordem[i]];}
+  vistos=new Set();render();window.scrollTo({top:0,behavior:'smooth'});
+};
+render();
+</script>
+</body>
+</html>
