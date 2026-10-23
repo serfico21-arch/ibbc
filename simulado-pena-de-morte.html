@@ -59,6 +59,22 @@ button.acao.vazado{background:transparent;color:var(--verde)}
 .sintese h3{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#e7c777;margin:0 0 10px}
 .sintese ol{margin:0;padding-left:22px}.sintese li{margin-bottom:8px}
 footer{border-top:1px solid var(--linha);padding:22px 0;text-align:center;color:var(--tinta-suave);font-size:14px}
+.busca{flex:1 1 100%;display:flex;align-items:center;gap:8px;background:#fffdf7;border:2px solid var(--verde);padding:6px 10px}
+.busca svg{flex:none;width:22px;height:22px}
+.busca input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:600 17px 'Archivo',sans-serif;color:var(--tinta)}
+.busca button{display:none;border:0;background:none;font-size:20px;line-height:1;cursor:pointer;color:var(--tinta-suave)}
+.busca.tem button{display:block}
+.busca input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+body.buscando .intro,body.buscando .acoes,body.buscando details.rel,body.buscando .sintese{display:none}
+#achados{font-family:'Archivo',sans-serif;font-size:12px;color:var(--tinta-suave);white-space:nowrap}
+details.rel{background:#fffdf7;border:1px solid var(--linha);border-left:4px solid var(--ouro);padding:12px 18px;margin:0 0 20px}
+details.rel summary{cursor:pointer;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--verde)}
+details.rel h5{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin:14px 0 6px;color:var(--vinho)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;border:1px solid var(--verde);background:none;color:var(--verde);padding:6px 10px;cursor:pointer}
+.chip:hover{background:var(--verde);color:#f6f1e6}
+.v{scroll-margin-top:150px}
+.v.pisca{outline:3px solid var(--ouro)}
 @media(max-width:600px){body{font-size:17px}.prog{width:100%;margin:0}}
 </style>
 </head>
@@ -68,16 +84,22 @@ footer{border-top:1px solid var(--linha);padding:22px 0;text-align:center;color:
   <div class="wrap">
     <h1>Simulado: Pena de Morte — Defesa e Refutação</h1>
     <p class="sub">Cada versículo usado a favor, com a resposta em Cristo</p>
-    <span class="tag">Antigo e Novo Testamento · 30 versículos · TCC de Sérgio Costa</span>
+    <span class="tag">Antigo e Novo Testamento · 31 versículos · TCC de Sérgio Costa</span>
   </div>
 </header>
 
 <div class="barra">
   <div class="wrap">
+    <div class="busca" id="busca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1f4d3a" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+      <input id="q" type="search" autocomplete="off" aria-label="Buscar versículo" placeholder="Buscar: Gn 9.6, Rm 13, espada, resgate…">
+      <span id="achados"></span>
+      <button id="limpa" aria-label="Limpar busca">✕</button>
+    </div>
     <button class="filtro on" data-f="todos">Todos</button>
     <button class="filtro" data-f="at">Antigo Testamento</button>
     <button class="filtro" data-f="nt">Novo Testamento</button>
-    <span class="prog" id="prog">0 de 30 respondidos</span>
+    <span class="prog" id="prog">0 de 31 respondidos</span>
   </div>
   <div class="trilha"><i id="trilha"></i></div>
 </div>
@@ -92,6 +114,7 @@ footer{border-top:1px solid var(--linha);padding:22px 0;text-align:center;color:
     <button class="acao vazado" id="ocultar">Ocultar todas</button>
     <button class="acao vazado" id="embaralhar">Embaralhar</button>
   </div>
+  <details class="rel" id="rel"><summary id="relsum">Relação de todos os versículos usados a favor</summary><div id="relbody"></div></details>
   <div id="lista"></div>
 
   <div class="sintese">
@@ -120,6 +143,11 @@ const D=[
  p:'É a ordem direta da Lei contra o homicídio. Deus mesmo decretou a pena capital.',
  c:['É ordem dada a Israel, uma nação governada por Deus. Os mesmos capítulos mandam matar quem amaldiçoa o pai ou a mãe (Ex 21.15,17).','O verso seguinte já abre exceção para quem mata sem intenção (Ex 21.13), e depois vêm as cidades de refúgio (Nm 35).','Jesus declarou que cumpriu a Lei (Mt 5.17), e a carta aos Hebreus diz que a antiga aliança está envelhecida (Hb 8.13).','Se o argumento vale hoje por ser Lei, vale também para as outras sentenças. Ou toda a Lei, ou nenhuma como código penal (Gl 5.3).'],
  x:'Cristo é o fim da Lei para todo o que crê (Rm 10.4).'},
+
+{t:'at',r:'Êxodo 21.17',txt:'“Quem amaldiçoar a seu pai ou a sua mãe, certamente morrerá.”',
+ p:'A Lei mostra o peso que Deus dá à honra e à autoridade: até a ofensa grave aos pais merecia a morte. Jesus repetiu esse texto (Mt 15.4) sem revogá-lo.',
+ c:['Quase ninguém defende hoje executar o filho que amaldiçoa os pais. Isso mostra que a Lei era o código de Israel e que ninguém a aplica por inteiro (Dt 21.18-21; Gl 5.3).','Em Mt 15.4 Jesus citou o texto para condenar a hipocrisia dos fariseus, que anulavam o mandamento de honrar os pais (Mt 15.3-6). Ele não ordenou execuções.','No Novo Testamento, a desobediência dos filhos é tratada com instrução e correção, sem pena de morte (Ef 6.1-4; Cl 3.20-21).'],
+ x:'Cristo honrou o Pai (Jo 8.49) e ensina a corrigir os filhos sem irritá-los (Ef 6.4).'},
 
 {t:'at',r:'Números 35.16-21',txt:'Lista os casos de homicídio com intenção: ferro, pedra, ódio, emboscada. “O homicida certamente será morto.”',
  p:'A Lei descreve com precisão o crime doloso e ordena a morte. Isso protege o inocente e mostra o peso do homicídio intencional.',
@@ -264,15 +292,30 @@ const D=[
 ];
 
 const lista=document.getElementById('lista');
-let filtro='todos', vistos=new Set(), ordem=D.map((_,i)=>i);
+let filtro='todos', vistos=new Set(), ordem=D.map((_,i)=>i), q='';
+const AB={'Gênesis':'Gn','Êxodo':'Ex','Levítico':'Lv','Números':'Nm','Deuteronômio':'Dt','Malaquias':'Ml','Ezequiel':'Ez','Salmo':'Sl','Eclesiastes':'Ec','2 Samuel':'2Sm','Romanos':'Rm','Atos':'At','Lucas':'Lc','João':'Jo','Mateus':'Mt','Hebreus':'Hb','1 Pedro':'1Pe','Apocalipse':'Ap','1 Timóteo':'1Tm','Tiago':'Tg','Gálatas':'Gl'};
+const abrev=r=>Object.keys(AB).reduce((t,k)=>t.split(k).join(AB[k]),r);
+const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[:,;]/g,'.').replace(/\s+/g,' ').trim();
+const sem=t=>t.replace(/ /g,'');
+const H=D.map(d=>norm([d.r,abrev(d.r),d.txt,d.p,d.c.join(' '),d.x].join(' ')));
+const HR=D.map(d=>norm(d.r+' '+abrev(d.r)));
+function bate(i){
+  if(!q)return true;
+  const k=norm(q);
+  if(/\d/.test(k))return sem(H[i]).includes(sem(k));
+  return k.split(' ').filter(Boolean).every(t=>H[i].includes(t));
+}
+const pontos=i=>(q&&sem(HR[i]).includes(sem(norm(q))))?0:1;
 document.querySelector('header .tag').textContent='Antigo e Novo Testamento · '+D.length+' versículos · TCC de Sérgio Costa';
 
 function render(){
-  lista.innerHTML='';
-  ordem.forEach(i=>{
+  lista.innerHTML='';let n=0;
+  const seq=q?ordem.slice().sort((a,b)=>pontos(a)-pontos(b)):ordem;
+  seq.forEach(i=>{
     const d=D[i];
-    if(filtro!=='todos'&&d.t!==filtro)return;
-    const el=document.createElement('article');el.className='v';el.dataset.i=i;
+    if(!q&&filtro!=='todos'&&d.t!==filtro)return;
+    if(!bate(i))return;
+    const el=document.createElement('article');el.className='v';el.dataset.i=i;el.id='v'+i;
     el.innerHTML=
       '<div class="topo"><span class="t '+d.t+'">'+(d.t==='at'?'Antigo Test.':'Novo Test.')+'</span><span class="ref">'+d.r+'</span><span class="n">'+(i+1)+' / '+D.length+'</span></div>'+
       '<div class="pro"><h4>Posição a favor da pena de morte</h4><p class="txt">'+d.txt+'</p><p>'+d.p+'</p></div>'+
@@ -282,8 +325,12 @@ function render(){
     btn.onclick=()=>{box.classList.toggle('on');btn.textContent=box.classList.contains('on')?'Ocultar refutação':'Ver a refutação em Cristo';
       if(box.classList.contains('on'))vistos.add(i);atualiza();};
     if(vistos.has(i)&&false){}
-    lista.appendChild(el);
+    if(q){box.classList.add('on');btn.textContent='Ocultar refutação';}
+    n++;lista.appendChild(el);
   });
+  document.body.classList.toggle('buscando',!!q);
+  document.getElementById('achados').textContent=q?n+' achado'+(n===1?'':'s'):'';
+  if(q&&!n)lista.innerHTML='<div class="intro"><p>Nenhum versículo encontrado para “'+q.replace(/</g,'&lt;')+'”. Tente a abreviação (Gn, Ex, Rm) ou uma palavra do texto.</p></div>';
   atualiza();
 }
 function atualiza(){
@@ -304,6 +351,26 @@ document.getElementById('embaralhar').onclick=()=>{
   for(let i=ordem.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ordem[i],ordem[j]]=[ordem[j],ordem[i]];}
   vistos=new Set();render();window.scrollTo({top:0,behavior:'smooth'});
 };
+function ir(i){
+  q='';document.getElementById('q').value='';document.getElementById('busca').classList.remove('tem');
+  filtro='todos';document.querySelectorAll('.filtro').forEach(x=>x.classList.toggle('on',x.dataset.f==='todos'));
+  render();
+  const el=document.getElementById('v'+i);
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+  el.classList.add('pisca');setTimeout(()=>el.classList.remove('pisca'),1800);
+}
+function relacao(){
+  const g=t=>D.map((d,i)=>[d,i]).filter(x=>x[0].t===t).map(x=>'<button class="chip" data-i="'+x[1]+'">'+x[0].r+'</button>').join('');
+  const rb=document.getElementById('relbody');
+  rb.innerHTML='<h5>Antigo Testamento</h5><div class="chips">'+g('at')+'</div><h5>Novo Testamento</h5><div class="chips">'+g('nt')+'</div>';
+  rb.querySelectorAll('.chip').forEach(b=>b.onclick=()=>ir(+b.dataset.i));
+  document.getElementById('relsum').textContent='Relação de todos os versículos usados a favor ('+D.length+')';
+}
+const inp=document.getElementById('q'),cx=document.getElementById('busca');
+inp.addEventListener('input',()=>{q=inp.value.trim();cx.classList.toggle('tem',!!inp.value);render();});
+document.getElementById('limpa').onclick=()=>{inp.value='';q='';cx.classList.remove('tem');render();inp.focus();};
+inp.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('limpa').click();});
+relacao();
 render();
 </script>
 </body>
