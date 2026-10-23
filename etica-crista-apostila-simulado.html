@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ética Cristã — Apostila e Simulado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f6f1e6;
+  --papel2:#efe7d7;
+  --tinta:#221e18;
+  --tinta-suave:#544c3e;
+  --verde:#1f4d3a;
+  --verde-claro:#2f6b52;
+  --ouro:#a8791f;
+  --vinho:#7d2b25;
+  --linha:#d8cdb6;
+  --sombra:0 2px 0 var(--linha), 0 18px 40px -28px rgba(34,30,24,.6);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65;
+  background-image:radial-gradient(circle at 12% 8%, rgba(31,77,58,.06), transparent 45%),
+                   radial-gradient(circle at 88% 92%, rgba(168,121,31,.08), transparent 45%);
+}
+header.capa{
+  background:var(--verde);color:#f6f1e6;padding:38px 22px 30px;
+  border-bottom:6px solid var(--ouro);
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.capa h1{
+  font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(28px,6vw,46px);margin:0 0 6px;line-height:1.05;
+}
+header.capa .sub{font-style:italic;opacity:.9;margin:0}
+header.capa .tag{
+  display:inline-block;margin-top:14px;font-family:'Archivo',sans-serif;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(246,241,230,.45);padding:5px 12px;border-radius:2px;
+}
+nav.abas{
+  position:sticky;top:0;z-index:20;background:var(--papel2);
+  border-bottom:1px solid var(--linha);display:flex;gap:0;
+}
+nav.abas button{
+  flex:1;background:none;border:0;padding:15px 8px;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);
+  border-bottom:3px solid transparent;transition:.2s;
+}
+nav.abas button.on{color:var(--verde);border-bottom-color:var(--ouro);background:var(--papel)}
+main{padding:34px 0 80px}
+section.painel{display:none;animation:sobe .35s ease both}
+section.painel.on{display:block}
+@keyframes sobe{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+h2.cap{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ouro);margin:44px 0 6px;
+}
+h3{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,4vw,27px);
+  line-height:1.2;margin:0 0 14px;color:var(--verde);
+}
+h4{font-family:'Archivo',sans-serif;font-size:17px;margin:26px 0 6px;color:var(--tinta)}
+p{margin:0 0 13px}
+ul{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+.bloco{
+  background:#fffdf7;border:1px solid var(--linha);border-left:4px solid var(--verde);
+  padding:22px 24px;margin:0 0 26px;box-shadow:var(--sombra);
+}
+.versiculo{
+  font-style:italic;color:var(--tinta-suave);border-left:3px solid var(--ouro);
+  padding:6px 0 6px 14px;margin:12px 0;
+}
+.chave{background:linear-gradient(transparent 62%, rgba(168,121,31,.32) 62%);font-weight:600}
+.grade{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:16px}
+.card{background:var(--papel2);border:1px solid var(--linha);padding:14px 16px}
+.card b{font-family:'Archivo',sans-serif;display:block;color:var(--verde);font-size:14px;letter-spacing:.04em}
+
+.pg{
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-suave);display:block;margin:-8px 0 12px;
+}
+.recmarca{
+  display:inline-block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--ouro);color:#fffdf7;padding:4px 10px;margin:0 0 14px;
+}
+.recq{border-top:1px solid var(--linha);padding-top:14px;margin-top:14px}
+.recq:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.recq .pergunta{font-weight:600;margin-bottom:8px}
+.recq .pergunta b{color:var(--ouro);font-family:'Archivo',sans-serif;font-size:13px;margin-right:6px}
+.recq .resposta{display:none;background:var(--papel2);border-left:3px solid var(--verde);padding:10px 14px;font-size:16px}
+.recq .resposta.on{display:block}
+.recq button.ver{
+  background:none;border:1px solid var(--verde);color:var(--verde);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;margin-bottom:8px;
+}
+.recq button.ver:hover{background:var(--verde);color:#f6f1e6}
+
+/* simulado */
+.rodadas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 30px}
+.rodada{
+  text-align:left;background:#fffdf7;border:1px solid var(--linha);cursor:pointer;
+  padding:13px 14px;font-family:'Spectral',serif;font-size:15px;transition:.18s;
+}
+.rodada:hover{transform:translateY(-2px);border-color:var(--verde);box-shadow:var(--sombra)}
+.rodada span{
+  display:block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ouro);margin-bottom:3px;
+}
+.rodada em{display:block;font-size:12px;color:var(--tinta-suave);font-style:normal;margin-top:4px}
+.rodada.feita{border-left:4px solid var(--verde-claro)}
+.barra{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--verde);color:#f6f1e6;padding:14px 18px;margin-bottom:22px;
+}
+.barra .titulo{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px}
+.barra .placar{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.08em}
+.q{background:#fffdf7;border:1px solid var(--linha);padding:20px 22px;margin-bottom:16px;box-shadow:var(--sombra)}
+.q .num{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--ouro);text-transform:uppercase}
+.q .enunciado{font-weight:600;margin:6px 0 14px}
+.alt{
+  display:block;width:100%;text-align:left;background:var(--papel);border:1px solid var(--linha);
+  padding:11px 14px;margin-bottom:9px;cursor:pointer;font-family:'Spectral',serif;font-size:16px;
+  color:var(--tinta);transition:.15s;
+}
+.alt:hover:not(:disabled){border-color:var(--verde);background:#fff}
+.alt:disabled{cursor:default;opacity:.95}
+.alt.certa{background:#e6f0e5;border-color:var(--verde);border-left:4px solid var(--verde)}
+.alt.errada{background:#f6e4e2;border-color:var(--vinho);border-left:4px solid var(--vinho);text-decoration:line-through}
+.expl{margin-top:10px;font-size:15px;color:var(--tinta-suave);border-top:1px dashed var(--linha);padding-top:10px;display:none}
+.expl.on{display:block}
+.expl b{color:var(--verde)}
+.botoes{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 10px}
+button.acao{
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;padding:13px 20px;border:1px solid var(--verde);
+  background:var(--verde);color:#f6f1e6;cursor:pointer;transition:.18s;
+}
+button.acao.vazado{background:transparent;color:var(--verde)}
+button.acao:hover{opacity:.85}
+.resultado{
+  background:var(--verde);color:#f6f1e6;padding:26px;text-align:center;margin-top:20px;display:none;
+}
+.resultado.on{display:block}
+.resultado .nota{font-family:'Archivo',sans-serif;font-size:44px;font-weight:800;line-height:1}
+.resultado .msg{font-style:italic;margin-top:8px}
+footer{border-top:1px solid var(--linha);padding:24px 0;text-align:center;color:var(--tinta-suave);font-size:14px}
+@media(max-width:600px){body{font-size:16px}.bloco,.q{padding:16px}}
+</style>
+</head>
+<body>
+<header class="capa"><div class="wrap"><h1>Ética Cristã</h1><p class="sub">Apostila de estudo + recapitulações com respostas + simulado — 5 rodadas, 40 questões</p><span class="tag">Curso de Teologia · IBBC · p. 229–286</span></div></header>
+<nav class="abas"><button class="on" data-alvo="apostila">Apostila</button><button data-alvo="recaps">Recapitulações</button><button data-alvo="simulado">Simulado</button></nav>
+<main class="wrap">
+<section class="painel on" id="apostila">
+<div class="bloco"><h3>Introdução</h3><span class="pg">Apostila · abertura</span><p>A disciplina parte de uma pergunta simples: <span class="chave">“como devo ser, o que devo fazer, para ser um cristão ético sob qualquer circunstância?”</span> A ética é, popularmente, a prática da verdade e da justiça.</p><p>O estudo avança em duas etapas: primeiro as vertentes filosóficas e sociológicas das alternativas éticas (caps. 1, 2 e parte do 4); depois a abordagem bíblica e prática (cap. 3, parte do 4 e cap. 5), a partir das Escrituras e da postura de Cristo.</p><p class="versiculo">“[…] conhecendo a Palavra somos libertos […], pois enganoso é o coração […].” (VIVA, 2010, Jo 8.32; Jr 17.9; Sl 139.23-24)</p></div>
+<h2 class="cap">Capítulo 1</h2>
+<div class="bloco"><h3>1. Definição de ética como base do saber humano</h3><span class="pg">Apostila p. 231</span><p>Para conviver em sociedade precisamos, além do conhecimento das leis, da consciência das <span class="chave">bases do saber</span> que possibilitam essa convivência. A ética tenta “moldar obrigatoriamente” as pessoas a um mesmo comportamento moral e social. Ética e moral não andam necessariamente juntas: alguém pode agir eticamente só por medo de ser punido, sem que isso expresse sua moral. Quem tem moral reflexiva cristã <b>sempre agirá de forma ética naturalmente</b>.</p><p>A ética varia de local para local, de acordo com legislação, cultura e religião. O ser humano é histórico, cultural e social, e transforma conscientemente o mundo em sua volta.</p></div>
+<div class="bloco"><h3>1.1 Definição de ética e moral</h3><span class="pg">Apostila p. 232</span><ul><li><b>Latim:</b> <i>mores</i> (hábito, jeito de ser, costume), de onde vem “moral”.</li><li><b>Grego:</b> <i>éthos</i> (hábito, jeito de ser, costume), de onde vem “ética”. Por isso muitos as trataram como sinônimos (SPROUL, 2012, p. 10-11). <span class="chave">Aristóteles (384–322 a.C.)</span> foi quem as apresentou como diferentes.</li><li><b>Ética:</b> teoria e prática social adequada; estatuto ou código de conduta social criado “para o bem de todos”, com punições legais, eclesiásticas ou sociais.</li><li><b>Moral:</b> prática pessoal e individual; o que realmente penso e sinto, quem realmente sou.</li></ul></div>
+<div class="bloco"><h3>1.2 A natureza reflexiva da ética (secular e cristã)</h3><span class="pg">Apostila p. 232–233 · Recapitulação 1</span><p>Para Kaiser Júnior (2015) a natureza reflexiva é a ação definidora da ética: <span class="chave">“ser ético” é pensar, refletir, ponderar e examinar as condutas sociais</span>. A sociedade muda constantemente e levanta questões que desafiam inclusive a igreja.</p><p>Há quem defina a ética como uma tabela fixa de certo e errado (Chalita). Para Clóvis de Barros Filho (2014, p. 17) é a constante reflexão do homem para identificar a melhor maneira de conviver, visto que uma conduta aceita hoje pode não ser amanhã.</p><p class="versiculo">“O teólogo é aquele que está comprometido com uma visão de mundo que, partindo da revelação de Deus, compreenderá a realidade que o cerca.” (MADUREIRA, 2017, p. 263-264)</p></div>
+<h2 class="cap">Capítulo 2</h2>
+<div class="bloco"><h3>2. Contextualização do comportamento ético secular</h3><span class="pg">Apostila p. 234</span><p>No séc. 4 a.C. a cidade-estado grega em expansão precisou de um código de normas gerais, com direitos, deveres e punições; os primeiros relatos seculares passam por Sócrates, Platão e Aristóteles. Pelo viés cristão, as normas remontam ao criacionismo (Éden, Decálogo) e, na ética bíblica, <b>os princípios não se alteram</b>.</p></div>
+<div class="bloco"><h3>2.1 Ética horizontal — secular</h3><span class="pg">Apostila p. 234–237 · Recapitulação 2</span><p>Segundo Geisler (2010), <span class="chave">ética horizontal é uma ética secular</span>: o fundamento da vida ideal está no próprio ser humano e não aceita valores divinos. Alia-se ao <b>eudemonismo</b> (a felicidade como alvo supremo; Aristóteles, Epicuro, Espinoza).</p><div class="grade"><div class="card"><b>2.1.1 Utilitarismo</b>O bem do maior número. Ética “normativa/teleológica”: os fins justificam os meios. <b>Bentham</b> (1748–1832), quantitativo: dor e prazer são os “dois senhores soberanos”, medidos por intensidade, duração, certeza, proximidade, fecundidade e pureza. <b>Mill</b> (1806–1876), qualitativo: há prazeres mais altos.</div><div class="card"><b>2.1.2 Hedonismo</b>Prazer individual em primeiro lugar. Idealizador: Aristipo de Cirene (435–356 a.C.). Sucessor: Epicuro de Samos (341–271 a.C.). Sartre e Kierkegaard criticam a sociedade hedonista.</div><div class="card"><b>2.1.3 Relativismo cultural/moral</b>Decisão pelo bem da comunidade. Protágoras de Abdera; Franz Boas (1858–1942): certo e errado são o que o grupo social determina.</div></div></div>
+<div class="bloco"><h3>2.2 Modelos éticos não absolutistas — não cristãos</h3><span class="pg">Apostila p. 237–239 · Recapitulação 2</span><p>São 6 paradigmas (3 seculares e 3 cristãos) que respondem: <span class="chave">existem leis éticas objetivas, obrigatórias a todos?</span> (GEISLER, 2010, p. 19). Os três relativistas negam leis morais objetivas.</p><h4>2.2.1 Antinomianismo, antinomismo e pluralismo</h4><p>“Ser contra a lei”: não existem regras morais únicas ou absolutas (FERREIRA, 2008). Vertentes:</p><ul><li><b>Sofismo:</b> a moral e a verdade dependem de cada um (Protágoras); o bom orador convence a plateia de qualquer ponto de vista.</li><li><b>Evolucionismo:</b> conduta adequada é a que contribui para o desenvolvimento humano; exemplo extremo: a teoria da raça superior em <i>Mein Kampf</i>.</li><li><b>Niilismo:</b> perspectiva totalmente cética em relação ao bem moral; para Nietzsche, “Deus está morto”, então vale tudo.</li></ul><h4>2.2.2 Generalismo — legalismo</h4><p>Há regras gerais para maximizar o bem, mas <span class="chave">nenhuma é universal nem isenta de exceção</span>; todas podem ser quebradas em prol do princípio da utilidade (GEISLER, 2010, p. 64).</p><h4>2.2.3 Situacionismo</h4><p>Joseph Fletcher (influenciado por Tillich, Barth e Bultmann) propõe um meio-termo entre antinomianismo e legalismo: só existe uma lei, <b>o amor</b> (ágape). Os 6 vieses:</p><ul><li>1. Somente o amor é uma norma intrinsecamente boa.</li><li>2. A norma suprema da decisão é o amor e nada mais.</li><li>3. Amor e justiça são a mesma coisa: a justiça é o amor distribuído.</li><li>4. O amor é uma atitude (não um sentimento), praticada com qualquer pessoa.</li><li>5. Somente os fins justificam os meios.</li><li>6. As decisões do amor são tomadas em função da situação, não de prescrições.</li></ul><p>Para a ética cristã, nem tudo isso é rejeitado, mas “para a Bíblia, só se justifica aquilo que ela estabelece como conduta”.</p></div>
+<h2 class="cap">Capítulo 3</h2>
+<div class="bloco"><h3>3. Ética cristã baseada na imutabilidade do caráter de Deus</h3><span class="pg">Apostila p. 245</span><p>Cristo é a “cópia escrita” (<i>hypogrammos</i>): modelo e exemplo da ética cristã. Ele interpretou profunda e atemporalmente os Dez Mandamentos (Mt 5.17-48). <span class="chave">A ética cristã é teocêntrica</span> e submetida a Deus; sustenta a necessidade de leis morais absolutas, universais e imutáveis.</p></div>
+<div class="bloco"><h3>3.1 Ética vertical — cristã</h3><span class="pg">Apostila p. 245–246 · Recapitulação 3</span><p class="versiculo">“Porque Eu, o SENHOR, não mudo.” (Ml 3.6) “Deus não é homem para mentir.” (Nm 23.19)</p><p>A ética vertical tem origem na vontade soberana de Deus e se fundamenta no Seu caráter imutável; por isso o padrão do bom, justo e verdadeiro é <b>absoluto e universal</b>.</p><ul><li><b>Prescritiva, não descritiva:</b> não se define pelo modo como os homens agem, mas aponta como devem agir (Dt 6.1,2).</li><li><b>Deontológica, não consequencialista</b> (Geisler): centrada no dever de praticar a ação como o Senhor ordena (Cl 3.23). Também chamada intuicionismo moral, ética do dever ou imperativo categórico (Rm 2.14,15).</li><li>Crê também no discurso e no contratualismo moral: colocar-se no lugar do outro (Sl 15.2-5).</li></ul></div>
+<div class="bloco"><h3>3.2 Modelos éticos absolutistas — cristãos</h3><span class="pg">Apostila p. 247–249 · Recapitulação 3</span><div class="grade"><div class="card"><b>Absolutismo não conflitante</b>Tradição anabatista (ideal). Muitas leis absolutas, nenhuma em conflito: o conflito é só aparente (Nm 23.19; Ezequias, 2Rs 20.1-6). Agostinho (354–430): mentir nunca se justifica, pois a mentira cria uma teia. Kant (intencionalista): vale a intenção. Murray: Deus manifesta Seu caráter na lei, e a lei não muda.</div><div class="card"><b>Absolutismo conflitante</b>Tradição luterana/presbiteriana. Há leis absolutas que entram em conflito real (a Queda). Escolhe-se o <span class="chave">menor de dois males</span> e confessa-se o pecado. Thielicke; Hodge.</div><div class="card"><b>Absolutismo hierárquico</b>Tradição reformada. Hierarquia de valores: ao escolher a norma superior, a inferior é transcendida e a pessoa <b>não peca</b>. Ex.: a vida acima da verdade.</div></div></div>
+<h2 class="cap">Capítulos 4 e 5</h2>
+<div class="bloco"><h3>4. Relação entre princípios éticos e valores morais cristãos</h3><span class="pg">Apostila p. 250–253 · Recapitulação 4</span><p>Perguntas centrais (KAISER JÚNIOR, 2015, p. 12): a verdade bíblica continua a norma válida? O caráter de Deus continua a base de um absoluto ético? Devemos atender às exigências sociais? Daí a necessidade de distinguir ética <b>horizontal/secular</b> e <b>vertical/cristã</b>.</p><p><b>4.2 Cosmovisão cristã.</b> Para James Sire (2018) cosmovisão é <span class="chave">um compromisso do coração</span>: conjunto de pressuposições, verdadeiras, parcialmente verdadeiras ou falsas, sustentadas consciente ou inconscientemente sobre a constituição básica da realidade. A ética cristã baseia-se na <b>revelação divina</b>, geral (Rm 1.19-20; 2.12-15; acessível a todos) e especial (as Escrituras).</p><p><b>4.3 Dilemas éticos.</b> Exemplos: a mãe que rouba o remédio para salvar o filho (PCN de Ética) e o pai de família em país fechado ao cristianismo que precisa mentir para proteger a casa. Escolher entre dois valores gera o dilema.</p></div>
+<div class="bloco"><h3>5. A prática da ética cristã nas questões éticas sociais</h3><span class="pg">Apostila p. 255–277</span><ul><li><b>5.1 O sumo mandamento (Mt 22.23-40):</b> amar a Deus e ao próximo; dele dependem a Lei e os Profetas. Aplica-se ao âmbito familiar, profissional e ministerial e ao combate ao preconceito e à discriminação.</li><li><b>5.2 O pecado:</b> para Deus não há “pecadinho” (Rm 6.23). O Diabo é o pai da mentira (Jo 8.44).</li><li><b>5.3 A verdade pela verdade:</b> três origens (Chauí). <i>Veritas</i> (latim), tempo passado: fatos que foram descobertos; Lucas e Teófilo (Lc 1.1-4). <i>Alétheia</i> (grego), presente: “ver”; Ananias e Safira (At 5). <i>Emunah</i> (hebraico), futuro: o que foi prometido; Jacó e Labão (Gn 29). Abraão e Pedro mentiram por medo. Posição conservadora: mentir sempre é pecado.</li><li><b>5.4 Aborto e infanticídio:</b> “Não matarás” (Dt 5.17). Abordagens (Geisler): cristã conservadora (plenamente humano; nunca), social neo-contemporânea (humano em potencial; algumas vezes) e liberal (subumano; a qualquer momento). Código Penal, arts. 124–128 e 123.</li><li><b>5.5 Casamento, divórcio e novo casamento:</b> o casamento é de três, homem, mulher e Jeová (Gn 2.23-24). Jugo desigual: 2Co 6.14-18. Divórcio por abandono do cônjuge descrente: 1Co 7.15. Divórcio aprovado no Brasil em 1977. Lei Maria da Penha, 11.340/2006.</li><li><b>5.6 Homossexualismo (LGBTQ+):</b> posição da denominação: pecado à luz da Bíblia (Rm 1.26-27; 1Co 6.9-10), comportamento que pode ser desaprendido, com libertação em Cristo (2Co 5.17).</li><li><b>5.7 Eutanásia, pena de morte e suicídio:</b> a vida pertence a Deus (Dt 32.39; Ec 8.8). A Bíblia registra 6 suicídios: Abimeleque, Saul, escudeiro de Saul, Aitofel, Zinri e Judas. “O vosso corpo é o templo do Espírito Santo” (1Co 6.19-20).</li></ul></div>
+</section>
+<section class="painel" id="recaps">
+<div class="bloco"><h3>Recapitulações da apostila — com respostas</h3><p>Perguntas como estão no livro; clique em <b>Ver resposta</b> para conferir a resposta modelo. Escreva no caderno antes de abrir.</p></div>
+<div class="bloco"><span class="recmarca">Recapitulação 1</span><span class="pg">Apostila p. 233 · itens 1 a 1.2</span><div class="recq"><div class="pergunta"><b>1)</b> Defina ética e como ela sustenta a base do saber humano.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">Ética (do grego <i>éthos</i>) é a teoria e prática social adequada e aceitável: um código de conduta criado “para o bem de todos”, com punições legais, eclesiásticas ou sociais. Sustenta o <b>saber humano</b> porque dá as bases do convívio em sociedade; varia conforme legislação, cultura e religião, e o homem, sendo histórico, cultural e social, transforma conscientemente o mundo à sua volta.</div></div><div class="recq"><div class="pergunta"><b>2)</b> De acordo com Kaiser Júnior, Barros Filho e Madureira, destaque o que é a natureza reflexiva da ética.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">Para <b>Kaiser Júnior</b>, “ser ético” é pensar, refletir, ponderar e examinar as condutas sociais. Para <b>Barros Filho</b>, é a constante reflexão para identificar a melhor maneira de conviver, pois a conduta aceita hoje pode não ser amanhã. Para <b>Madureira</b>, a ética cristã é reflexão que parte da revelação de Deus, a Palavra como “lente” para enxergar todas as coisas.</div></div></div><div class="bloco"><span class="recmarca">Recapitulação 2</span><span class="pg">Apostila p. 242–243 · itens 2.1 e 2.2</span><div class="recq"><div class="pergunta"><b>1)</b> Conceitue ética horizontal secular.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">Segundo Geisler, é uma ética secular em que o fundamento da vida perfeita e ideal está no próprio ser humano, em linha horizontal. Não aceita a existência de valores divinos na reflexão sobre a conduta ideal; o definidor do que é conduta ideal é a satisfação do desejo do homem, e não a Lei e a vontade de Deus.</div></div><div class="recq"><div class="pergunta"><b>2)</b> Sintetize o que melhor define o utilitarismo e suas vertentes.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">Modelo ético em que os fins justificam os meios: o certo é a conduta que traz prazer e felicidade ao maior número de pessoas. Vertentes: <b>quantitativo</b> (Bentham: dor e prazer medidos por intensidade, duração etc.) e <b>qualitativo</b> (Mill: os prazeres mais altos, que satisfazem o maior número).</div></div><div class="recq"><div class="pergunta"><b>3)</b> Selecione a frase que melhor define o hedonismo.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">“Aquilo que traz o <b>máximo de prazer e o mínimo de dor</b>, começando por si e em seguida para os outros, independente da quantidade de beneficiados, é o certo; fazer o contrário é o errado.” (Aristipo de Cirene; sucessor Epicuro)</div></div><div class="recq"><div class="pergunta"><b>4)</b> Selecione a frase que melhor define o relativismo cultural e moral.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">“O certo, o errado, o bom e o ruim são determinados <b>pelo grupo social ao qual cada um pertence</b>.” (GEISLER, 2010, p. 137)</div></div><div class="recq"><div class="pergunta"><b>5)</b> Selecione a frase que melhor define o generalismo.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">“Há regras, crenças, códigos morais gerais válidos para guiar as decisões humanas na direção de aumentar ao máximo o bem na sociedade, mas <b>nenhuma delas é universal, nenhuma está isenta de exceção</b>; todas devem ser quebradas em prol do princípio da utilidade.” (GEISLER, 2010, p. 64)</div></div><div class="recq"><div class="pergunta"><b>6)</b> Enumere as frases ao assunto correspondente (antinomianismo e situacionismo).</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta"><b>1.1 Sofistas:</b> “São os homens que determinam o que é certo ou errado em uma cultura…”. <b>1.2 Evolucionismo:</b> “Uma conduta adequada era a que contribuía para o desenvolvimento humano…”. <b>1.3 Niilismo:</b> “Perspectiva totalmente cética em relação ao bem moral…”. <b>2.1</b> a <b>2.6</b>: os seis vieses do situacionismo, cada um com sua frase (ex.: 2.4, “O amor é uma atitude e não um sentimento…”; 2.6, “Para saber o que o amor precisará, ela terá que esperar o momento de lidar com uma determinada situação”).</div></div></div><div class="bloco"><span class="recmarca">Recapitulação 3</span><span class="pg">Apostila p. 248–249 · itens 3 a 3.2</span><div class="recq"><div class="pergunta"><b>1)</b> Selecione a frase que melhor defina a introdução ao capítulo 3.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">“A ética cristã é teocêntrica e está submetida a Deus, por isso deve refletir o posicionamento ético das Igrejas, por estar firmemente alicerçada no caráter moral e imutável de Deus e sustenta a defesa e a necessidade da existência de leis morais absolutas, universais e imutáveis.”</div></div><div class="recq"><div class="pergunta"><b>2)</b> Selecione a frase que melhor defina a ética vertical cristã.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">“A ética vertical ou ética cristã tem origem na vontade soberana de Deus e está fundamentada no Seu caráter imutável, e por essa razão o padrão do que é bom, justo, correto e verdadeiro sempre será <b>absoluto e universal</b>.”</div></div><div class="recq"><div class="pergunta"><b>3)</b> Defina os modelos éticos absolutistas cristãos.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">São três: <b>não conflitante</b> (anabatista: leis absolutas sem conflito real), <b>conflitante</b> (luterano/presbiteriano: conflito real, escolhe-se o menor mal e confessa-se) e <b>hierárquico</b> (reformado: a norma superior transcende a inferior e não há pecado). Todos alicerçados no caráter moral e imutável de Deus.</div></div></div><div class="bloco"><span class="recmarca">Recapitulação 4</span><span class="pg">Apostila p. 254 · itens 4 e 5</span><div class="recq"><div class="pergunta"><b>1)</b> Selecione as frases que, em sua opinião, melhor definam a relação entre princípios éticos e valores morais cristãos face à subjetividade de comportamentos em uma sociedade heterogênea e mutável.</div><button class="ver" onclick="verResp(this)">Ver resposta</button><div class="resposta">Resposta modelo: “A verdade bíblica continua sendo a norma válida para o que é considerado certo, errado, bom, mau, justo e incorreto? O caráter de Deus continua sendo a base para afirmar que existe um absoluto ético no universo?” (KAISER JÚNIOR, 2015, p. 12). A ética cristã deve ser muito utilizada atualmente, porque estabelece uma clara distinção entre o que é ético e o que não é. (Escolha, com suas palavras, as frases que mais o convenceram.)</div></div></div>
+</section>
+<section class="painel" id="simulado">
+<div id="menu"><h3>Simulado — 5 rodadas × 8 questões</h3><p>Cada questão tem 3 alternativas e explicação. Escolha a rodada:</p><div class="rodadas" id="listaRodadas"></div><div class="botoes"><button class="acao vazado" onclick="zerar()">Zerar meu progresso</button></div></div>
+<div id="prova" style="display:none"><div class="barra"><div class="titulo" id="tituloRodada"></div><div class="placar" id="placar"></div></div><div id="questoes"></div>
+<div class="resultado" id="resultado"><div class="nota" id="nota"></div><div class="msg" id="msg"></div></div>
+<div class="botoes"><button class="acao" onclick="voltar()">Voltar às rodadas</button><button class="acao vazado" onclick="refazer()">Refazer esta rodada</button></div></div>
+</section>
+</main>
+<footer class="wrap"><a href="index.html" style="color:inherit">← Voltar ao painel</a> · Ética Cristã — material de estudo baseado na apostila. Bons estudos, Sérgio.</footer>
+<script>
+const abas=document.querySelectorAll('nav.abas button');
+abas.forEach(b=>b.onclick=()=>{
+  abas.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  document.querySelectorAll('.painel').forEach(p=>p.classList.remove('on'));
+  document.getElementById(b.dataset.alvo).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+const RODADAS=[{"t": "Rodada 1 — Ética e moral", "d": "Definição, origens e natureza reflexiva", "q": [{"p": "“Moral” vem do latim:", "o": ["Mores", "Éthos", "Logos"], "c": 0, "e": "Mores = hábito, costume (p. 232)."}, {"p": "“Ética” vem do grego:", "o": ["Mores", "Éthos", "Paideia"], "c": 1, "e": "Éthos = hábito, jeito de ser, costume."}, {"p": "Quem começou a apresentar ética e moral como diferentes?", "o": ["Platão", "Sócrates", "Aristóteles"], "c": 2, "e": "Aristóteles (384–322 a.C.)."}, {"p": "A moral, na apostila, é:", "o": ["Prática pessoal e individual: quem realmente sou", "Estatuto de conduta social com punição", "Uma lei criada pelo Estado"], "c": 0, "e": "Ética é a prática social; moral é individual."}, {"p": "Alguém pode agir eticamente sem expressar sua moral quando:", "o": ["Age por convicção", "Age apenas por medo de ser punido", "Segue a Bíblia"], "c": 1, "e": "Essas regras não expressam quem a pessoa realmente é."}, {"p": "Para Kaiser Júnior, “ser ético” é:", "o": ["Decorar normas", "Pensar, refletir, ponderar e examinar as condutas sociais", "Obedecer à maioria"], "c": 1, "e": "Natureza reflexiva da ética (2015)."}, {"p": "Para Barros Filho, a ética muda porque:", "o": ["Uma conduta aceita hoje pode não ser aceita amanhã", "Deus muda de ideia", "As leis são fixas"], "c": 0, "e": "BARROS FILHO, 2014, p. 17."}, {"p": "Segundo Madureira, o teólogo enxerga a realidade:", "o": ["Pela filosofia", "Pela Palavra, como uma lente", "Pela tradição popular"], "c": 1, "e": "MADUREIRA, 2017, p. 263-264."}]}, {"t": "Rodada 2 — Ética secular", "d": "Utilitarismo, hedonismo e relativismo", "q": [{"p": "Ética horizontal, para Geisler, é:", "o": ["Uma ética secular, fundada no próprio ser humano", "A ética dos Dez Mandamentos", "Uma ética eclesiástica"], "c": 0, "e": "Não aceita valores divinos na reflexão."}, {"p": "O alvo supremo do eudemonismo é:", "o": ["A lei", "A felicidade", "A verdade"], "c": 1, "e": "Busca uma vida plena e completamente feliz."}, {"p": "Quem criou o utilitarismo quantitativo?", "o": ["Bentham", "Mill", "Epicuro"], "c": 0, "e": "Jeremy Bentham (1748–1832)."}, {"p": "Os “dois senhores soberanos” de Bentham são:", "o": ["Lei e graça", "Dor e prazer", "Fé e razão"], "c": 1, "e": "Dor e prazer impulsionam as decisões humanas."}, {"p": "Mill defendeu um utilitarismo:", "o": ["Qualitativo, com prazeres mais altos", "Idêntico ao de Bentham", "Contrário ao prazer"], "c": 0, "e": "Criticou o método de Bentham como muito hedonista."}, {"p": "Idealizador do hedonismo:", "o": ["Aristipo de Cirene", "Protágoras", "Franz Boas"], "c": 0, "e": "435–356 a.C.; sucessor Epicuro de Samos."}, {"p": "Para o relativismo cultural, o certo e o errado são definidos:", "o": ["Por Deus", "Pelo grupo social", "Pela intenção"], "c": 1, "e": "GEISLER, 2010, p. 137."}, {"p": "Qual o princípio do utilitarismo?", "o": ["Os fins justificam os meios", "Os meios nunca importam", "Só a lei importa"], "c": 0, "e": "Produzir felicidade para o maior número vale mais que a conduta em si."}]}, {"t": "Rodada 3 — Modelos não absolutistas", "d": "Antinomianismo, generalismo e situacionismo", "q": [{"p": "Antinomianismo significa:", "o": ["Ser contra a lei: não há regras morais absolutas", "Obedecer a todas as leis", "Seguir o amor"], "c": 0, "e": "FERREIRA, 2008."}, {"p": "Qual vertente afirma que “a moral e a verdade dependem de cada um”?", "o": ["Sofismo", "Niilismo", "Situacionismo"], "c": 0, "e": "Protágoras e os sofistas."}, {"p": "Qual vertente foi usada para defender a teoria da raça superior?", "o": ["Evolucionismo", "Sofismo", "Generalismo"], "c": 0, "e": "Hitler, <i>Mein Kampf</i>."}, {"p": "“Deus está morto” é frase de:", "o": ["Nietzsche", "Kant", "Fletcher"], "c": 0, "e": "Exemplo de niilismo."}, {"p": "O generalismo (legalismo) afirma que as regras gerais:", "o": ["São universais e sem exceção", "Não existem", "Não são universais e podem ser quebradas pela utilidade"], "c": 2, "e": "GEISLER, 2010, p. 64."}, {"p": "Quem é o expoente do situacionismo?", "o": ["Joseph Fletcher", "John Murray", "Hodge"], "c": 0, "e": "Influenciado por Tillich, Barth e Bultmann."}, {"p": "Para o situacionismo, a única norma é:", "o": ["A justiça", "O amor (ágape)", "A tradição"], "c": 1, "e": "“Somente o amor é uma norma intrinsecamente boa.”"}, {"p": "Qual NÃO é um viés do situacionismo?", "o": ["O amor é uma atitude, não um sentimento", "As decisões são tomadas pela situação", "Existem muitas leis absolutas sem conflito"], "c": 2, "e": "Isso é absolutismo não conflitante."}]}, {"t": "Rodada 4 — Ética cristã", "d": "Caráter de Deus e absolutismos", "q": [{"p": "A ética cristã se fundamenta:", "o": ["Na maioria", "No caráter imutável de Deus", "Na cultura"], "c": 1, "e": "Ml 3.6; Nm 23.19."}, {"p": "Hypogrammos significa:", "o": ["Cópia escrita, modelo", "Lei natural", "Sabedoria"], "c": 0, "e": "Cristo é o modelo da ética cristã."}, {"p": "Dizer que a ética cristã é prescritiva significa que ela:", "o": ["Descreve o comportamento comum", "Aponta como se deve agir", "Muda com a cultura"], "c": 1, "e": "Dt 6.1,2."}, {"p": "Ética deontológica é a centrada:", "o": ["No resultado", "No dever de praticar a ação como ordenada por Deus", "No prazer"], "c": 1, "e": "Cl 3.23."}, {"p": "Absolutismo não conflitante está ligado à tradição:", "o": ["Anabatista", "Luterana", "Reformada"], "c": 0, "e": "O conflito é só aparente."}, {"p": "No absolutismo conflitante, o cristão deve:", "o": ["Escolher o menor de dois males e confessar o pecado", "Ficar isento de pecado", "Ignorar a lei"], "c": 0, "e": "Tradição luterana/presbiteriana (Thielicke)."}, {"p": "No absolutismo hierárquico, ao escolher a norma superior:", "o": ["A pessoa peca", "A pessoa não peca", "A norma superior é anulada"], "c": 1, "e": "Tradição reformada."}, {"p": "Para Kant (intencionalista), o valor da ação está:", "o": ["Na intenção", "No resultado", "Na tradição"], "c": 0, "e": "“Se a intenção foi boa, agiu-se bem.”"}]}, {"t": "Rodada 5 — Cosmovisão e prática", "d": "Sire, sumo mandamento, verdade e questões sociais", "q": [{"p": "Para Sire, cosmovisão é:", "o": ["Um compromisso do coração", "Uma teoria científica", "Um código penal"], "c": 0, "e": "Conjunto de pressuposições sobre a realidade."}, {"p": "A revelação geral é:", "o": ["Restrita a Israel", "Acessível a todos, em todo lugar (Rm 1.19-20)", "Só a Escritura"], "c": 1, "e": "A especial são as Escrituras."}, {"p": "O sumo mandamento está em:", "o": ["Mt 22.23-40", "Êx 20", "Gn 1"], "c": 0, "e": "Amar a Deus e ao próximo."}, {"p": "Verdade latina (veritas) refere-se ao tempo:", "o": ["Passado", "Presente", "Futuro"], "c": 0, "e": "Fatos que foram descobertos; Lucas."}, {"p": "Ananias e Safira ilustram a verdade:", "o": ["Latina (passado)", "Grega, alétheia (presente)", "Hebraica (futuro)"], "c": 1, "e": "At 5."}, {"p": "A verdade hebraica (emunah) refere-se ao:", "o": ["Passado", "Presente", "Futuro, ao que foi prometido"], "c": 2, "e": "Jacó e Labão (Gn 29)."}, {"p": "Na abordagem cristã conservadora, o aborto é:", "o": ["Algumas vezes aceitável", "Nunca", "Sempre permitido"], "c": 1, "e": "Plenamente humano; santidade da vida."}, {"p": "Quantos casos de suicídio a Bíblia registra, segundo a apostila?", "o": ["3", "6", "9"], "c": 1, "e": "Abimeleque, Saul, escudeiro, Aitofel, Zinri e Judas."}]}];
+
+function verResp(b){const r=b.nextElementSibling;r.classList.toggle('on');b.textContent=r.classList.contains('on')?'Ocultar resposta':'Ver resposta';}
+let atual=-1, acertos=0, respondidas=0;
+const feitas={};
+
+function montarMenu(){
+  const el=document.getElementById('listaRodadas');
+  el.innerHTML='';
+  RODADAS.forEach((r,i)=>{
+    const b=document.createElement('button');
+    b.className='rodada'+(feitas[i]!==undefined?' feita':'');
+    b.innerHTML='<span>Rodada '+(i+1)+'</span>'+r.t.split('—')[1].trim()+'<em>'+r.d+(feitas[i]!==undefined?' · última nota: '+feitas[i]+'/'+r.q.length:'')+'</em>';
+    b.onclick=()=>abrir(i);
+    el.appendChild(b);
+  });
+}
+function abrir(i){
+  atual=i;acertos=0;respondidas=0;
+  document.getElementById('menu').style.display='none';
+  document.getElementById('prova').style.display='block';
+  document.getElementById('tituloRodada').textContent=RODADAS[i].t;
+  document.getElementById('placar').textContent='0 / '+RODADAS[i].q.length;
+  document.getElementById('resultado').classList.remove('on');
+  const c=document.getElementById('questoes');c.innerHTML='';
+  RODADAS[i].q.forEach((q,qi)=>{
+    const d=document.createElement('div');d.className='q';
+    let html='<div class="num">Questão '+(qi+1)+'</div><div class="enunciado">'+q.p+'</div>';
+    q.o.forEach((o,oi)=>{html+='<button class="alt" data-q="'+qi+'" data-o="'+oi+'">'+String.fromCharCode(97+oi)+') '+o+'</button>';});
+    html+='<div class="expl" id="expl-'+qi+'"><b>Resposta:</b> '+q.e+'</div>';
+    d.innerHTML=html;c.appendChild(d);
+  });
+  c.querySelectorAll('.alt').forEach(b=>b.onclick=()=>responder(b));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function responder(b){
+  const qi=+b.dataset.q, oi=+b.dataset.o, q=RODADAS[atual].q[qi];
+  const pai=b.parentElement;
+  pai.querySelectorAll('.alt').forEach((x,k)=>{
+    x.disabled=true;
+    if(k===q.c)x.classList.add('certa');
+    else if(k===oi)x.classList.add('errada');
+  });
+  document.getElementById('expl-'+qi).classList.add('on');
+  respondidas++; if(oi===q.c)acertos++;
+  document.getElementById('placar').textContent=acertos+' / '+RODADAS[atual].q.length;
+  if(respondidas===RODADAS[atual].q.length)finalizar();
+}
+function finalizar(){
+  feitas[atual]=acertos;
+  const r=document.getElementById('resultado');
+  document.getElementById('nota').textContent=acertos+'/'+RODADAS[atual].q.length;
+  let m;
+  if(acertos===RODADAS[atual].q.length)m='Perfeito. Essa rodada está dominada.';
+  else if(acertos>=RODADAS[atual].q.length-2)m='Muito bom. Revise só as questões marcadas em vermelho.';
+  else if(acertos>=RODADAS[atual].q.length-4)m='Está no caminho. Releia a seção da apostila e refaça.';
+  else m='Volte à apostila desta rodada antes de tentar de novo — leia com calma e repita.';
+  document.getElementById('msg').textContent=m;
+  r.classList.add('on');
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+  montarMenu();
+}
+function voltar(){
+  document.getElementById('prova').style.display='none';
+  document.getElementById('menu').style.display='block';
+  montarMenu();window.scrollTo({top:0,behavior:'smooth'});
+}
+function refazer(){abrir(atual);}
+function zerar(){for(const k in feitas)delete feitas[k];montarMenu();}
+montarMenu();
+</script>
+</body>
+</html>

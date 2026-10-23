@@ -203,8 +203,108 @@
     margin-top:44px;
   }
 
+
+  /* --- Botões grandes das disciplinas --- */
+  .grupo{
+    grid-column:span 2;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    margin:10px 2px 0 2px;
+  }
+  .grupo:first-child{margin-top:0;}
+  a.btn.big{
+    min-height:150px;
+    padding:22px 20px;
+    justify-content:space-between;
+    border-radius:16px;
+  }
+  a.btn.big .btn-icon{width:48px;height:48px;border-radius:13px;font-size:22px;}
+  a.btn.big .btn-title{font-size:22px;line-height:1.2;margin:0;}
+  a.btn.big .btn-arrow{font-size:20px;}
+  a.btn.big:hover{background:#fff;}
+
+
+  /* --- Botões 3D --- */
+  a.btn.big{
+    --c1:#d9976f; --c2:#c17a54; --fundo:#9a5a38;
+    border:none !important;
+    color:#fff;
+    background:linear-gradient(180deg,var(--c1) 0%,var(--c2) 100%);
+    box-shadow:
+      0 9px 0 var(--fundo),
+      0 16px 22px rgba(60,40,20,0.30),
+      inset 0 2px 0 rgba(255,255,255,0.45),
+      inset 0 -3px 6px rgba(0,0,0,0.12);
+    transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+    margin-bottom:10px;
+  }
+  a.btn.big:hover{
+    background:linear-gradient(180deg,var(--c1) 0%,var(--c2) 100%);
+    transform:translateY(-3px);
+    filter:brightness(1.05);
+    box-shadow:
+      0 12px 0 var(--fundo),
+      0 20px 26px rgba(60,40,20,0.32),
+      inset 0 2px 0 rgba(255,255,255,0.45),
+      inset 0 -3px 6px rgba(0,0,0,0.12);
+  }
+  a.btn.big:active{
+    transform:translateY(8px);
+    box-shadow:
+      0 1px 0 var(--fundo),
+      0 3px 6px rgba(60,40,20,0.30),
+      inset 0 2px 0 rgba(255,255,255,0.30),
+      inset 0 -3px 6px rgba(0,0,0,0.15);
+  }
+  a.btn.big .btn-title{color:#fff;text-shadow:0 2px 0 rgba(0,0,0,0.22);}
+  a.btn.big .btn-arrow{color:rgba(255,255,255,0.9);}
+  a.btn.big .btn-icon{
+    background:rgba(255,255,255,0.22);
+    color:#fff;
+    box-shadow:inset 0 2px 0 rgba(255,255,255,0.4), 0 3px 0 rgba(0,0,0,0.18);
+  }
+  a.btn.big.acc-sky  {--c1:#97b0c6;--c2:#6f8aa2;--fundo:#4d647a;}
+  a.btn.big.acc-gold {--c1:#d3ae4e;--c2:#b0861f;--fundo:#80600f;}
+  a.btn.big.acc-plum {--c1:#a8749a;--c2:#855376;--fundo:#5d3752;}
+  a.btn.big.acc-sage {--c1:#97ae9f;--c2:#6f8a78;--fundo:#4b6454;}
+  a.btn.big.acc-teal {--c1:#6aa59c;--c2:#47827a;--fundo:#2f5953;}
+
+  /* pequenos (Meet e Classroom) com relevo leve */
+  a.btn:not(.big){
+    box-shadow:0 4px 0 #cfc6b4, 0 8px 12px rgba(80,65,45,0.14), inset 0 1px 0 #fff;
+  }
+  a.btn:not(.big):active{transform:translateY(3px);box-shadow:0 1px 0 #cfc6b4;}
+  .panel-inner{gap:18px 14px;}
+
+  /* acesso pequeno ao trabalho */
+  a.mini{
+    display:flex;align-items:center;gap:12px;
+    max-width:380px;
+    margin:-10px 0 0 0;
+    padding:10px 14px;
+    border-radius:12px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    box-shadow:0 3px 0 var(--line);
+    text-decoration:none;color:var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  a.mini:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--line);}
+  a.mini:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line);}
+  a.mini .mini-ico{
+    width:30px;height:30px;border-radius:8px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--clay-soft);color:#7a4426;font-size:14px;
+  }
+  a.mini b{display:block;font-size:13px;font-weight:600;}
+  a.mini small{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:1px;}
+  a.mini .mini-seta{margin-left:auto;color:var(--ink-soft);}
+
   @media (max-width:520px){
     a.btn.wide, a.btn{grid-column:span 2;}
+    a.btn.big{min-height:120px;}
     h1{font-size:29px;}
   }
 </style>
@@ -216,21 +316,22 @@
       <span class="brand">IBBC · Extensão de Ferraz de Vasconcelos</span>
     </div>
     <h1>Estudos e materiais de curso</h1>
-    <p class="sub">Painel de acesso aos trabalhos, ensaios e apresentações do curso de Teologia. Toque em um botão para abrir o material.</p>
+    <p class="sub">Painel de acesso às disciplinas do curso de Teologia. Toque em um botão para abrir.</p>
 
     <div class="section-label">Painel de controle</div>
     <div class="panel">
       <div class="dial"><span class="dial-dot"></span></div>
       <div class="panel-inner">
 
+        <div class="grupo">AULA</div>
         <a class="btn" href="https://meet.google.com/vot-sjix-bqp" target="_blank" rel="noopener noreferrer">
           <div class="btn-top">
             <div class="btn-icon icon-sky">●</div>
             <div class="btn-arrow">↗</div>
           </div>
-          <span class="btn-tag">AULA AO VIVO</span>
+          <span class="btn-tag">AO VIVO</span>
           <p class="btn-title">Google Meet</p>
-          <p class="btn-desc">Entrar na videochamada da aula.</p>
+          <p class="btn-desc">Entrar na aula.</p>
         </a>
 
         <a class="btn" href="https://classroom.google.com/u/0/c/NzkzNDk4MzkxOTEx" target="_blank" rel="noopener noreferrer">
@@ -240,63 +341,68 @@
           </div>
           <span class="btn-tag">TURMA</span>
           <p class="btn-title">Google Classroom</p>
-          <p class="btn-desc">Materiais, avisos e atividades.</p>
+          <p class="btn-desc">Materiais e atividades.</p>
         </a>
 
-        <a class="btn wide acc-clay" href="apresentacao-pena-de-morte-etica-crista.html">
-          <div class="btn-top">
-            <div class="btn-icon icon-clay">✦</div>
-            <div class="btn-arrow">→</div>
-          </div>
-          <span class="btn-tag">ÉTICA CRISTÃ</span>
-          <p class="btn-title">Ética Cristã</p>
-          <p class="btn-desc">Apresentação de slides sobre o tema.</p>
-        </a>
-
-        <a class="btn wide acc-sky" href="educacao-crista-apostila-simulado.html">
+        <div class="grupo">DISCIPLINAS</div>
+        <a class="btn big acc-sky" href="educacao-crista-apostila-simulado.html">
           <div class="btn-top">
             <div class="btn-icon icon-sky">▤</div>
             <div class="btn-arrow">→</div>
           </div>
-          <span class="btn-tag">EDUCAÇÃO CRISTÃ</span>
           <p class="btn-title">Educação Cristã</p>
-          <p class="btn-desc">Apostila completa em abas + simulado com 10 rodadas e 100 questões.</p>
         </a>
 
-        <a class="btn wide acc-gold" href="apostila-teologia-filosofia.html">
+        <a class="btn big acc-gold" href="apostila-teologia-filosofia.html">
           <div class="btn-top">
-            <div class="btn-icon icon-gold">▤</div>
+            <div class="btn-icon icon-gold">⚖</div>
             <div class="btn-arrow">→</div>
           </div>
-          <span class="btn-tag">TEOLOGIA E FILOSOFIA</span>
           <p class="btn-title">Teologia e Filosofia</p>
-          <p class="btn-desc">Apostila completa + simulado com 20 rodadas × 10 questões.</p>
         </a>
 
-        <a class="btn wide acc-plum" href="heresiologia-apostila-simulado.html">
+        <a class="btn big acc-plum" href="heresiologia-apostila-simulado.html">
           <div class="btn-top">
             <div class="btn-icon icon-plum">✚</div>
             <div class="btn-arrow">→</div>
           </div>
-          <span class="btn-tag">HERESIOLOGIA</span>
           <p class="btn-title">Heresiologia</p>
-          <p class="btn-desc">Apostila completa em abas + simulado com 10 rodadas × 10 questões.</p>
         </a>
 
-        <a class="btn wide acc-sage" href="vida-crista-apostila-simulado.html">
+        <a class="btn big acc-sage" href="vida-crista-apostila-simulado.html">
           <div class="btn-top">
             <div class="btn-icon icon-sage">✝</div>
             <div class="btn-arrow">→</div>
           </div>
-          <span class="btn-tag">VIDA CRISTÃ</span>
           <p class="btn-title">Vida Cristã</p>
-          <p class="btn-desc">Apostila completa em abas + simulado com 10 rodadas × 10 questões.</p>
+        </a>
+
+        <a class="btn big acc-teal" href="geografia-historica-e-biblica-apostila-simulado.html">
+          <div class="btn-top">
+            <div class="btn-icon icon-teal">🧭</div>
+            <div class="btn-arrow">→</div>
+          </div>
+          <p class="btn-title">Geografia Bíblica</p>
+        </a>
+
+        <a class="btn big" href="etica-crista-apostila-simulado.html">
+          <div class="btn-top">
+            <div class="btn-icon icon-clay">✦</div>
+            <div class="btn-arrow">→</div>
+          </div>
+          <p class="btn-title">Ética Cristã</p>
         </a>
 
       </div>
     </div>
 
-    <footer>Curso de Teologia · Disciplina de Ética Cristã</footer>
+    <a class="mini" href="apresentacao-pena-de-morte-etica-crista.html">
+      <span class="mini-ico">✦</span>
+      <span><b>Trabalho de Ética Cristã</b><small>Pena de morte · apresentação de slides</small></span>
+      <span class="mini-seta">→</span>
+    </a>
+
+    <footer>Curso de Teologia</footer>
   </div>
 </body>
 </html>
