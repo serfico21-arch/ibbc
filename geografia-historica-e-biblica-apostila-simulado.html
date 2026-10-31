@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geografia Histórica e Bíblica — Apostila e Simulado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f6f1e6;
+  --papel2:#efe7d7;
+  --tinta:#221e18;
+  --tinta-suave:#544c3e;
+  --verde:#1f4d3a;
+  --verde-claro:#2f6b52;
+  --ouro:#a8791f;
+  --vinho:#7d2b25;
+  --linha:#d8cdb6;
+  --sombra:0 2px 0 var(--linha), 0 18px 40px -28px rgba(34,30,24,.6);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:'Spectral',Georgia,serif;font-size:17px;line-height:1.65;
+  background-image:radial-gradient(circle at 12% 8%, rgba(31,77,58,.06), transparent 45%),
+                   radial-gradient(circle at 88% 92%, rgba(168,121,31,.08), transparent 45%);
+}
+header.capa{
+  background:var(--verde);color:#f6f1e6;padding:38px 22px 30px;
+  border-bottom:6px solid var(--ouro);
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.capa h1{
+  font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(28px,6vw,46px);margin:0 0 6px;line-height:1.05;
+}
+header.capa .sub{font-style:italic;opacity:.9;margin:0}
+header.capa .tag{
+  display:inline-block;margin-top:14px;font-family:'Archivo',sans-serif;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(246,241,230,.45);padding:5px 12px;border-radius:2px;
+}
+nav.abas{
+  position:sticky;top:0;z-index:20;background:var(--papel2);
+  border-bottom:1px solid var(--linha);display:flex;gap:0;
+}
+nav.abas button{
+  flex:1;background:none;border:0;padding:15px 8px;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);
+  border-bottom:3px solid transparent;transition:.2s;
+}
+nav.abas button.on{color:var(--verde);border-bottom-color:var(--ouro);background:var(--papel)}
+main{padding:34px 0 80px}
+section.painel{display:none;animation:sobe .35s ease both}
+section.painel.on{display:block}
+@keyframes sobe{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+h2.cap{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ouro);margin:44px 0 6px;
+}
+h3{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,4vw,27px);
+  line-height:1.2;margin:0 0 14px;color:var(--verde);
+}
+h4{font-family:'Archivo',sans-serif;font-size:17px;margin:26px 0 6px;color:var(--tinta)}
+p{margin:0 0 13px}
+ul{margin:0 0 14px;padding-left:20px}
+li{margin-bottom:7px}
+.bloco{
+  background:#fffdf7;border:1px solid var(--linha);border-left:4px solid var(--verde);
+  padding:22px 24px;margin:0 0 26px;box-shadow:var(--sombra);
+}
+.versiculo{
+  font-style:italic;color:var(--tinta-suave);border-left:3px solid var(--ouro);
+  padding:6px 0 6px 14px;margin:12px 0;
+}
+.chave{background:linear-gradient(transparent 62%, rgba(168,121,31,.32) 62%);font-weight:600}
+.grade{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:16px}
+.card{background:var(--papel2);border:1px solid var(--linha);padding:14px 16px}
+.card b{font-family:'Archivo',sans-serif;display:block;color:var(--verde);font-size:14px;letter-spacing:.04em}
+
+.pg{
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tinta-suave);display:block;margin:-8px 0 12px;
+}
+.recmarca{
+  display:inline-block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--ouro);color:#fffdf7;padding:4px 10px;margin:0 0 14px;
+}
+.recq{border-top:1px solid var(--linha);padding-top:14px;margin-top:14px}
+.recq:first-of-type{border-top:0;padding-top:0;margin-top:0}
+.recq .pergunta{font-weight:600;margin-bottom:8px}
+.recq .pergunta b{color:var(--ouro);font-family:'Archivo',sans-serif;font-size:13px;margin-right:6px}
+.recq .resposta{display:none;background:var(--papel2);border-left:3px solid var(--verde);padding:10px 14px;font-size:16px}
+.recq .resposta.on{display:block}
+.recq button.ver{
+  background:none;border:1px solid var(--verde);color:var(--verde);cursor:pointer;
+  font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;margin-bottom:8px;
+}
+.recq button.ver:hover{background:var(--verde);color:#f6f1e6}
+
+/* simulado */
+.rodadas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:22px 0 30px}
+.rodada{
+  text-align:left;background:#fffdf7;border:1px solid var(--linha);cursor:pointer;
+  padding:13px 14px;font-family:'Spectral',serif;font-size:15px;transition:.18s;
+}
+.rodada:hover{transform:translateY(-2px);border-color:var(--verde);box-shadow:var(--sombra)}
+.rodada span{
+  display:block;font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ouro);margin-bottom:3px;
+}
+.rodada em{display:block;font-size:12px;color:var(--tinta-suave);font-style:normal;margin-top:4px}
+.rodada.feita{border-left:4px solid var(--verde-claro)}
+.barra{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--verde);color:#f6f1e6;padding:14px 18px;margin-bottom:22px;
+}
+.barra .titulo{font-family:'Archivo',sans-serif;font-weight:800;font-size:15px}
+.barra .placar{font-family:'Archivo',sans-serif;font-size:13px;letter-spacing:.08em}
+.q{background:#fffdf7;border:1px solid var(--linha);padding:20px 22px;margin-bottom:16px;box-shadow:var(--sombra)}
+.q .num{font-family:'Archivo',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--ouro);text-transform:uppercase}
+.q .enunciado{font-weight:600;margin:6px 0 14px}
+.alt{
+  display:block;width:100%;text-align:left;background:var(--papel);border:1px solid var(--linha);
+  padding:11px 14px;margin-bottom:9px;cursor:pointer;font-family:'Spectral',serif;font-size:16px;
+  color:var(--tinta);transition:.15s;
+}
+.alt:hover:not(:disabled){border-color:var(--verde);background:#fff}
+.alt:disabled{cursor:default;opacity:.95}
+.alt.certa{background:#e6f0e5;border-color:var(--verde);border-left:4px solid var(--verde)}
+.alt.errada{background:#f6e4e2;border-color:var(--vinho);border-left:4px solid var(--vinho);text-decoration:line-through}
+.expl{margin-top:10px;font-size:15px;color:var(--tinta-suave);border-top:1px dashed var(--linha);padding-top:10px;display:none}
+.expl.on{display:block}
+.expl b{color:var(--verde)}
+.botoes{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 10px}
+button.acao{
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;
+  text-transform:uppercase;padding:13px 20px;border:1px solid var(--verde);
+  background:var(--verde);color:#f6f1e6;cursor:pointer;transition:.18s;
+}
+button.acao.vazado{background:transparent;color:var(--verde)}
+button.acao:hover{opacity:.85}
+.resultado{
+  background:var(--verde);color:#f6f1e6;padding:26px;text-align:center;margin-top:20px;display:none;
+}
+.resultado.on{display:block}
+.resultado .nota{font-family:'Archivo',sans-serif;font-size:44px;font-weight:800;line-height:1}
+.resultado .msg{font-style:italic;margin-top:8px}
+footer{border-top:1px solid var(--linha);padding:24px 0;text-align:center;color:var(--tinta-suave);font-size:14px}
+@media(max-width:600px){body{font-size:16px}.bloco,.q{padding:16px}}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="wrap">
+    <h1>Geografia Histórica e Bíblica</h1>
+    <p class="sub">Apostila de estudo completa + simulado exaustivo — 10 rodadas, 100 questões</p>
+    <span class="tag">Curso de Teologia · Geografia Histórica e Bíblica · p. 163–224</span>
+  </div>
+</header>
+
+<nav class="abas">
+  <button class="on" data-alvo="apostila">Apostila</button>
+  <button data-alvo="recaps">Recapitulações</button>
+  <button data-alvo="simulado">Simulado</button>
+</nav>
+
+<main class="wrap">
+
+<!-- ====================== APOSTILA ====================== -->
+<section class="painel on" id="apostila">
+
+  <div class="bloco">
+    <h3>Introdução</h3>
+    <span class="pg">Apostila p. 163–164 · cai na Recapitulação 1</span>
+    <p><b>Geografia</b> é uma matéria especial: além de ser um desafio para compreendermos rios, mares, planícies, vales, tudo o que envolve um estudo geográfico, não podemos esquecer que todo lugar, fronteira e limite, na história da humanidade, tem a <span class="chave">ação e a presença humana de poderio e sedimentação do espaço ocupado</span>.</p>
+    <p>Segundo o dicionário, é a “ciência que tem por objeto a descrição da superfície da Terra, o estudo de seus aspectos físicos atuais e das relações entre o meio natural e os grupos humanos”. Subdivide-se em:</p>
+    <div class="grade">
+      <div class="card"><b>I. Geografia econômica</b>Estuda os recursos do solo e do subsolo, sua exploração, distribuição e consumo.</div>
+      <div class="card"><b>II. Geografia física</b>Descreve e estuda o aspecto atual da superfície do globo terrestre.</div>
+      <div class="card"><b>III. Geografia humana</b>Estuda as relações entre as atividades do homem e o meio onde ele vive.</div>
+      <div class="card"><b>IV. Geografia linguística</b>Determina as áreas de extensão dos fenômenos linguísticos.</div>
+    </div>
+    <ul>
+      <li>O material aborda de forma sintética a importância da região e suas fronteiras para as conquistas de uma nação, <span class="chave">especificamente Israel</span>: um povo que desafiou não só os limites geográficos como também os espirituais.</li>
+      <li><b>Werner Keller</b> descreve a Palestina como a <span class="chave">mais linda de todas as terras</span>.</li>
+      <li>Uma linha imaginária curva partindo do <b>Egito</b>, passando pela <b>Palestina</b> e pela <b>Síria</b>, até o <b>Golfo Pérsico</b>, forma uma meia-lua: o <span class="chave">Fértil Crescente</span> — onde começam os relatos dos patriarcas e o “habitat” rico e fértil dos primeiros humanos (Adão e Eva).</li>
+      <li>Dois dos quatro rios de <b>Gn 2.10-14</b> estão hoje identificados: o <span class="chave">Tigre e o Eufrates</span>.</li>
+    </ul>
+    <p class="versiculo">“Só uma nação cujo espaço se ajunta às suas necessidades, tanto espirituais como materiais, pode ter esperança de alcançar a verdadeira grandeza.” (KARL HAUSHOFER)</p>
+    <p class="versiculo">“…seria preciso fazer uma história dos espaços — que seria ao mesmo tempo uma história dos poderes — que estudasse desde as grandes estratégias da geopolítica até as pequenas táticas do habitat.” (MICHEL FOUCAULT)</p>
+  </div>
+
+  <h2 class="cap">Capítulo 1</h2>
+  <div class="bloco">
+    <h3>1. O Fértil Crescente das primeiras civilizações e as terras de Canaã</h3>
+    <span class="pg">Apostila p. 165–166</span>
+    <ul>
+      <li>O Crescente Fértil seria o local do início de toda a humanidade; ali foi o centro da civilização da Idade da Pedra até a Idade de Ouro da cultura greco-romana. Cartógrafos medievais colocavam Jerusalém como centro do mundo — hoje sabemos que <span class="chave">não é verídico quanto à localização</span>, mas todos os fatos do AT e do NT estão dentro deste espaço geográfico.</li>
+      <li>Estrategicamente, a região deu origem aos grandes impérios e conquistadores e facilitava <span class="chave">ligar três continentes: Ásia, Europa e África</span>.</li>
+      <li>Dele surgiram o jardim do Éden e as civilizações da <b>Suméria, Acádia e Aramita</b>. Tigre e Eufrates a oriente e Nilo a ocidente; estradas reais saíam de <b>Ur, passavam por Harã, Alepo, Damasco, Jerusalém e alcançavam o Egito</b> — trajeto de Abraão.</li>
+      <li>Os principais países citados na Bíblia ficam nesta região, do Planalto Pérsico ao Estreito de Gibraltar. O cenário do AT: Oriente Médio, centro no litoral mediterrâneo; o do NT inclui também Macedônia, Grécia, Itália, Egito, Ásia Proconsular, Palestina e Síria.</li>
+      <li><b>Conclusão:</b> Jerusalém não era o centro geográfico do mundo, mas a <span class="chave">cidade estratégica posta por Deus</span>, para onde se voltaria a atenção do mundo na plenitude dos tempos (Gl 4.4), com o advento do Filho de Deus. A importância está no <span class="chave">papel que Canaã desenrolou para a chegada do Messias</span>.</li>
+    </ul>
+
+    <h4>1.1 Período antediluviano</h4>
+    <ul>
+      <li>A história bíblica se dá no Crescente Fértil, nas <b>planícies de Sinear</b>, dos rios Eufrates e Tigre até o Golfo Pérsico; mais tarde conhecida por <b>Babilônia</b>.</li>
+      <li>Relatos de vida antes do dilúvio são escassos: resumem-se a <b>Gênesis 4</b> e às escavações do arqueólogo <b>Leonard Woolley (1929–1933)</b>, que encontrou restos de <span class="chave">sinete de marfim, cerâmica e estátuas</span>, semelhantes aos produtos da época imediatamente após o dilúvio.</li>
+    </ul>
+
+    <h4>1.2 Período pós-diluviano</h4>
+    <ul>
+      <li><b>a) Os filhos de Noé: Cão e Sem.</b> Estabeleceram-se na planície de Sinear. <b>Ninrode</b>, neto de Cão, começou a ser poderoso na terra: <b>Babel, Ereque, Acade e Calné</b>. <b>Assur</b>, filho de Sem, edificou <b>Nínive, Rebote-Ir, Resém e Calá</b> na região do Tigre, mais ao norte. Havia uma corrida pelo controle da terra e do poder.</li>
+      <li><b>b) Sumérios (Sinar):</b> primeiro povo a habitar a Mesopotâmia (atual Iraque); inventaram a escrita por volta de <b>4.000 a.C.</b>; politeístas (Sol, Lua…). Seu idioma possivelmente corresponde ao idioma universal usado antes da confusão de línguas da Torre de Babel.</li>
+      <li><b>c) Semitas:</b> os filhos de Sem conquistaram Sinear e organizaram o reino de <b>Acade</b>, sob o rei <b>Sargão I</b>; fundiram-se aos sumérios. Os <b>amorreus</b> mudaram a capital para Ur e conquistaram sob o rei <b>Hamurabi</b>, contemporâneo de Abraão.</li>
+      <li><b>d) Casitas:</b> tribo das serranias a noroeste; tomaram as terras dos amorreus e a dominação — com estancamento cultural — durou cerca de mil anos, até surgir o <b>império dos assírios</b>.</li>
+    </ul>
+  </div>
+
+  <div class="bloco">
+    <h3>1.3 Nações cananeias</h3>
+    <span class="pg">Apostila p. 167–168 · cai na Recapitulação 2</span>
+    <p>A posição central de Canaã e a fertilidade do solo atraíram grande número de povos. A Bíblia apresenta <b>nove nações</b> em Canaã (mais filisteus e caftorins), genealogia traçada a partir dos descendentes de Cão (Gn 10.10-19). O texto detalha sete:</p>
+    <div class="grade">
+      <div class="card"><b>a. Amorreus</b>“Povos dos montes”, opunham-se às planícies. Presentes em Hebrom e Siquém, Gileade e Basã; cinco reis contra Josué (Js 10.5). Dominaram Mesopotâmia e Síria por volta de 2500 a.C.; dinastia de Hamurabi. Abraão conviveu com seus descendentes.</div>
+      <div class="card"><b>b. Heteus</b>Filhos de Canaã (Gn 10.15). Guerreiros com carros e cavalos; poderoso império. Principais cidades: <b>Hamate e Cades</b>, no rio Orontes. Sargão derrubou o último baluarte em 712 a.C. Duas esposas de Esaú eram heteias (Gn 26.34); Ez 16.3-4: pai de Jerusalém amorreu, mãe heteia.</div>
+      <div class="card"><b>c. Cananeus</b>Descendentes de Cão; irmãos <b>Cuxe, Mizraim e Pute</b> (Gn 10.6). Vale do Jordão até o Mediterrâneo. O Egito transformou Canaã em colônia. Cidades: Betseã, Megido, Sidom, Acor, Hebrom, Dor, Sodoma e Gomorra. Débora lhes infligiu derrota.</div>
+      <div class="card"><b>d. Ferezeus</b>Povo camponês ou aldeão, agricultor, mais rude, espalhado por Canaã. <b>Jacó teve pavor deles em Siquém</b>; contenda de Abraão e Ló (Gn 13.7). Quase exterminados, remanescentes em 1Rs 9.20.</div>
+      <div class="card"><b>e. Heveus</b>Povo antigo da Síria e Palestina, associado aos <b>arqueus</b>. Siquém (incidente de Hamor e Diná, Gn 34). Iludiram Josué com disfarces e viraram rachadores de lenha e tiradores de água (Js 9).</div>
+      <div class="card"><b>f. Girgaseus</b>Residiam na <b>Cordilheira Central, a oeste do mar da Galileia</b>. Resistiram a Josué; perderam a identidade, fundindo-se com tribos vizinhas.</div>
+      <div class="card"><b>g. Jebuseus</b>Distrito de Jerusalém; habitavam em colinas. Davi tomou a cidade (“Cidade de Davi”); <b>Araúna</b>, jebuseu, vendeu a colina a Davi (2Sm 24.18-25), onde edificou altar.</div>
+    </div>
+  </div>
+
+  <h2 class="cap">Capítulo 2</h2>
+  <div class="bloco">
+    <h3>2. Os povos vizinhos</h3>
+    <span class="pg">Apostila p. 169–177 · cai na Recapitulação 3</span>
+    <p>As terras de Canaã estavam cercadas por nações ricas e poderosas — uma constante ameaça. Existiam <span class="chave">pelo menos oito grandes nações</span> nos tempos bíblicos que limitavam o povo de Deus; serviam como um <span class="chave">termômetro para regular a temperatura espiritual de Israel</span>: se obediente, seu poderio sobre elas seria evidente (conquistas, tributos, impostos). Hoje seus povos se amalgamaram com os árabes.</p>
+
+    <h4>2.1 Filisteus</h4>
+    <ul>
+      <li>Significa <b>errantes ou estrangeiros</b>; <i>pelishtim</i> (Gn 10.14), de onde vem o nome <b>Palestina</b>. Povos oriundos das ilhas gregas, ao sul de Canaã.</li>
+      <li><b>Origem:</b> citados 286 vezes na Bíblia; origem em Creta ou, segundo descobertas recentes, <b>Chipre</b>; peritos em viagens náuticas; orla marítima conhecida como <b>Sefelá</b>.</li>
+      <li><b>Divisão:</b> cinco territórios — <b>Gaza, Ascalom, Asdode, Gate e Ecrom</b> — uma confederação; atividade principal: comércio marítimo.</li>
+      <li><b>Religião:</b> politeísta; <span class="chave">Dagom</span> (corpo de peixe e cabeça de homem), <b>Astarote</b> e <b>Baalzebude</b>. Levavam os ídolos à guerra, mas foram humilhados perante o Deus de Israel (Jz 16; 1Sm 5). Tinham língua semelhante à da região (Davi se comunicava sem problema). A tribo de Dã não conseguiu eliminá-los.</li>
+    </ul>
+
+    <h4>2.2 Amalequitas</h4>
+    <ul>
+      <li>Parte setentrional da Península do Sinai, o <b>Neguebe</b>; vagavam do mar Morto ao mar Vermelho. Origem: Amaleque, filho de Elifaz com a concubina Timna; Elifaz era filho de <b>Esaú</b> (Gn 36.12-16).</li>
+      <li>Povo inculto, nômade, vivia em tendas; mais pastoril que agrícola; pilhagem, saque e furto. <span class="chave">Oito guerras com Israel</span>: ao passar o mar Vermelho (Ex 17.8-13); Cades Barneia (Nm 14.43-45); aliança com Eglom de Moabe (Jz 3.13); com midianitas (Jz 6); Efraim (Jz 12.15); ordem de Samuel a Saul (1Sm 15.7); atacaram Ziclague (1Sm 27.6); filhos de Simeão invadem seus territórios (1Cr 4.39-43).</li>
+    </ul>
+
+    <h4>2.3 Midianitas</h4>
+    <ul>
+      <li>Deserto da Arábia, perto do Golfo de Ela; ponto intermediário entre Israel e o Egito, onde Moisés viveu. <b>Jetro</b>, midianita, sogro de Moisés; ali Moisés teve profunda experiência com Deus.</li>
+      <li><b>Origem:</b> Abraão desposou <b>Quetura</b> (Gn 25.1); um filho foi <b>Midiã</b>, de cinco filhos (Efá, Efer, Enoque, Abida e Elda). Os ismaelitas se confundem com midianitas (Gn 37.25,28,36).</li>
+      <li>Exímios comerciantes (Síria–Egito; compraram José); atividade principal: pecuária; Moisés convidou <b>Hobabe</b> para guiar Israel (Nm 10.29-33). Culto sedutor de Canaã (Nm 25); Deus mandou exterminá-los (Nm 31); Gideão os venceu (Jz 6–8). Exploravam o <b>cobre</b>; os <b>queneus</b> eram midianitas, poupados por Saul.</li>
+    </ul>
+
+    <h4>2.4 Moabitas</h4>
+    <ul>
+      <li>Leste do mar Morto; território em três partes: <b>Terra de Moabe (Dt 1.5), Campos de Moabe (Rt 1.2) e Planície de Moabe (Nm 22.1)</b>. Terras férteis.</li>
+      <li><b>Origem:</b> união incestuosa de <b>Ló com a filha mais velha em Zoar</b> (Gn 19.20-37). Cidades: Mispa, Bete-Peor, Hesbom, Medeba, Quiriataim, Aroer, Jacer, Ramote-Baal.</li>
+      <li>Dominaram Israel por <b>18 anos</b>; após <b>Eúde</b> (Jz 3.12-30), 80 anos de paz. Grande civilização; língua semelhante à hebraica. Deus principal: <span class="chave">Camos</span>; prostituição sagrada; Baal-Peor no monte Abarim; holocaustos humanos (2Rs 3.26,27).</li>
+      <li>Fato maravilhoso: <b>Rute era moabita</b>, casou com Boaz e deu à luz Obede → Jessé → Davi, raiz da casa do Messias.</li>
+    </ul>
+
+    <h4>2.5 Amonitas</h4>
+    <ul>
+      <li>Entre os rios Arnom e Jaboque; terras de zanzumins e refains (Dt 2.20-21). Origem: <b>Bem-Ami</b>, filho incestuoso de Ló com a filha mais nova (Gn 19.38).</li>
+      <li>Povo nômade, belicoso e cruel; capital <b>Rabá-Amom</b>, hoje <b>Amã</b>, capital da Jordânia. Deus: <span class="chave">Moloque</span> (Milcom) — estátua de bronze oca; vítimas humanas lançadas em seus braços incandescentes; barulhos de fanfarras para abafar os gritos.</li>
+      <li>Proibidos de entrar na assembleia do SENHOR (Dt 23.3); profecias de Jeremias e Ezequiel; até Salomão construiu altares a Moloque.</li>
+    </ul>
+
+    <h4>2.6 Edomitas</h4>
+    <ul>
+      <li>Monte <b>Seir</b>. Descendentes de <b>Esaú</b>; <i>Edom</i> = vermelho (o guisado trocado pela primogenitura, Gn 25.30). Isaque: viveria por sua espada e serviria ao irmão (Gn 27.40).</li>
+      <li>Episódios: negaram passagem a Israel (Nm 20.14-21); Saul combateu (1Sm 14.47); domínio de Salomão; Amazias venceu e tomou Sela (2Rs 14.7-10); aliaram-se a Nabucodonosor contra Jerusalém; nabateus ocuparam; João Hircano os obrigou a tornarem-se judeus; <b>Herodes, o Grande</b> surgiu desta dinastia. Eram idólatras, mas <b>sábios</b> (Jr 49.7); o livro de <b>Jó</b> tem como cenário seus territórios.</li>
+    </ul>
+
+    <h4>2.7 Fenícios</h4>
+    <ul>
+      <li>Nome: <i>terra das tamareiras</i>, <i>púrpura</i> ou <i>gente de pele escura</i>. Orla do Mediterrâneo, do rio Litani ao rio Arvate, 240 km por 50 km. Cidades principais: <b>Tiro e Sidom</b>. Descendentes de Cão; Isaías os chama de cananeus.</li>
+      <li>Colônias: Chipre, Rodes, Sicília, Malta, Sardenha, Cadis, Útica e <b>Cartago</b>; chamados de <span class="chave">“Senhor dos Mares”</span>. <b>Hirão</b>, rei de Tiro, amigo de Davi, forneceu madeira para o templo (1Rs 5.2). Glória de Tiro comparada à de Lúcifer (Ez 28).</li>
+      <li>Subjugados em 876 a.C.; queda como império em 520 a.C.; Alexandre destruiu Tiro em 333 a.C. Deuses: <b>Baal e Astarote</b> (sacrifícios humanos; época de Acabe). Vidro, púrpura, perfumes, cerâmicas. Almirante <b>Mahan</b>: a hegemonia mundial estava no controle das rotas marítimas.</li>
+    </ul>
+
+    <h4>2.8 Os sírios</h4>
+    <ul>
+      <li>Antigo planalto da Anatólia; rios Eufrates, Orontes, Farfar e Abana; cidades: Damasco, Homs, Hamate, Alepo, Antioquia. Origem: amorreus da Península do Sinai e depois <b>arameus</b>.</li>
+      <li>Ameaça constante a Israel (1Rs 15.9); Jeroboão tomou Damasco (2Rs 14.28). Maior contribuição cultural: <span class="chave">a língua, que predominou por 1.500 anos nos eixos comerciais</span>.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 3</h2>
+  <div class="bloco">
+    <h3>3. As doze tribos de Israel</h3>
+    <span class="pg">Apostila p. 179–183 · cai nas Recapitulações 3 e 4</span>
+    <ul>
+      <li>Após as conquistas de Josué (Js 23.14; 24.1-3) a Palestina foi dividida de forma desigual: <b>Transjordânia</b> (Rúben, Gade e meia tribo de Manassés, condição: ajudar os irmãos) e <b>Canaã</b> (Aser, Naftali, Zebulom, Issacar, Efraim, Dã, Benjamim, Judá, Simeão e meia tribo de Manassés).</li>
+      <li>José teve sua tribo entregue a seus filhos <b>Efraim e Manassés</b>; <b>Levi</b>, tribo sacerdotal, não possuía herança, apenas cidades (Js 14.1; cap. 21). Geograficamente, <span class="chave">12 tribos divididas em 13 porções de terra</span> (Manassés dividida). Depois Dã ocupou Laís, ao sul do monte Hermom (Jz 18).</li>
+      <li><b>Simeão é um caso à parte:</b> má localização, exposta aos ataques de amalequitas e edomitas; terra de pouca água e muita areia; os filisteus invadiam e empobreciam a produção; a tribo acabou <span class="chave">desaparecendo do mapeamento israelita</span> (1Cr 4.24-43).</li>
+    </ul>
+
+    <h4>3.1 Tribos da Palestina Oriental</h4>
+    <ul>
+      <li><b>Rúben</b> (Nm 32.1-38): Transjordânia entre o rio <b>Arnom</b> ao sul e Bete-Jesimote/Rabote-Amom; oeste mar Morto; leste amonitas. Cidades: Aroer, Bezer, Hesbom, Jaza, Lasa, Dibom, Sibma, Modebá, Atarote, Quiriataim. Ref.: Nm 21.25-30.</li>
+      <li><b>Gade</b>: grande parte de Gileade, margens orientais do Jordão do mar Morto ao mar da Galileia. Cidades: Minite, Jazer, Maanaim, Peniel/Penuel, Sucote, Ramote em Gileade, Jabes-Gileade, Bete-Nimra.</li>
+      <li><b>Manassés oriental</b>: de Maanaim até o monte Hermom. Cidades: Quenate, Edrei, Golã, Astarote, Afeque, Salcá, Betesaida, Gadara e Cesareia (citadas no NT).</li>
+    </ul>
+
+    <h4>3.2 Tribos da Palestina Ocidental</h4>
+    <div class="grade">
+      <div class="card"><b>Simeão</b>Sul da Palestina, pequena região de pastagens. Cidades: <b>Berseba, Ziclaque, Sefate (Hormá), Gerar, Arade</b>.</div>
+      <div class="card"><b>Judá</b>Do Mediterrâneo ao mar Morto; 115 cidades. <b>Hebrom</b> (sepultura dos patriarcas), <b>Belém</b> (vinda do Messias), Carmelo, Tecoa, Bete-Semes, <b>Azeca</b> (Golias desafiou Israel), Quiriate-Jearim.</div>
+      <div class="card"><b>Benjamim</b>Região <b>bastante reduzida</b>, entre Efraim ao norte e Judá ao sul; muitos lugares de acontecimentos bíblicos.</div>
+      <div class="card"><b>Dã</b>Estreita área entre Benjamim e o Mediterrâneo. Amorreus pressionaram (Jz 1.34). Cidade de Dã: centro de idolatria. Cidades: <b>Timna, Aijalom, Elteque, Zorá, Ecrom, Lida, Jope, Estaol</b>.</div>
+      <div class="card"><b>Efraim</b>Coração da nação, solo rico, do Jordão ao Mediterrâneo; Manassés ao norte, Dã e Benjamim ao sul (Js 16.5-10; 17.14-18). <b>Samaria, capital de Israel</b>.</div>
+      <div class="card"><b>Manassés ocidental</b>No <b>centro do país, entre o Jordão e o Mediterrâneo</b>. Cidades: Ofra (Gideão), Taanaque, Dotã, Ibleiá, Dor, Megido, Bete-Seã.</div>
+      <div class="card"><b>Issacar</b>“Encravada entre <b>Zebulom e Naftali</b> pelo norte”; planície de Esdraelom; esteve sob domínio cananeu.</div>
+      <div class="card"><b>Aser</b>Litoral mediterrâneo, do Carmelo ao sul a Sidom ao norte; solo rico em ferro. Relações amistosas com fenícios prejudicaram a pureza do povo. Cidades: Misael, Abdom, Acsafe, Cabul, Reobe, Afeque, Aco.</div>
+      <div class="card"><b>Zebulom</b>Da <b>base do monte Carmelo até o lago de Generasé</b>; uma das tribos mais fortes. Cidades: Gate-Hefer, Quislote-Tabor, Catate, Quitrom, Naalol e Belém de Zebulom (a 12 km de Nazaré).</div>
+      <div class="card"><b>Naftali</b>Faixa de terra <b>montanhosa e fértil do alto Jordão até o sul do mar da Galileia</b>; afastada do centro teocrático; tribo fronteiriça. Quedes, Hamote-Dor, Cartã, Ijom, Hazor, Migdal-El, Abel-Bete-Maaca.</div>
+    </div>
+
+    <h4>3.3 Cidades levíticas (Josué 21)</h4>
+    <ul>
+      <li>Levitas sem herança; cada tribo cedeu cidades. <b>48 cidades</b>: <b>coatitas</b> (sacerdotal: 9 em Judá e Simeão, 4 em Benjamim, 4 em Efraim, 4 em Dã, 2 em Manassés ocidental); <b>gersonitas</b> (2 em Manassés oriental, 4 em Issacar, 4 em Aser, 3 em Naftali); <b>meraritas</b> (4 em Zebulom, 4 em Rúben, 4 em Gade).</li>
+      <li><b>Seis cidades de refúgio:</b> lado oriental <b>Bezer, Ramote em Gileade e Golã</b>; lado ocidental <b>Quedes, Siquém e Hebrom</b>.</li>
+    </ul>
+
+    <h4>3.4 Reino Unido e 3.5 Reino Dividido</h4>
+    <ul>
+      <li><b>Reino Unido:</b> só no reinado de <b>Davi</b> derrotaram-se filisteus, moabitas, sírios, edomitas e amonitas, e conquistou-se definitivamente Sião, em Jerusalém (1Cr 11.4-9). <b>Salomão</b> consolidou e estendeu domínios até além do Eufrates (Ed 4.20).</li>
+      <li><b>Reino Dividido</b> (1Rs 12; 2Cr 10): <b>Norte</b> com dez tribos e meia de Benjamim, capital <b>Siquém e Peniel</b>, depois <b>Samaria</b> (1Rs 16.24); <b>Sul</b> com Judá e meia tribo de Benjamim, capital <b>Jerusalém</b>. Sacerdotes e levitas vieram a Roboão em Jerusalém.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 4</h2>
+  <div class="bloco">
+    <h3>4. Palestina do Novo Testamento</h3>
+    <span class="pg">Apostila p. 185–189 · cai na Recapitulação 5</span>
+    <ul>
+      <li>Em virtude do domínio romano sobre o mundo do NT, a Palestina é considerada <span class="chave">estratégica</span>: por ela passavam as principais estradas e as rotas comerciais do Oriente Médio. Limites: <b>Idumeia, Samaria, Galileia e Decápolis</b>, cada qual com sua autonomia política e administrativa.</li>
+      <li><b>Herodes, o Grande</b> unificou as cidades; limites do norte de Dã até o Egito ao sul e toda a Transjordânia ao leste. Cidades: Siquém, Megido, Hebrom, Jerusalém, Samaria, Jericó, Citópolis, Tiberíades, Cafarnaum, Corazim.</li>
+      <li><b>Herodes Arquelau</b>: Judeia, Samaria e Idumeia (governou 6 anos; depois Herodes Agripa I). <b>Herodes Antipas</b>: Galileia e Pereia, capital <b>Tiberíades</b>. <b>Herodes Filipe</b>: Basã, cinco distritos (Gaulanita, Batânia, Auranita, Ituréia e Traconites).</li>
+    </ul>
+    <h4>4.1 Galileia</h4>
+    <ul>
+      <li>Do hebraico “rodar”, “círculo”, “região”; aparece <b>59 vezes</b> no AT e NT. Região montanhosa mais setentrional; altiplano do Escraelon; 50 km × 100 km.</li>
+      <li>Habitada por heveus, cananeus e perizeus; depois Aser, Naftali, Zebulom e Issacar. Influência grega acentuada, mas os judeus prevaleciam. Cidades cosmopolitas.</li>
+      <li>Jesus passou ali a infância e <b>18 dos 36 meses</b> de ministério; <b>240 cidades</b> populosas; maior: <b>Séfaris</b> (~15.000 hab., segundo Flávio Josefo).</li>
+    </ul>
+    <h4>4.2 Samaria</h4>
+    <ul>
+      <li><b>Onri</b>, pai de Acabe, reinou seis anos em Tirza e comprou de <b>Semer</b> o monte onde construiu a cidade, dando o nome de Samaria (1Rs 16.23,24). Citada <b>93 vezes no AT e 11 no NT</b>.</li>
+      <li>Região montanhosa no centro de Israel, a 60 km ao norte de Jerusalém e 30 km do Mediterrâneo. Herança de Efraim, Issacar e Benjamim; <b>poço de Jacó</b>. Acabe fortificou, construiu mansão de marfim e templo a Baal; idolatria e pecados.</li>
+      <li>Hostilidade aos judeus no tempo de Jesus (Jo 4.9): no cativeiro, <b>Sargão</b> levou gente de todo o império a Samaria (2Rs 17.24-33); temiam a Jeová mas faziam práticas aos seus deuses.</li>
+    </ul>
+    <h4>4.3 Judeia</h4>
+    <ul>
+      <li>Nome do aramaico, “terra dos judeus”; sem referência no AT, <b>48 vezes no NT</b>. Região de Judá, parte de Benjamim e Simeão; montanhosa; Jerusalém o pico mais alto; Belém e Hebrom.</li>
+      <li>Heteus, amorreus e jebuseus; depois Judá, Simeão e Benjamim. Cativeiro de 70 anos; reconstrução por Neemias, Zorobabel e Esdras; governadores no tempo de Jesus. Reduto mais importante dos judeus; Jesus ali foi muitas vezes rejeitado e escarnecido.</li>
+    </ul>
+    <h4>4.4 Decápolis</h4>
+    <ul>
+      <li>Do grego, <b>“região das Dez Cidades”</b>; só três vezes no NT (Mt 4.25; Mc 5.20; 7.31). Planície de Esdraelon e vale do Jordão, leste do rio: Damasco, Canata, Citópolis, Hipos, Rafana, Gadara, Pela, Dium, Filadélfia e Gerasa; Ptolomeu acrescentou oito aldeias (18 cidades).</li>
+      <li>Fruto dos contatos de <b>Alexandre, o Grande</b> com o Oriente. <b>Sete características:</b> (1) obra consumada após a morte de Herodes; (2) cidades livres, em confederação para manter os laços gregos; (3) interesses comerciais e tarifas; (4) contingente militar, mas subjugadas a Roma; (5) religião: panteão grego, sem hostilizar outras — Jesus exerceu ali seu ministério com liberdade; (6) estradas ligadas a Roma; (7) predominava a <b>língua grega</b>.</li>
+    </ul>
+    <h4>4.5 Pereia</h4>
+    <ul>
+      <li>Do grego, <b>“terra do além do Jordão”</b>; sem citação direta (Mt 4.15-25; 19.1; Mc 3.7-8; 10.1; Jo 1.28; 3.26; 10.40). Do Jaboque ao norte até o Arnom ao sul; ocidente Jordão; leste Hesbom, Filadélfia e Gerasa; fortaleza de Maquerus; norte Pela.</li>
+      <li>Amorreus; Moisés deu a Rúben, Gade e Manassés; galaaditas, amonitas, moabitas; Alexandre Janeu; Nero deu a Agripa II. Jesus realizou boa parte do ministério e <b>João Batista batizou</b> nessa região.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 5</h2>
+  <div class="bloco">
+    <h3>5. O Egito e o Nilo e sua importância para a humanidade</h3>
+    <span class="pg">Apostila p. 191–192 · cai na Recapitulação 6</span>
+    <ul>
+      <li>A disputa do vale da <b>Mesopotâmia</b>, ou vale do <b>Nilo</b>, é milenar; as mais eminentes provas da humanidade nasceram entre os rios <b>Tigre e Eufrates</b>. O primeiro registro de civilização avançada vem dos <b>sumérios</b>, quando o Egito era apenas uma expressão geográfica. Canaã era passagem forçada da Mesopotâmia ao Egito; na época de Abraão o Egito já era superpotência.</li>
+      <li>Localização: costa mediterrânea da África ao norte até a latitude 22°; mar Vermelho a leste; <b>621.400 km²</b>: <span class="chave">96% desértico e 4% utilizável</span> — o Egito é a parte banhada pelo Nilo. Sinai: cobre, esmeraldas e turquesas; alabastro.</li>
+      <li><b>Nilo:</b> fluxo de <b>2.500 km</b>; nascente tributária do lago Vitória (Uganda, Quênia, Tanzânia); “Nilo branco” no Sudão; “Nilo azul” ao chegar do Egito; em setembro o maior nível das cheias. Dele se extraía trigo, cevada, centeio, linho, papiro, óleos e argila. O direito de usar o Nilo era sagrado.</li>
+      <li><b>Religião:</b> os egípcios eram <span class="chave">politeístas</span>; cada pequeno reino tinha crenças e deuses próprios, representados às vezes em forma humana.</li>
+      <li><b>Língua:</b> camita-semita, cinco fases (Egito antigo; dinastias I–VIII; médio Egito IX–XI; Egito posterior; demótico/<b>cóptico</b>, liturgia da Igreja Cristã Egípcia).</li>
+      <li><b>Os hicsos</b> (“reis pastores”, “chefes do deserto”): tribo nômade sob dominação hurrita; dominaram o Egito por <b>108 anos</b>, capital <b>Avaris</b>, região de Gósen. Quase consenso entre os eruditos de que <span class="chave">José reinou em plena dominação hicsa</span>, quando obteve favor para sua família morar em Gósen. Ramsés II mandou apagar vestígios; por isso quase nada na história egípcia sobre os 400 anos de Israel em Gósen.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 6</h2>
+  <div class="bloco">
+    <h3>6. O cristianismo no Ocidente</h3>
+    <span class="pg">Apostila p. 195–200 · cai nas Recapitulações 7 e 8</span>
+    <p>O berço do cristianismo é Israel; Jesus pregou em toda a Palestina, mas seus discípulos fizeram sucesso e impactaram o mundo, principalmente no ocidente. O primeiro ponto: as <b>viagens de Paulo</b>.</p>
+    <h4>6.1 Arábia</h4>
+    <ul>
+      <li>“Terra árida” ou “terra seca”. Como país não há referência; ligada aos árabes nômades; no NT designa a Síria e a Península do Sinai. Grande península entre Ásia e África; Golfo Pérsico (“Golfo Árabe”), oceano Índico, mar Vermelho; depressão do mar Morto (2.359 m).</li>
+      <li>Ocupada pelos filhos de Cão; todos os árabes procedem de Abraão com Hagar (Gn 16; 21). Fundaram o reino de Minos (capital Maim), absorvido pelos sabeus (Reino de Sabá). Estavam em Jerusalém no Pentecostes. <b>Paulo passou três dias na Arábia</b> após a conversão, em oração e estudo da Palavra.</li>
+    </ul>
+    <h4>6.2 Damasco</h4>
+    <ul>
+      <li>Hebraico: “lugar bem irrigado”, “cidade das caravanas”; 38 vezes no AT e 15 no NT. Rios Barada e Fafar (2Rs 5.12); 224 km ao norte de Jerusalém; monte Hermom.</li>
+      <li>Uma das mais antigas cidades do mundo (Gn 14.15); “cabeça de Arã” (Is 7.8). Cidade romana, governada por <b>Aretas</b>; diversas sinagogas (At 9.2). <span class="chave">Paulo se converteu nas portas de Damasco</span>, foi batizado no Espírito Santo, <b>pregou sua primeira mensagem cristã</b>, foi perseguido pela primeira vez e desceu a muralha num cesto (At 9.20-25); parte importante para a pregação da mensagem cristã.</li>
+    </ul>
+    <h4>6.3 Antioquia</h4>
+    <ul>
+      <li>Fundada por <b>Seleuco Nicator</b> (300 a.C.), de <i>Antíoco</i> = “resistente, sofredor”; existiam <b>16 Antioquias</b>. Sul do rio Orontes (40 km da embocadura), pé do monte Silfo; a 220 km de Damasco e 50 km de Tarso.</li>
+      <li>Capital da província romana da Síria (Pompeu, 64 a.C.); <b>terceira cidade do mundo</b>, depois de Roma e Alexandria; perto o bosque de Dafne e santuário de Apolo (orgias sagradas). <span class="chave">Ponto estratégico para o estabelecimento da igreja gentílica</span> (Paulo e Barnabé); vinte templos cristãos no século IV. Destruída em 538 d.C.; Justiniano reconstruiu; serracenos 635; turcos 1084.</li>
+    </ul>
+    <h4>6.4 Ásia Menor</h4>
+    <ul>
+      <li>450.000 km²; <b>Anatólia</b> (“terra do sol nascente”); metade da atual Turquia; mar Euxino (Negro) ao norte, Mediterrâneo ao sul, Egeu ao oeste, cordilheira do Taurus a leste. População de 10 milhões no Império Romano. Ponto culminante: <b>Ararate</b>, 5.165 m (local do pouso da arca).</li>
+      <li>Estradas: ligavam Carseise e Alepo ao mar Negro; a mais famosa: <b>Passo das Portas da Cilícia</b>; a <b>via Ápia</b> (Bríndisi a Roma). Paulo usou essas rotas.</li>
+      <li><b>Províncias e cidades:</b> Ásia (Éfeso, Pérgamo, Tiatira, Sardes, Filadélfia, Esmirna, Laodiceia, Colossos, Mileto, Trôade…); Bitínia (Nicomédia, Nicéia); Ponto (Sinope, Amiso); Galácia; Capadócia; Lícia; Panfília (Perge, Atália); Cilícia (Portas da Cilícia); Psídia (Antioquia, Listra, Derbe); Licaônia (Icônio).</li>
+    </ul>
+    <h4>6.5 Grécia</h4>
+    <ul>
+      <li>Do latim <i>Hellas</i>. Sul europeu, mar Egeu a leste e Jônico a oeste; 131.944 km²; Creta a maior ilha. Antiga Grécia (Hellas): Beócia, Ática e Peloponeso; em 27 a.C. Roma uniu às ilhas formando a <b>Acaia</b> (At 18.12,27; 20.2). No AT: <b>Javã</b>.</li>
+      <li>Duas grécias: <b>Continental ou Hélade</b> (capital <b>Atenas</b>: sábios, filósofos, cientistas) e <b>Marítima ou Peloponeso</b> (capital <b>Esparta</b>), separadas pelo istmo de Corinto (canal de Corinto).</li>
+      <li><b>Acaia</b>: Corinto era a capital (Gálio, irmão de Sêneca, governava). <b>Macedônia</b>: antes de Filipe II (pai de Alexandre), região bárbara; depois helenizada; capital <b>Bereia</b>; a <b>via Ignatia</b> unia Ásia e Europa.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 7</h2>
+  <div class="bloco">
+    <h3>7. Cidades de cultura helênica nos tempos do Novo Testamento</h3>
+    <span class="pg">Apostila p. 202–208 · cai nas Recapitulações 8 e 9</span>
+    <p>O helenismo foi um movimento cultural importantíssimo; Paulo nasceu e foi formado em uma cidade helênica, dominava o hebraico, o grego e o latim, o que facilitou a proclamação do evangelho.</p>
+    <ul>
+      <li><b>7.1 Tarso</b> (Cilícia, hoje Turquia): berço da cultura helenística e do <span class="chave">estoicismo</span>; ~500 mil habitantes na época de Paulo; rios Tarsus Cayi, Soro e Píramo; Marco Antônio e Cleópatra; judeus com cidadania romana — Paulo (At 22.25-28). Deu ao mundo Saulo.</li>
+      <li><b>7.2 Alexandria</b>: fundada por <b>Alexandre, o Grande</b>, em 331 a.C. (70 cidades fundadas); Egito, ramo canópico do Nilo. Museu, famosa biblioteca com 650 mil manuscritos, <b>Septuaginta</b>, Farol de Faros (uma das sete maravilhas), templo de Serapis. Berço de pais da igreja como Clemente e Orígenes (At 18.24; 27.6).</li>
+      <li><b>7.3 Filipos</b>: homenagem a <b>Filipe II</b>, pai de Alexandre; primeiro distrito e <b>colônia</b> da Macedônia; via Ignatia; rio Gangites (Paulo encontrou <b>Lídia</b>). Batalha de 42 a.C.; Otávio. Libertação da jovem que adivinhava, prisão de Paulo e Silas, conversão do carcereiro; a igreja socorreu Paulo.</li>
+      <li><b>7.4 Tessalônica</b>: nome por <b>Cassandro</b>, em homenagem à esposa Thessalonike; antes <b>Thermai</b>; golfo de Termas, Macedônia; porto movimentado; grande número de judeus; perseguição (At 17.5,6); Paulo escreve duas cartas — “breve manual da escatologia cristã”.</li>
+      <li><b>7.5 Atenas</b>: <span class="chave">berço da civilização ocidental e da democracia</span> (Sólon); capital da Ática; porto do Pireu. Odeon, teatro de Dionísio, templo de Zeus, <b>Areópago</b> — Paulo pregou o sermão do Deus desconhecido (At 17.16-34). Derrotada por espartanos, macedônios e romanos.</li>
+      <li><b>7.6 Corinto</b>: primeira, pré-helênica, <b>Epira</b> (séc. IX a.C.); cidade licenciosa e libertina, cosmopolita; istmo entre dois mares. Destruída em 146 a.C. por Lúcio Mumio; reconstruída por Júlio César em 44 a.C.; Augusto a elevou a capital da Acaia; 200–400 mil escravos; Áquila e Priscila (At 18.2). Corínticos polemistas, orgulho intelectual.</li>
+      <li><b>7.7 Roma</b> (“a cidade eterna”): sete colinas (Quirinal, Esquilino, Viminal, Palatino, Capitolino, Célio e Aventino); Tigre; murada, 19,2 km de circunferência. Colônia de judeus; Pompeu tomou Jerusalém em 63 a.C.; incêndio em 64 d.C. (Nero culpou os cristãos). <b>Pax romana</b>: ordem, estradas que facilitaram a circulação da boa-nova. Perseguição romana ao cristianismo pela deificação dos césares: João deportado; <b>Policarpo</b> atirado às feras.</li>
+    </ul>
+  </div>
+
+  <h2 class="cap">Capítulo 8</h2>
+  <div class="bloco">
+    <h3>8. As sete igrejas da Ásia (e Patmos)</h3>
+    <span class="pg">Apostila p. 209–215 · cai na Recapitulação 10</span>
+    <p>João escreveu sete cartas a estas igrejas no Apocalipse; muitas foram fruto do trabalho de Paulo. Mapa: <b>1 Pérgamo, 2 Tiatira, 3 Sardes, 4 Esmirna, 5 Filadélfia, 6 Éfeso, 7 Laodiceia</b>.</p>
+    <div class="grade">
+      <div class="card"><b>8.1 Éfeso</b>Maior e mais importante cidade da Ásia; foz do rio Caister; maior empório da Ásia; centro de medicina dos olhos. <b>Templo de Diana/Ártemis</b> (uma das sete maravilhas), deusa da fertilidade, caída do céu (At 19.35; 19.23-40). Paulo ficou dois anos.</div>
+      <div class="card"><b>8.2 Esmirna</b>“Mirra”; cidade marítima, “adorno da Ásia”; Cibele. Igreja <b>fiel na tribulação</b>, pobre e rica nos céus. <b>Policarpo</b> martirizado em 169 d.C. Hoje Izmir.</div>
+      <div class="card"><b>8.3 Pérgamo</b>Montanha, muralhas; biblioteca quase igual à de Alexandria; templo de Esculápio; culto ao imperador. <b>“Trono de Satanás”</b> (Ap 2.12-17); mártir <b>Antipas</b>; práticas nicolaítas e ensinos de Balaão.</div>
+      <div class="card"><b>8.4 Tiatira</b>Fundada por Seleuco I; vale do Ermo e Caíco; centro comercial e industrial. <b>Púrpura</b> (caramujo), bronze. Boas obras, amor, fé; <b>Jezabel</b> (feitiçaria e idolatria) (Ap 2.18-29).</div>
+      <div class="card"><b>8.5 Sardes</b>Ouro de aluvião; riquíssima; “quase inexpugnável”; sucumbiu duas vezes por não estar alerta (Ciro). Obras não íntegras: apelo para <b>vigiar</b> (Ap 3.1-6).</div>
+      <div class="card"><b>8.6 Filadélfia</b>“Amor fraternal”; rei Átalo II de Pérgamo; região de <b>constantes terremotos</b>. Igreja fiel; <b>porta aberta</b> (Ap 3.7-13); Inácio visitou a caminho de Roma.</div>
+      <div class="card"><b>8.7 Laodiceia</b>Antíoco II, esposa Laodike; Frígia, rio Lico; 160 km de Éfeso. Medicina (<b>colírios famosos</b>), bancos, tecidos pretos; <b>sem água</b> (vinha de Hierápolis, termas). Igreja morna, ricos e “suficientes”: <span class="chave">maiores reprimendas</span> (Ap 3.14-21).</div>
+      <div class="card"><b>8.8 Patmos</b>Ilha do mar Egeu (Dodecaneso), 16 × 6 km (96 km²); rochas vulcânicas, estéril. <b>João foi exilado</b> no império de <b>Domiciano, em 95 d.C.</b> Senhor abriu os olhos espirituais — o Apocalipse.</div>
+    </div>
+  </div>
+
+  <h2 class="cap">Capítulo 9</h2>
+  <div class="bloco">
+    <h3>9. O dilúvio, a Arca de Noé e curiosidades</h3>
+    <span class="pg">Apostila p. 217–219 · cai na Recapitulação 11</span>
+    <ul>
+      <li><b>9.1 O dilúvio:</b> nos séculos XVIII e XIX era indiscutível; com o uniformitarismo e o darwinismo deixou de se encaixar nas pesquisas científicas. Tognini: a narrativa não é duplicidade, mas unidade. Confirmado por Mt 24.38,39; Lc 17.27; 2Pe 2.5; Noé em Ez 14.14, Hb 11.7.</li>
+      <li><b>9.2 O dilúvio e o seu tempo:</b> Platão (<i>Timeo e Crícias</i>) cita dilúvio há 9.000 anos antes de Sólon (~11.500 anos); o mar subiu 122 metros; carbono 14. A Bíblia não relata a data inicial, mas sua duração: <b>371 dias</b> (Gn 7.11 – 8.14).</li>
+      <li><b>9.3 A arca</b> (Gn 6.13-16): côvado 45–60 cm; <b>180 m</b> de comprimento, <b>30 m</b> de largura, <b>18 m</b> de altura; três pavimentos de 5.400 m², total ~16.200 m². Dilúvio universal (“todos”, “todas”).</li>
+      <li><b>Provas mitológicas:</b> índios americanos, persas, caldeus (Xisuthros, Manetho); Egito: <b>Toth</b>; moeda em Frígia com arca e o nome de Noé; Grécia: Prometeu, <b>Deucalião e Pirra</b> (pedras → homens); Ovídio (<i>Metamorphoses</i>); <b>poema de Gilgamés</b> (tabuinhas cuneiformes, rei de Nínive, 668–628).</li>
+      <li><b>Geologia:</b> teoria dos <b>Choques das Conchas</b> (Golfo do México). <b>Arqueologia:</b> argila encontrada por <b>Leonard Woolley</b> em Ur dos caldeus (grossa camada = inundação); satélites fotografaram supostos pedaços de embarcação no cume do <b>monte Ararate</b> (Turquia, ~5.600 m). Deus fez a arca desaparecer, como a arca da Aliança.</li>
+    </ul>
+  </div>
+
+  <div class="bloco">
+    <h3>Conclusão</h3>
+    <span class="pg">Apostila p. 220</span>
+    <p>Dicionários bíblicos e Bíblias de estudo trazem calendário hebreu, moedas, medidas e divisões temporais, que facilitam a compreensão do mundo do AT e do NT. Citam-se ainda <b>Samuel P. Huntington</b>: a fonte fundamental de conflito no novo mundo será <span class="chave">de ordem cultural</span>; o “choque de civilizações dominará a política global”. Cabe ao estudante de teologia analisar à luz das Escrituras e ser testemunha de Cristo.</p>
+    <p class="versiculo">“Rogo-vos, pois, irmãos, pela compaixão de Deus, que apresenteis os vossos corpos em sacrifício vivo, santo e agradável a Deus, que é o vosso culto racional. E não sede conformados com este mundo, mas sede transformados pela renovação do vosso entendimento, para que experimenteis qual seja a boa, agradável e perfeita vontade de Deus.” (Rm 12.1,2)</p>
+    <p style="font-size:14px;color:var(--tinta-suave)"><b>Referências:</b> Bíblia de Estudo Plenitude (SBB, 1995); Huntington; Netta Kemp Money, <i>Geografia Histórica do Mundo Bíblico</i> (Vida, 2006); Enéas Tognini, <i>Geografia das Terras Santa e Bíblica</i> (1978); Vesentini, <i>Novas Geopolíticas</i> (Contexto, 2008).</p>
+  </div>
+
+</section>
+
+<!-- ====================== RECAPS ====================== -->
+<section class="painel" id="recaps">
+<div class="bloco"><h3>Recapitulações da apostila — com respostas</h3>
+<p>As recapitulações do material, na ordem das páginas. Clique em <b>Ver resposta</b> para conferir a resposta modelo, redigida com o vocabulário da própria apostila.</p>
+<p style="color:var(--tinta-suave);font-style:italic">Dica de estudo: escreva a resposta no caderno antes de abrir — é assim que o professor cobra. Nota: as Recapitulações 8 e 9 foram reconstruídas pelo conteúdo dos capítulos 6 e 7 (a foto da página estava ilegível).</p></div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 1</span>
+<span class="pg">Apostila p. 164 — referente à Introdução</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Defina Geografia.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">É a <b>ciência que tem por objeto a descrição da superfície da Terra</b>, o estudo de seus aspectos físicos atuais e das relações entre o meio natural e os grupos humanos. Subdivide-se em geografia <b>econômica, física, humana e linguística</b>.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Quais são os dois rios de Gênesis 2.10-14 identificados hoje?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O <b>Tigre</b> e o <b>Eufrates</b>, na região do Fértil Crescente.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 2</span>
+<span class="pg">Apostila p. 168 — referente ao capítulo 1</span>
+<div class="recq"><div class="pergunta"><b>1)</b> O que foi o Crescente Fértil e qual sua importância?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Faixa em forma de <b>meia-lua</b> que parte do Egito, passa pela Palestina e pela Síria até o Golfo Pérsico. Foi o local do <b>jardim do Éden</b> e do início da humanidade, berço das civilizações (Suméria, Acádia, Aramita) e liga <b>três continentes: Ásia, Europa e África</b>.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Que evidências existem da vida antediluviana?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Apenas <b>Gênesis 4</b> e as escavações de <b>Leonard Woolley (1929–1933)</b>, que encontrou <b>sinetes de marfim, cerâmica e estátuas</b>, semelhantes aos produtos da época logo após o dilúvio.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Relacione cada povo cananeu à sua característica.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Heteus</b> → Hamate e Cades. <b>Cananeus</b> → irmãos Cuxe, Mizraim e Pute (Gn 10.6). <b>Jebuseus</b> → Araúna vendeu a colina a Davi (2Sm 24.18-25). <b>Heveus</b> → povo antigo da Síria e Palestina, associado aos arqueus. <b>Girgaseus</b> → Cordilheira Central, a oeste do mar da Galileia. <b>Ferezeus</b> → Jacó teve pavor deles em Siquém. <b>Amorreus</b> → surgiram por volta de 2500 a.C.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 3</span>
+<span class="pg">Apostila p. 177 — referente ao capítulo 2</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Cite as oito nações vizinhas de Canaã.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Filisteus, amalequitas, midianitas, moabitas, amonitas, edomitas, fenícios e sírios.</b></div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> De onde deriva o nome “Palestina”?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">De <i>pelishtim</i> (Gn 10.14), os <b>filisteus</b> — “errantes ou estrangeiros”.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Quais eram os principais deuses dos filisteus?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Dagom</b> (corpo de peixe e cabeça de homem), <b>Astarote</b> e <b>Baalzebube</b>.</div></div>
+<div class="recq"><div class="pergunta"><b>4)</b> Qual a contribuição cultural dos sírios (arameus)?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">A <b>língua</b>, que predominou por cerca de <b>1.500 anos</b> como padrão nos eixos comerciais.</div></div>
+<div class="recq"><div class="pergunta"><b>5)</b> Por que os fenícios eram chamados “Senhores dos Mares”?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Pelo domínio do <b>comércio marítimo</b> e pelas colônias (Chipre, Rodes, Sicília, Malta, Sardenha, Cadis, Útica e Cartago). Suas cidades principais eram <b>Tiro e Sidom</b>.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 4</span>
+<span class="pg">Apostila p. 183 — referente ao capítulo 3</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Por que Simeão é considerada um caso à parte entre as tribos?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Pela <b>má localização</b>: terra de pouca água e muita areia, exposta a amalequitas, edomitas e filisteus; misturou-se com tribos nômades e acabou <b>desaparecendo do mapeamento israelita</b> (1Cr 4.24-43).</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Relacione tribos e características.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Judá</b> → Hebrom e Belém. <b>Efraim</b> → coração da nação; Samaria. <b>Aser</b> → litoral, amizade com fenícios. <b>Zebulom</b> → do Carmelo ao lago de Generasé. <b>Naftali</b> → faixa montanhosa do alto Jordão, tribo fronteiriça. <b>Issacar</b> → planície de Esdraelom. <b>Dã</b> → estreita área; centro de idolatria. <b>Rúben, Gade e Manassés oriental</b> → Transjordânia.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 5</span>
+<span class="pg">Apostila p. 189 — referente ao capítulo 4</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Quais eram os limites da Palestina no NT?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Idumeia, Samaria, Galileia e Decápolis</b>, cada qual com autonomia política e administrativa.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> O que era a Decápolis?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">“Região das <b>Dez Cidades</b>” (grego), fruto dos contatos de Alexandre, o Grande, com o Oriente. Cidades livres, confederadas, ligadas a Roma por estradas, de <b>língua grega</b>; Jesus ali ministrou com liberdade.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Por que havia hostilidade entre samaritanos e judeus?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Porque <b>Sargão</b> levou gente de todo o império a Samaria (2Rs 17.24-33); eles temiam a Jeová, mas mantinham práticas aos seus deuses — mistura religiosa e racial (Jo 4.9).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 6</span>
+<span class="pg">Apostila p. 192 — referente ao capítulo 5</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Qual a importância do Nilo para o Egito?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">O Egito é <b>96% desértico</b>; só os <b>4%</b> banhados pelo Nilo são utilizáveis. Dele se extraía trigo, cevada, linho, papiro, óleos e argila; seu uso era sagrado. Fluxo de <b>2.500 km</b>, cheia máxima em setembro.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Qual era a religião dos egípcios?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Politeísta</b>; cada pequeno reino tinha crenças e deuses próprios, às vezes em forma humana.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Qual era a língua do Egito, e que fase deu origem à liturgia da Igreja Egípcia?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Língua camita-semita em cinco fases; a última, <b>demótico/cóptico</b>, tornou-se a liturgia da Igreja Cristã Egípcia.</div></div>
+<div class="recq"><div class="pergunta"><b>4)</b> Quem foram os hicsos?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">“Reis pastores”/“chefes do deserto”, tribo nômade que dominou o Egito por <b>108 anos</b>, com capital em <b>Avaris</b>. Quase consenso: <b>José reinou</b> sob essa dominação, e Israel foi morar em Gósen.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 7</span>
+<span class="pg">Apostila p. 195–200 — referente ao capítulo 6</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Qual a importância de Damasco para Paulo?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Ali <b>se converteu</b>, foi batizado no Espírito Santo, <b>pregou sua primeira mensagem cristã</b>, sofreu a primeira perseguição e desceu a muralha num cesto (At 9.20-25).</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Qual a importância de Antioquia?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Capital da província da Síria, <b>terceira cidade do mundo</b>; ponto estratégico para o estabelecimento da <b>igreja gentílica</b> (Paulo e Barnabé).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 8</span>
+<span class="pg">Apostila p. 201 — Grécia e Ásia Menor</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Quais as duas “grécias” e suas capitais?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Continental ou Hélade</b> (Atenas) e <b>Marítima ou Peloponeso</b> (Esparta), separadas pelo istmo de Corinto.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> O que era a Acaia e qual sua capital?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Província formada em 27 a.C. quando Roma uniu a Grécia às ilhas; capital <b>Corinto</b>.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 9</span>
+<span class="pg">Apostila p. 202–208 — referente ao capítulo 7</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Relacione: Tarso, Alexandria, Filipos, Tessalônica, Atenas, Corinto.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Tarso</b> → berço de Paulo e do estoicismo. <b>Alexandria</b> → Septuaginta e grande biblioteca. <b>Filipos</b> → Lídia, carcereiro. <b>Tessalônica</b> → duas cartas de Paulo. <b>Atenas</b> → Areópago e o Deus desconhecido. <b>Corinto</b> → cidade licenciosa; Áquila e Priscila.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Como a <i>pax romana</i> favoreceu o evangelho?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Trouxe <b>ordem e estradas</b> que facilitaram a circulação da boa-nova pelo império.</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 10</span>
+<span class="pg">Apostila p. 215 — referente ao capítulo 8</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Quais são as sete igrejas da Ásia?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Éfeso, Esmirna, Pérgamo, Tiatira, Sardes, Filadélfia e Laodiceia.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Que igreja era tida como tendo o “trono de Satanás”?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Pérgamo</b> (Ap 2.12-17); mártir Antipas.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Qual igreja recebeu as maiores reprimendas?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Laodiceia</b>, igreja morna e “suficiente” (Ap 3.14-21).</div></div>
+<div class="recq"><div class="pergunta"><b>4)</b> Quem foi exilado em Patmos e quando?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>João</b>, no império de Domiciano, em <b>95 d.C.</b> (a lacuna do livro traz “a.C.”, mas o correto é d.C.).</div></div>
+<div class="recq"><div class="pergunta"><b>5)</b> Qual igreja tinha “porta aberta” e vivia entre terremotos?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>Filadélfia</b> (Ap 3.7-13).</div></div>
+</div>
+
+<div class="bloco">
+<span class="recmarca">Recapitulação 11</span>
+<span class="pg">Apostila p. 217–219 — referente ao capítulo 9</span>
+<div class="recq"><div class="pergunta"><b>1)</b> Cite uma prova mitológica do dilúvio.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">Entre outras: o <b>poema de Gilgamés</b>; <b>Deucalião e Pirra</b> na Grécia; <b>Toth</b> no Egito; Xisuthros entre os caldeus; Ovídio; moeda de Frígia com a arca.</div></div>
+<div class="recq"><div class="pergunta"><b>2)</b> Cite uma prova arqueológica.</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta">A <b>camada espessa de argila</b> encontrada por <b>Leonard Woolley</b> em Ur dos caldeus; fotos de satélite de supostos restos no <b>monte Ararate</b>.</div></div>
+<div class="recq"><div class="pergunta"><b>3)</b> Quais as dimensões da arca e a duração do dilúvio?</div>
+<button class="ver" onclick="verResp(this)">Ver resposta</button>
+<div class="resposta"><b>180 m × 30 m × 18 m</b>, três pavimentos; dilúvio com <b>371 dias</b> (Gn 7.11 – 8.14).</div></div>
+</div>
+</section>
+
+<!-- ====================== SIMULADO ====================== -->
+<section class="painel" id="simulado">
+  <div id="menu">
+    <h3>Simulado exaustivo — 10 rodadas × 10 questões</h3>
+    <p>Cada questão tem 3 alternativas e explicação com a referência do conteúdo. Escolha a rodada:</p>
+    <div class="rodadas" id="listaRodadas"></div>
+    <div class="botoes"><button class="acao vazado" onclick="zerar()">Zerar meu progresso</button></div>
+  </div>
+
+  <div id="prova" style="display:none">
+    <div class="barra">
+      <div class="titulo" id="tituloRodada"></div>
+      <div class="placar" id="placar">0 / 10</div>
+    </div>
+    <div id="questoes"></div>
+    <div class="resultado" id="resultado">
+      <div class="nota" id="nota"></div>
+      <div class="msg" id="msg"></div>
+    </div>
+    <div class="botoes">
+      <button class="acao" onclick="voltar()">Voltar às rodadas</button>
+      <button class="acao vazado" onclick="refazer()">Refazer esta rodada</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">Geografia Histórica e Bíblica — material de estudo baseado na apostila (p. 163–224). Bons estudos, Sérgio.</footer>
+<script>
+const abas=document.querySelectorAll('nav.abas button');
+abas.forEach(b=>b.onclick=()=>{
+  abas.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  document.querySelectorAll('.painel').forEach(p=>p.classList.remove('on'));
+  document.getElementById(b.dataset.alvo).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+function verResp(b){
+  const r=b.nextElementSibling;r.classList.toggle('on');
+  b.textContent=r.classList.contains('on')?'Ocultar resposta':'Ver resposta';
+}
+
+const RODADAS=[
+{t:"Rodada 1 — Introdução e Fértil Crescente",d:"Geografia, rios, antediluviano",q:[
+{p:"A Geografia, segundo a apostila, subdivide-se em:",o:["Política, militar e religiosa","Econômica, física, humana e linguística","Apenas física e humana"],c:1,e:"Introdução, p. 163: econômica, física, humana e linguística."},
+{p:"Os dois rios de Gênesis 2.10-14 hoje identificados são:",o:["Nilo e Jordão","Tigre e Eufrates","Arnom e Jaboque"],c:1,e:"Tigre e Eufrates, no Fértil Crescente."},
+{p:"O Fértil Crescente forma uma linha em forma de:",o:["Meia-lua, do Egito ao Golfo Pérsico","Círculo em volta do mar Morto","Reta de Jerusalém a Roma"],c:0,e:"Parte do Egito, passa por Palestina e Síria até o Golfo Pérsico."},
+{p:"O Crescente Fértil liga quais três continentes?",o:["Ásia, Europa e África","África, América e Europa","Ásia, Oceania e Europa"],c:0,e:"Posição estratégica que liga Ásia, Europa e África."},
+{p:"Segundo a apostila, Jerusalém:",o:["É o centro geográfico do mundo","Não é o centro geográfico, mas a cidade estratégica posta por Deus (Gl 4.4)","Era cidade sem importância"],c:1,e:"Cartógrafos medievais a punham no centro; a apostila diz que não é verídico quanto à localização."},
+{p:"Quem escavou Ur (1929–1933) e achou sinetes de marfim, cerâmica e estátuas?",o:["Werner Keller","Leonard Woolley","Samuel Huntington"],c:1,e:"Evidências antediluvianas, além de Gênesis 4."},
+{p:"O primeiro povo a habitar a Mesopotâmia e a inventar a escrita (~4000 a.C.) foi:",o:["Os sumérios","Os hicsos","Os fenícios"],c:0,e:"Sumérios (Sinar); politeístas."},
+{p:"O rei acadiano dos semitas foi:",o:["Hamurabi","Sargão I","Ninrode"],c:1,e:"Semitas organizaram o reino de Acade sob Sargão I."},
+{p:"Hamurabi, rei amorreu, foi contemporâneo de:",o:["Abraão","Davi","Paulo"],c:0,e:"Amorreus mudaram a capital para Ur; Hamurabi, contemporâneo de Abraão."},
+{p:"Os casitas dominaram por cerca de:",o:["100 anos","Mil anos, até o surgimento do império assírio","Dez anos"],c:1,e:"Dominação com estancamento cultural."}]},
+{t:"Rodada 2 — Nações cananeias",d:"Amorreus, heteus, cananeus…",q:[
+{p:"Quantas nações cananeias a Bíblia apresenta?",o:["Nove (mais filisteus e caftorins)","Doze","Três"],c:0,e:"Gn 10.10-19."},
+{p:"Os amorreus eram conhecidos como:",o:["Povos dos montes","Povos do mar","Povos das tendas"],c:0,e:"Opunham-se aos povos das planícies."},
+{p:"As principais cidades dos heteus eram:",o:["Hamate e Cades","Tiro e Sidom","Gaza e Gate"],c:0,e:"No rio Orontes."},
+{p:"Os cananeus são ligados aos irmãos:",o:["Cuxe, Mizraim e Pute","Sem, Cão e Jafé","Efá, Efer e Enoque"],c:0,e:"Gn 10.6."},
+{p:"Quem teve pavor dos ferezeus em Siquém?",o:["Abraão","Jacó","Josué"],c:1,e:"Ferezeus: camponeses, mais rudes."},
+{p:"Os heveus enganaram Josué e tornaram-se:",o:["Soldados","Rachadores de lenha e tiradores de água","Sacerdotes"],c:1,e:"Js 9."},
+{p:"Os girgaseus residiam:",o:["Na Cordilheira Central, a oeste do mar da Galileia","No deserto do Sinai","No delta do Nilo"],c:0,e:"Resistiram a Josué e perderam a identidade."},
+{p:"Araúna, jebuseu, vendeu a Davi:",o:["Um exército","A colina onde Davi edificou altar (2Sm 24.18-25)","O monte Hermom"],c:1,e:"Jebuseus: distrito de Jerusalém."},
+{p:"Duas esposas de Esaú eram:",o:["Heteias","Amonitas","Egípcias"],c:0,e:"Gn 26.34."},
+{p:"Os amorreus dominaram Mesopotâmia e Síria por volta de:",o:["2500 a.C.","500 d.C.","1000 d.C."],c:0,e:"Dinastia de Hamurabi."}]},
+{t:"Rodada 3 — Povos vizinhos I",d:"Filisteus a moabitas",q:[
+{p:"“Palestina” deriva de:",o:["Pelishtim (filisteus)","Palestra","Pelasgos"],c:0,e:"Gn 10.14."},
+{p:"As cinco cidades dos filisteus eram:",o:["Gaza, Ascalom, Asdode, Gate e Ecrom","Tiro, Sidom, Gaza, Dã e Jope","Hebrom, Belém, Gaza, Gate e Jope"],c:0,e:"Confederação."},
+{p:"Dagom tinha:",o:["Corpo de peixe e cabeça de homem","Corpo de touro","Forma de serpente"],c:0,e:"Deus principal dos filisteus."},
+{p:"Os amalequitas descendiam de:",o:["Esaú, por Elifaz e Timna","Ló","Abraão e Quetura"],c:0,e:"Gn 36.12-16."},
+{p:"Quantas guerras com Israel a apostila cita para os amalequitas?",o:["Duas","Oito","Vinte"],c:1,e:"De Ex 17 a 1Cr 4."},
+{p:"O sogro de Moisés, midianita, chamava-se:",o:["Jetro","Hobabe","Gideão"],c:0,e:"Moisés viveu em Midiã."},
+{p:"Midiã era filho de Abraão com:",o:["Hagar","Quetura","Sara"],c:1,e:"Gn 25.1."},
+{p:"Os moabitas descendem de Ló e:",o:["Da filha mais velha","Da filha mais nova","De sua esposa"],c:0,e:"Gn 19.37; Zoar."},
+{p:"O deus principal de Moabe era:",o:["Camos","Moloque","Dagom"],c:0,e:"Prostituição sagrada."},
+{p:"Qual moabita foi bisavó de Davi?",o:["Rute","Ester","Noemi"],c:0,e:"Rute → Boaz → Obede → Jessé → Davi."}]},
+{t:"Rodada 4 — Povos vizinhos II",d:"Amonitas, edomitas, fenícios, sírios",q:[
+{p:"Os amonitas descendem de:",o:["Bem-Ami, filho de Ló com a filha mais nova","Esaú","Cão"],c:0,e:"Gn 19.38."},
+{p:"A capital Rabá-Amom é hoje:",o:["Amã, capital da Jordânia","Damasco","Beirute"],c:0,e:"Cap. 2.5."},
+{p:"O deus dos amonitas era:",o:["Moloque (Milcom)","Camos","Baal"],c:0,e:"Estátua de bronze oca; sacrifícios humanos."},
+{p:"Edom significa:",o:["Vermelho","Fértil","Estrangeiro"],c:0,e:"Gn 25.30."},
+{p:"Qual rei da casa de Herodes veio da dinastia edomita?",o:["Herodes, o Grande","Davi","Hirão"],c:0,e:"Cap. 2.6."},
+{p:"O livro de Jó tem como cenário territórios:",o:["Edomitas","Fenícios","Egípcios"],c:0,e:"Edomitas eram idólatras, mas sábios."},
+{p:"As cidades principais dos fenícios eram:",o:["Tiro e Sidom","Gaza e Gate","Alepo e Antioquia"],c:0,e:"Orla do Mediterrâneo."},
+{p:"Hirão, rei de Tiro, ajudou Davi com:",o:["Madeira para o templo","Soldados","Ouro do Egito"],c:0,e:"1Rs 5.2."},
+{p:"Quem destruiu Tiro em 333 a.C.?",o:["Alexandre, o Grande","Sargão","Nero"],c:0,e:"Queda do império fenício."},
+{p:"A contribuição cultural dos sírios foi:",o:["A língua, usada por 1.500 anos no comércio","A escrita cuneiforme","O vidro"],c:0,e:"Arameus."}]},
+{t:"Rodada 5 — As doze tribos",d:"Divisão da terra e levitas",q:[
+{p:"Quais tribos ficaram na Transjordânia?",o:["Rúben, Gade e meia tribo de Manassés","Judá, Simeão e Dã","Aser e Naftali"],c:0,e:"Nm 32."},
+{p:"A tribo sacerdotal, sem herança de terra, era:",o:["Levi","Judá","Efraim"],c:0,e:"Js 14.1; 21."},
+{p:"A tribo de José foi dividida entre:",o:["Efraim e Manassés","Rúben e Gade","Dã e Aser"],c:0,e:"13 porções para 12 tribos."},
+{p:"Simeão desapareceu do mapeamento por:",o:["Má localização e mistura com nômades","Guerra civil","Cativeiro egípcio"],c:0,e:"1Cr 4.24-43."},
+{p:"Qual tribo tinha Hebrom e Belém?",o:["Judá","Benjamim","Zebulom"],c:0,e:"Judá: 115 cidades."},
+{p:"A tribo de Aser teve problemas por:",o:["Relações amistosas com fenícios","Guerra com Moabe","Falta de água"],c:0,e:"Litoral, solo rico em ferro."},
+{p:"Quantas cidades levíticas havia?",o:["48","12","24"],c:0,e:"Js 21."},
+{p:"Qual NÃO é cidade de refúgio?",o:["Bezer","Quedes","Berseba"],c:2,e:"Refúgio: Bezer, Ramote, Golã, Quedes, Siquém e Hebrom."},
+{p:"Capital do Reino do Norte, depois de Siquém e Peniel:",o:["Samaria","Jerusalém","Tiro"],c:0,e:"1Rs 16.24."},
+{p:"Só no reinado de ___ se conquistou definitivamente Sião:",o:["Davi","Saul","Roboão"],c:0,e:"1Cr 11.4-9."}]},
+{t:"Rodada 6 — Palestina do Novo Testamento",d:"Galileia, Samaria, Judeia, Decápolis, Pereia",q:[
+{p:"Qual Herodes governou Galileia e Pereia, com capital Tiberíades?",o:["Herodes Antipas","Herodes Filipe","Arquelau"],c:0,e:"Cap. 4."},
+{p:"Quantos dos 36 meses de ministério Jesus passou na Galileia?",o:["18","6","30"],c:0,e:"Cap. 4.1."},
+{p:"A maior cidade da Galileia, segundo Josefo:",o:["Séfaris","Nazaré","Cafarnaum"],c:0,e:"~15.000 habitantes."},
+{p:"Samaria recebeu o nome por causa de:",o:["Semer, de quem Onri comprou o monte","Sargão","Acabe"],c:0,e:"1Rs 16.23,24."},
+{p:"Decápolis significa:",o:["Região das Dez Cidades","Dez montes","Dez tribos"],c:0,e:"Mt 4.25; Mc 5.20; 7.31."},
+{p:"Na Decápolis predominava a língua:",o:["Grega","Hebraica","Latina"],c:0,e:"Fruto de Alexandre, o Grande."},
+{p:"Pereia significa:",o:["Terra do além do Jordão","Terra dos judeus","Terra do sol"],c:0,e:"Do Jaboque ao Arnom."},
+{p:"João Batista batizou na região de:",o:["Pereia","Galileia","Samaria"],c:0,e:"Jo 1.28; 10.40."},
+{p:"Judeia, “terra dos judeus”, aparece quantas vezes no NT?",o:["48","3","93"],c:0,e:"Cap. 4.3."},
+{p:"A Palestina era estratégica porque:",o:["Por ela passavam as principais estradas e rotas comerciais","Era a maior do mundo","Era desértica"],c:0,e:"Domínio romano."}]},
+{t:"Rodada 7 — Egito, Arábia, Damasco e Antioquia",d:"Nilo, hicsos, primeiras cidades",q:[
+{p:"O Egito é cerca de ___ desértico:",o:["96%","50%","10%"],c:0,e:"Só 4% utilizáveis."},
+{p:"O Nilo tem fluxo de:",o:["2.500 km","250 km","25.000 km"],c:0,e:"Cap. 5."},
+{p:"Hicsos significa:",o:["Reis pastores","Reis guerreiros","Senhores do Nilo"],c:0,e:"Capital Avaris."},
+{p:"Por quanto tempo os hicsos dominaram o Egito?",o:["108 anos","400 anos","10 anos"],c:0,e:"Cap. 5."},
+{p:"Os egípcios eram:",o:["Politeístas","Monoteístas","Ateus"],c:0,e:"Cada reino com seus deuses."},
+{p:"Paulo passou ___ dias na Arábia após a conversão:",o:["Três","Quarenta","Sete"],c:0,e:"Oração e estudo da Palavra."},
+{p:"Paulo se converteu:",o:["Nas portas de Damasco","Em Jerusalém","Em Roma"],c:0,e:"At 9."},
+{p:"A igreja gentílica se estabeleceu estrategicamente em:",o:["Antioquia","Éfeso","Atenas"],c:0,e:"Paulo e Barnabé."},
+{p:"Antioquia foi fundada por:",o:["Seleuco Nicator","Alexandre","Pompeu"],c:0,e:"300 a.C.; 16 Antioquias."},
+{p:"Antioquia era a ___ cidade do mundo:",o:["Terceira","Primeira","Décima"],c:0,e:"Depois de Roma e Alexandria."}]},
+{t:"Rodada 8 — Ásia Menor, Grécia e cidades helênicas",d:"Tarso a Roma",q:[
+{p:"O ponto culminante da Ásia Menor é:",o:["Ararate","Sinai","Hermom"],c:0,e:"5.165 m."},
+{p:"A Acaia teve como capital:",o:["Corinto","Atenas","Esparta"],c:0,e:"Formada em 27 a.C."},
+{p:"A capital da Grécia continental era:",o:["Atenas","Esparta","Bereia"],c:0,e:"Sábios e filósofos."},
+{p:"Tarso foi berço do:",o:["Estoicismo e de Paulo","Epicurismo","Islamismo"],c:0,e:"Cap. 7.1."},
+{p:"A Septuaginta e a grande biblioteca ficavam em:",o:["Alexandria","Atenas","Roma"],c:0,e:"Fundada em 331 a.C."},
+{p:"Em Filipos, Paulo encontrou:",o:["Lídia","Priscila","Febe"],c:0,e:"Rio Gangites."},
+{p:"Tessalônica recebeu o nome em homenagem a:",o:["Thessalonike, esposa de Cassandro","Filipe","Alexandre"],c:0,e:"Antes: Thermai."},
+{p:"O Areópago ficava em:",o:["Atenas","Corinto","Antioquia"],c:0,e:"At 17.16-34."},
+{p:"Corinto foi reconstruída por:",o:["Júlio César, em 44 a.C.","Nero","Alexandre"],c:0,e:"Destruída em 146 a.C."},
+{p:"Roma é conhecida como cidade das:",o:["Sete colinas","Doze portas","Dez cidades"],c:0,e:"Quirinal, Esquilino… "}]},
+{t:"Rodada 9 — As sete igrejas e Patmos",d:"Apocalipse 2 e 3",q:[
+{p:"A maior e mais importante cidade da Ásia era:",o:["Éfeso","Sardes","Tiatira"],c:0,e:"Templo de Diana."},
+{p:"Esmirna foi igreja:",o:["Fiel na tribulação","Morna","Adormecida"],c:0,e:"Policarpo foi martirizado."},
+{p:"O “trono de Satanás” estava em:",o:["Pérgamo","Sardes","Esmirna"],c:0,e:"Ap 2.12-17."},
+{p:"Tiatira era conhecida pela:",o:["Púrpura","Biblioteca","Medicina"],c:0,e:"Jezabel."},
+{p:"Sardes foi alertada a:",o:["Vigiar","Resistir","Pregar"],c:0,e:"Ap 3.1-6."},
+{p:"Filadélfia significa:",o:["Amor fraternal","Mirra","Montanha"],c:0,e:"Região de terremotos."},
+{p:"Laodiceia era famosa por:",o:["Colírios e bancos","Ouro","Mármore"],c:0,e:"Igreja morna."},
+{p:"A ilha do exílio de João:",o:["Patmos","Creta","Chipre"],c:0,e:"Domiciano, 95 d.C."},
+{p:"Quem escreveu as cartas às sete igrejas?",o:["João","Paulo","Pedro"],c:0,e:"Apocalipse."},
+{p:"A igreja com “porta aberta” era:",o:["Filadélfia","Laodiceia","Éfeso"],c:0,e:"Ap 3.7-13."}]},
+{t:"Rodada 10 — Dilúvio, arca e revisão",d:"Cap. 9 e conclusão",q:[
+{p:"O dilúvio durou:",o:["371 dias","40 dias","150 dias"],c:0,e:"Gn 7.11 – 8.14."},
+{p:"A arca media:",o:["180 m × 30 m × 18 m","18 m × 3 m × 1,8 m","100 m × 10 m × 5 m"],c:0,e:"Gn 6.13-16."},
+{p:"O poema de Gilgamés relata:",o:["Um dilúvio","A criação","A torre de Babel"],c:0,e:"Prova mitológica."},
+{p:"Deucalião e Pirra são da mitologia:",o:["Grega","Egípcia","Persa"],c:0,e:"Pedras → homens."},
+{p:"Leonard Woolley encontrou em Ur:",o:["Camada espessa de argila","A arca","Tábuas da Lei"],c:0,e:"Prova arqueológica."},
+{p:"Os restos da arca teriam sido fotografados no:",o:["Monte Ararate","Monte Sinai","Monte Carmelo"],c:0,e:"Turquia."},
+{p:"Quem afirma que o conflito será de ordem cultural?",o:["Samuel Huntington","Foucault","Haushofer"],c:0,e:"Conclusão."},
+{p:"Qual versículo fecha a conclusão?",o:["Romanos 12.1,2","João 3.16","Gênesis 1.1"],c:0,e:"Sacrifício vivo."},
+{p:"Quem disse que um espaço ajustado às necessidades faz a nação grande?",o:["Haushofer","Huntington","Keller"],c:0,e:"Introdução."},
+{p:"Quem descreveu a Palestina como a mais linda das terras?",o:["Werner Keller","Tognini","Woolley"],c:0,e:"Introdução."}]}
+];
+
+RODADAS.forEach((r,ri)=>r.q.forEach((q,qi)=>{const k=(ri+qi)%3;const n=q.o.length;const novo=q.o.map((_,j)=>q.o[(j+n-k)%n]);q.c=(q.c+k)%n;q.o=novo;}));
+let atual=0,acertos=0,respondidas=0;
+const feitas={};
+
+function montarMenu(){
+  const el=document.getElementById('listaRodadas');
+  el.innerHTML='';
+  RODADAS.forEach((r,i)=>{
+    const b=document.createElement('button');
+    b.className='rodada'+(feitas[i]!==undefined?' feita':'');
+    b.innerHTML='<span>Rodada '+(i+1)+'</span>'+r.t.split('—')[1].trim()+'<em>'+r.d+(feitas[i]!==undefined?' · última nota: '+feitas[i]+'/10':'')+'</em>';
+    b.onclick=()=>abrir(i);
+    el.appendChild(b);
+  });
+}
+function abrir(i){
+  atual=i;acertos=0;respondidas=0;
+  document.getElementById('menu').style.display='none';
+  document.getElementById('prova').style.display='block';
+  document.getElementById('tituloRodada').textContent=RODADAS[i].t;
+  document.getElementById('placar').textContent='0 / 10';
+  document.getElementById('resultado').classList.remove('on');
+  const c=document.getElementById('questoes');c.innerHTML='';
+  RODADAS[i].q.forEach((q,qi)=>{
+    const d=document.createElement('div');d.className='q';
+    let html='<div class="num">Questão '+(qi+1)+'</div><div class="enunciado">'+q.p+'</div>';
+    q.o.forEach((o,oi)=>{html+='<button class="alt" data-q="'+qi+'" data-o="'+oi+'">'+String.fromCharCode(97+oi)+') '+o+'</button>';});
+    html+='<div class="expl" id="expl-'+qi+'"><b>Resposta:</b> '+q.e+'</div>';
+    d.innerHTML=html;c.appendChild(d);
+  });
+  c.querySelectorAll('.alt').forEach(b=>b.onclick=()=>responder(b));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function responder(b){
+  const qi=+b.dataset.q, oi=+b.dataset.o, q=RODADAS[atual].q[qi];
+  const pai=b.parentElement;
+  pai.querySelectorAll('.alt').forEach((x,k)=>{
+    x.disabled=true;
+    if(k===q.c)x.classList.add('certa');
+    else if(k===oi)x.classList.add('errada');
+  });
+  document.getElementById('expl-'+qi).classList.add('on');
+  respondidas++; if(oi===q.c)acertos++;
+  document.getElementById('placar').textContent=acertos+' / 10';
+  if(respondidas===10)finalizar();
+}
+function finalizar(){
+  feitas[atual]=acertos;
+  const r=document.getElementById('resultado');
+  document.getElementById('nota').textContent=acertos+'/10';
+  let m;
+  if(acertos===10)m='Perfeito. Essa rodada está dominada.';
+  else if(acertos>=8)m='Muito bom. Revise só as questões marcadas em vermelho.';
+  else if(acertos>=6)m='Está no caminho. Releia a seção da apostila e refaça.';
+  else m='Volte à apostila desta rodada antes de tentar de novo — leia com calma e repita.';
+  document.getElementById('msg').textContent=m;
+  r.classList.add('on');
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+  montarMenu();
+}
+function voltar(){
+  document.getElementById('prova').style.display='none';
+  document.getElementById('menu').style.display='block';
+  montarMenu();window.scrollTo({top:0,behavior:'smooth'});
+}
+function refazer(){abrir(atual);}
+function zerar(){for(const k in feitas)delete feitas[k];montarMenu();}
+montarMenu();
+</script>
+</body>
+</html>
