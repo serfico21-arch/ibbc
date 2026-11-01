@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Ética Cristã e a Pena de Morte — Roteiro 10 min</title>
+<title>A Ética Cristã e a Pena de Morte — Roteiro 10 min (pró e contra)</title>
 <style>
 :root{
   --fs:19px;
@@ -11,10 +11,12 @@
   --fav:#1b7a3a; --fav-bg:#e3f3e8; --fav-bar:#2e9e4f;
   --con:#b3261e; --con-bg:#fde3e1; --con-bar:#d6453d;
   --neu:#8a6100; --neu-bg:#fff3c4; --neu-bar:#d99a00;
+  --cos:#6b4aa0; --cos-bg:#efe8fa;
 }
 @media (prefers-color-scheme:dark){
   :root{--paper:#141a2a;--ink:#e6e9f0;--muted:#9aa3b5;--navy:#2a3a63;
-    --fav:#5fd08a;--fav-bg:#143324;--con:#ff8a80;--con-bg:#3a1b1b;--neu:#f2c86b;--neu-bg:#3a3014}
+    --fav:#5fd08a;--fav-bg:#143324;--con:#ff8a80;--con-bg:#3a1b1b;--neu:#f2c86b;--neu-bg:#3a3014;
+    --cos:#c3a6f2;--cos-bg:#2a1f45}
 }
 *{box-sizing:border-box}
 html{font-size:var(--fs)}
@@ -26,29 +28,39 @@ h1{font-size:1.9rem;line-height:1.15;margin:0 0 .25rem;color:var(--navy)}
 .sub{font-style:italic;color:var(--muted);margin:0 0 .8rem}
 .legenda{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .6rem;padding:0;list-style:none;font-size:.8rem;font-weight:700}
 .legenda li{padding:.15rem .6rem;border-radius:.3rem;color:#fff}
-.legenda .f{background:var(--fav)}.legenda .c{background:var(--con)}.legenda .n{background:var(--neu-bar);color:#222}
+.legenda .f{background:var(--fav)}.legenda .c{background:var(--con)}.legenda .n{background:var(--neu-bar);color:#222}.legenda .k{background:var(--cos)}
 .ferr{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;align-items:center;justify-content:flex-end;padding:.4rem 0;background:var(--paper);font-size:.75rem;color:var(--muted)}
 .ferr button{font:inherit;font-weight:700;border:1px solid var(--muted);background:transparent;color:var(--ink);border-radius:.3rem;padding:.2rem .7rem;cursor:pointer}
 .ferr button:focus-visible,.ferr button:hover{outline:2px solid var(--neu-bar)}
 section{margin:1.6rem 0}
-h2{margin:0 0 .7rem;padding:.45rem .8rem;background:var(--navy);color:#fff;font-size:1.05rem;border-radius:.25rem;line-height:1.3}
+h2{margin:0 0 .7rem;padding:.45rem .8rem;background:var(--navy);color:#fff;font-size:1.05rem;border-radius:.25rem;line-height:1.3;display:flex;justify-content:space-between;gap:.8rem}
+h2 .t{font-weight:400;white-space:nowrap;font-size:.9rem;opacity:.9}
 p{margin:.45rem 0}
-.arg{margin:1.3rem 0 0}
+.arg{margin:1.1rem 0 0}
 .tag{margin:0 0 .3rem;font-weight:700}
 .tag b{display:inline-block;padding:.05rem .55rem;border-radius:.25rem;color:#fff;font-size:.8rem;margin-right:.4rem;vertical-align:.05em}
 .favor .tag{color:var(--fav)}.favor .tag b{background:var(--fav)}
 .contra .tag{color:var(--con)}.contra .tag b{background:var(--con)}
-blockquote{margin:.4rem 0;padding:.55rem .8rem;font-size:.82rem;font-style:italic;border-left:.28rem solid;border-radius:0 .25rem .25rem 0}
+blockquote{margin:.4rem 0;padding:.55rem .8rem;font-size:.95rem;font-style:italic;border-left:.28rem solid;border-radius:0 .25rem .25rem 0}
 blockquote cite{font-style:normal;font-weight:700;margin-right:.2rem}
 .favor blockquote{background:var(--fav-bg);border-color:var(--fav-bar)}
 .contra blockquote{background:var(--con-bg);border-color:var(--con-bar)}
 .neutro blockquote{background:var(--neu-bg);border-color:var(--neu-bar)}
-.alerta{color:var(--con);font-weight:700;margin:1.1rem 0 .2rem}
+.nb{margin:.9rem 0 0;padding:.1rem .8rem .25rem;border-left:.28rem solid;border-radius:0 .25rem .25rem 0}
+.nb .tag{font-size:.85rem;margin:.3rem 0 .1rem}
+.nb.ilu{background:var(--neu-bg);border-color:var(--neu-bar)}.nb.ilu .tag{color:var(--neu)}
+.nb.apl{background:var(--fav-bg);border-color:var(--fav-bar)}.nb.apl .tag{color:var(--fav)}
+.nb.cos{background:var(--cos-bg);border-color:var(--cos)}.nb.cos .tag{color:var(--cos)}
 ul{margin:.4rem 0;padding-left:1.3rem}li{margin:.25rem 0}
 .fonte{font-size:.7rem;font-style:italic;color:var(--muted)}
 @media print{.ferr{display:none}html{font-size:11.5pt}.wrap{max-width:none;padding:0}
   h2,.legenda li,.tag b{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  blockquote,.arg{break-inside:avoid}h2{break-after:avoid}}
+  blockquote,.arg,.nb{break-inside:avoid}h2{break-after:avoid}}
+.rot{display:inline-block;padding:.02rem .5rem;margin-right:.4rem;border-radius:.25rem;color:#fff;font-size:.7rem;font-weight:700;vertical-align:.1em}
+.rot.e{background:var(--navy)}.rot.i{background:var(--neu-bar);color:#222}.rot.a{background:var(--fav)}.rot.t{background:var(--cos)}
+blockquote.f{background:var(--fav-bg);border-color:var(--fav-bar)}blockquote.c{background:var(--con-bg);border-color:var(--con-bar)}blockquote.n{background:var(--neu-bg);border-color:var(--neu-bar)}
+.pro{color:var(--fav);font-weight:700}.ctr{color:var(--con);font-weight:700}
+.tr{color:var(--cos);font-weight:700}
 </style>
 </head>
 <body>
@@ -59,95 +71,79 @@ ul{margin:.4rem 0;padding-left:1.3rem}li{margin:.25rem 0}
 </div>
 <header>
   <h1>A Ética Cristã e a Pena de Morte</h1>
-  <p class="sub">Roteiro de apresentação — 10 minutos</p>
-  <ul class="legenda"><li class="f">A FAVOR</li><li class="c">CONTRA</li><li class="n">Texto neutro</li></ul>
+  <p class="sub">Roteiro de apresentação — 10 minutos — texto final para o púlpito</p>
+  <ul class="legenda"><li class="f">A FAVOR</li><li class="c">CONTRA</li><li class="n">Ilustração</li><li class="k">Transição</li></ul>
 </header>
 
 <section class="neutro">
-  <h2>INTRODUÇÃO (1 min)</h2>
-  <p>A pena de morte exige do cristão uma posição bíblica. Jesus veio <b>cumprir</b> a Lei e trocou a punição pela graça. O Estado mantém a ordem, mas a justiça final é de Deus.</p>
-  <blockquote><cite>Mt 5:17 —</cite> “Não cuideis que vim destruir a lei ou os profetas; não vim ab-rogar, mas cumprir.”</blockquote>
-  <p><b>Jesus não acabou com a Lei: ele a cumpriu por inteiro.</b> Obedeceu-a sem pecado (Hb 4:15), realizou o que ela anunciava (Lc 24:44) e revelou o seu coração: amar a Deus e ao próximo, com justiça e misericórdia (Mt 22:37-40).</p>
+  <h2><span>ABERTURA</span><span class="t">1 min</span></h2>
+  <p><b>A Paz do Senhor a todos!</b></p>
+  <p>Uma pergunta rápida: se um assunto polêmico batesse hoje à porta da nossa igreja, nós teríamos uma resposta da Bíblia ou só uma opinião?</p>
+  <p>Opinião muda com o vento. Convicção bíblica permanece. Hoje vamos treinar isso com um caso difícil: a pena de morte. Vamos caminhar pela Bíblia na ordem em que Deus a revelou e, em cada passo, ouvir os dois lados com honestidade. Começamos com Noé.</p>
 </section>
 
 <section>
-  <h2>1. Lei Noaica — Gn 9 (1,5 min)</h2>
-  <p><b>Propósito de Deus:</b> dada a Noé depois do dilúvio, para <b>conter a violência</b> e proteger a vida, que vale por ser imagem de Deus. Vale para toda a humanidade.</p>
-  <div class="arg favor">
-    <p class="tag"><b>A FAVOR</b> mandamento para toda a humanidade, baseado na imagem de Deus.</p>
-    <blockquote><cite>Gn 9:6 —</cite> “Quem derramar o sangue do homem, pelo homem o seu sangue será derramado; porque Deus fez o homem conforme a sua imagem.”</blockquote>
-    <p><b>Explicando:</b> Quem tira uma vida responde por ela, porque o homem foi feito à imagem de Deus.</p>
-  </div>
-  <div class="arg contra">
-    <p class="tag"><b>CONTRA</b> Deus poupou Caim; a pena capital não é regra absoluta.</p>
-    <blockquote><cite>Gn 4:15 —</cite> “Disse-lhe, porém, o Senhor: Portanto qualquer que matar a Caim, sete vezes será castigado. E pôs o Senhor um sinal em Caim, para que o não ferisse qualquer que o achasse.”</blockquote>
-    <p><b>Explicando:</b> Caim matou o irmão e Deus não o executou: protegeu-o com um sinal.</p>
-  </div>
+  <h2><span>BLOCO 1 — Lei Noaica (Gênesis 9)</span><span class="t">1 min 30 s</span></h2>
+  <p><span class="rot e">Explicação</span>Depois do dilúvio, Deus fala com Noé, o pai de todos os povos:</p>
+  <blockquote class="f"><cite>Gn 9:6 —</cite> “Quem derramar o sangue do homem, pelo homem o seu sangue será derramado; porque Deus fez o homem conforme a sua imagem.”</blockquote>
+  <p><span class="pro">Esse é o lado a favor:</span> a vida é tão santa que quem a tira responde por ela. E repare: isso foi dito a toda a humanidade, e não só a Israel.</p>
+  <p>Mas a Bíblia não para aí. Voltemos um pouco, a Caim:</p>
+  <blockquote class="c"><cite>Gn 4:15 —</cite> “Disse-lhe, porém, o Senhor: Portanto qualquer que matar a Caim, sete vezes será castigado. E pôs o Senhor um sinal em Caim, para que o não ferisse qualquer que o achasse.”</blockquote>
+  <p><span class="ctr">Esse é o lado contra:</span> Caim matou o próprio irmão e Deus não o executou. Protegeu-o com um sinal. A pena capital não é regra absoluta.</p>
+  <p><span class="rot i">Ilustração</span>É como uma regra de trânsito com exceção: a regra existe, mas foi o próprio Deus que abriu a primeira exceção.</p>
+  <p><span class="rot a">Aplicação</span>Antes de opinar sobre qualquer assunto, comece pelo valor da vida e leia todos os textos, e não só o que ajuda o seu lado.</p>
+  <p><span class="rot t">Transição</span><span class="tr">Mas Noé é só o princípio. Quando Deus formou uma nação, a lei ficou detalhada. Vamos ao Sinai.</span></p>
 </section>
 
 <section>
-  <h2>2. Lei Mosaica — Êxodo a Deuteronômio (2,5 min)</h2>
-  <p><b>Propósito de Deus:</b> dada em Sinai só a Israel, para fazer dele um povo <b>santo e separado</b>, mostrar o pecado, proteger a vida e apontar para Cristo. Tem <b>613 mandamentos</b> e vigorou até Cristo.</p>
-  <div class="arg favor">
-    <p class="tag"><b>A FAVOR</b> a Lei punia com a morte o homicídio doloso (intencional) para proteger a vida.</p>
-    <blockquote><cite>Ex 21:12 —</cite> “Quem ferir alguém, de modo que este morra, certamente será morto.”</blockquote>
-    <p><b>Explicando:</b> Quem matava de propósito respondia com a própria vida; a Lei separava o homicídio intencional do involuntário.</p>
-  </div>
-  <div class="arg contra">
-    <p class="tag"><b>CONTRA</b> era um sistema teocrático antigo, que não vale literalmente hoje.</p>
-    <p class="alerta">A mesma Lei que condena à morte o homicida doloso também condena o filho desobediente:</p>
-    <blockquote><cite>Dt 21:18-21 —</cite> “...Este nosso filho é contumaz e rebelde, não dá ouvidos à nossa voz, é um comilão e um beberrão. Então, todos os homens da sua cidade o apedrejarão com pedras, para que morra; e tirarás o mal do meio de ti, e todo o Israel o ouvirá e temerá.”</blockquote>
-    <p><b>Explicando:</b> Se a Lei vale para condenar o homicida, vale também para o filho desobediente. Não dá para escolher só o que ajuda a tese.</p>
-    <p class="alerta">Usar só o que favorece a tese é cumprir a Lei pela metade. Ela deve ser cumprida por inteiro:</p>
-    <blockquote><cite>Tg 2:10 —</cite> “Porque qualquer que guardar toda a lei e tropeçar em um só ponto tornou-se culpado de todos.”</blockquote>
-    <p><b>Explicando:</b> Quem usa a Lei de Moisés precisa cumprir toda ela, e não só as partes que convêm.</p>
-  </div>
+  <h2><span>BLOCO 2 — Lei Mosaica (Êxodo a Deuteronômio)</span><span class="t">2 min</span></h2>
+  <p><span class="rot e">Explicação</span>Pela mão de Moisés, Deus entrega a Lei a Israel: 613 mandamentos para um povo separado. E o lado a favor aparece com clareza:</p>
+  <blockquote class="f"><cite>Êx 21:12 —</cite> “Quem ferir alguém, de modo que este morra, certamente será morto.”</blockquote>
+  <p>Quem matava de propósito respondia com a própria vida.</p>
+  <p><span class="ctr">Só que a mesma Lei diz mais.</span> Veja o que ela manda fazer com o filho rebelde:</p>
+  <blockquote class="c"><cite>Dt 21:20-21 —</cite> “E dirão aos anciãos da sua cidade: Este nosso filho é contumaz e rebelde, não dá ouvidos à nossa voz; é um comilão e um beberrão. Então, todos os homens da sua cidade o apedrejarão com pedras, para que morra; e tirarás o mal do meio de ti, e todo o Israel o ouvirá e temerá.”</blockquote>
+  <p>Isso mesmo: apedrejado. Então a pergunta é inevitável: se a Lei vale para o homicida, por que não vale para o filho rebelde?</p>
+  <p><span class="rot i">Ilustração</span>É como um cardápio: ninguém pode escolher só o prato de que gosta e deixar o resto. E a Bíblia avisa:</p>
+  <blockquote class="n"><cite>Tg 2:10 —</cite> “Porque qualquer que guardar toda a lei e tropeçar em um só ponto tornou-se culpado de todos.”</blockquote>
+  <p><span class="rot a">Aplicação</span>Quem usa a Lei de Moisés como argumento precisa cumprir a Lei inteira. Senão, está usando a Bíblia para provar o que já pensava. Isso vale para a pena de morte e para qualquer assunto.</p>
+  <p><span class="rot t">Transição</span><span class="tr">E quem consegue cumprir a Lei inteira? Só Um conseguiu. Vamos a Jesus.</span></p>
 </section>
 
 <section>
-  <h2>3. Ensinos de Cristo (1,5 min)</h2>
-  <div class="arg favor">
-    <p class="tag"><b>A FAVOR</b> Jesus vai à raiz: o ódio é tão errado quanto matar.</p>
-    <blockquote><cite>Mt 5:21 —</cite> “Ouvistes que foi dito aos antigos: Não matarás; mas qualquer que matar será réu de juízo.”</blockquote>
-    <p><b>Explicando:</b> Jesus lembra “Não matarás” e, no versículo seguinte, vai à raiz: o ódio também é pecado.</p>
-  </div>
-  <div class="arg contra">
-    <p class="tag"><b>CONTRA</b> Jesus perdoa e dá nova chance.</p>
-    <blockquote><cite>Jo 8:11 —</cite> “Disse ela: Senhor, ninguém. E disse-lhe Jesus: Nem eu também te condeno; vai-te, e não peques mais.”</blockquote>
-    <p><b>Explicando:</b> A Lei previa a morte para o adultério, mas Jesus não condena a mulher e dá nova chance: “não peques mais”.</p>
-  </div>
+  <h2><span>BLOCO 3 — Ensinos de Cristo</span><span class="t">1 min 30 s</span></h2>
+  <p><span class="rot e">Explicação</span>Jesus não veio acabar com a Lei, veio cumprir. E ele mostra o lado a favor:</p>
+  <blockquote class="f"><cite>Mt 5:21 —</cite> “Ouvistes que foi dito aos antigos: Não matarás; mas qualquer que matar será réu de juízo.”</blockquote>
+  <p>Ele confirma que matar é grave e, no versículo seguinte, vai à raiz: o ódio no coração já é pecado.</p>
+  <p><span class="ctr">Mas olhe o lado contra.</span> Trazem a Jesus uma mulher pega em adultério, e a Lei mandava apedrejar. Ele diz:</p>
+  <blockquote class="c"><cite>Jo 8:7 —</cite> “Aquele que de entre vós está sem pecado seja o primeiro que atire pedra contra ela.”</blockquote>
+  <p>E, quando todos se foram:</p>
+  <blockquote class="c"><cite>Jo 8:11 —</cite> “Disse ela: Senhor, ninguém. E disse-lhe Jesus: Nem eu também te condeno; vai-te, e não peques mais.”</blockquote>
+  <p><span class="rot i">Ilustração</span>Imagine a cena: pedras nas mãos e, uma a uma, caindo no chão.</p>
+  <p><span class="rot a">Aplicação</span>Graça não aprova o pecado: “não peques mais”. Mas justiça sem misericórdia também não é a justiça de Cristo. Ele une as duas.</p>
+  <p><span class="rot t">Transição</span><span class="tr">Então o Estado fica sem papel? Paulo responde.</span></p>
 </section>
 
 <section>
-  <h2>4. Paulo — Romanos (1,5 min)</h2>
-  <div class="arg favor">
-    <p class="tag"><b>A FAVOR</b> o Estado é ministro de Deus e usa a espada para punir o mal.</p>
-    <blockquote><cite>Rm 13:4 —</cite> “Porque ela é ministro de Deus para o teu bem. Mas, se fizeres o mal, teme, porque não traz debalde a espada; pois é ministro de Deus, vingador, para castigar o que faz o mal.”</blockquote>
-    <p><b>Explicando:</b> O governo é instrumento de Deus para punir o mal, e a “espada” é o poder de punir do Estado. Há debate se isso inclui a pena de morte.</p>
-  </div>
-  <div class="arg contra">
-    <p class="tag"><b>CONTRA</b> o cristão não se vinga; a vingança é de Deus.</p>
-    <blockquote><cite>Rm 12:19 —</cite> “Não vos vingueis a vós mesmos, amados, mas dai lugar à ira de Deus, porque está escrito: Minha é a vingança; eu retribuirei, diz o Senhor.”</blockquote>
-    <p><b>Explicando:</b> O cristão não faz justiça com as próprias mãos: entrega a justiça a Deus.</p>
-  </div>
+  <h2><span>BLOCO 4 — Paulo: a espada e a vingança (Romanos)</span><span class="t">1 min 30 s</span></h2>
+  <p><span class="rot e">Explicação</span>Escrevendo aos romanos, Paulo fala do governo. Lado a favor:</p>
+  <blockquote class="f"><cite>Rm 13:4 —</cite> “Porque ela é ministro de Deus para o teu bem. Mas, se fizeres o mal, teme, porque não traz debalde a espada; pois é ministro de Deus, vingador, para castigar o que faz o mal.”</blockquote>
+  <p>O Estado é ministro de Deus, e a espada é o poder de punir. Há debate se isso inclui a pena de morte, porque o texto não diz isso com todas as letras.</p>
+  <p><span class="ctr">Mas, um capítulo antes, o lado contra:</span></p>
+  <blockquote class="c"><cite>Rm 12:19 —</cite> “Não vos vingueis a vós mesmos, amados, mas dai lugar à ira de Deus, porque está escrito: Minha é a vingança; eu retribuirei, diz o Senhor.”</blockquote>
+  <p><span class="rot i">Ilustração</span>É como o juiz: no tribunal, ele julga em nome da lei; fora dele, se fizer justiça com as próprias mãos, vira criminoso. Mesma pessoa, dois papéis.</p>
+  <p><span class="rot a">Aplicação</span>A nossa pergunta nunca é “quero que sofra?”. É “o que é justo e honra a Deus?”.</p>
+  <p><span class="rot t">Transição</span><span class="tr">O Estado tem a espada. Mas espada não tem volta. E é aqui que chego ao que mais importa.</span></p>
 </section>
 
 <section class="neutro">
-  <h2>5. Considerações finais (1 min)</h2>
-  <p>A pena de morte está no mesmo dilema ético da eutanásia, do aborto e do suicídio: só o autor da vida decide quando ela termina (Dt 32:39; 1Co 6:19-20). No Brasil ela não é aceita, mas o cristão precisa ter posição.</p>
-  <ul>
-    <li><b>Inocentes morrem:</b> podem ser mortos por não provarem a inocência a tempo.</li>
-    <li><b>Perde-se a chance:</b> o executado não pode se reconciliar com o Senhor.</li>
-    <li><b>A luta é espiritual,</b> não contra pessoas (Ef 6:12; Tg 4:7).</li>
-    <li><b>Toda pessoa pode se arrepender,</b> ser perdoada e recomeçar.</li>
-  </ul>
-  <blockquote><cite>Ez 18:32 —</cite> “Porque eu não tenho prazer na morte do que morre, diz o Senhor Deus; convertei-vos, pois, e vivei.”</blockquote>
-  <p><b>Explicando:</b> Deus não se alegra com a morte de ninguém e quer que a pessoa se converta e viva. A execução tira essa chance.</p>
-</section>
-
-<section class="neutro">
-  <h2>CONCLUSÃO (1 min)</h2>
-  <p>Para o cristão, a resposta nunca é a morte, mas <b>a vida e a esperança</b>. Deus poupou Caim, Jesus ensinou a perdoar e a pena de morte fecha a porta do arrependimento. <b>Escolhemos o perdão, o recomeço e a vida.</b></p>
+  <h2><span>CONCLUSÃO — vida, graça e esperança</span><span class="t">2 min 30 s</span></h2>
+  <p>Imagine um homem condenado. Anos depois, descobre-se que era inocente. Com a prisão, ainda dá tempo de corrigir o erro. Com a execução, não. <b>Inocentes podem morrer.</b></p>
+  <p>E há algo ainda mais grave: a execução fecha a porta do arrependimento. Ouça o que Deus diz:</p>
+  <blockquote class="n"><cite>Ez 18:32 —</cite> “Porque eu não tenho prazer na morte do que morre, diz o Senhor Deus; convertei-vos, pois, e vivei.”</blockquote>
+  <p>Deus não tem prazer na morte de ninguém. Ele quer que a pessoa se converta e viva. Saulo perseguiu a igreja e foi alcançado por Cristo. Se o tempo dele tivesse acabado antes, não teríamos o apóstolo Paulo.</p>
+  <p>No Brasil, a Constituição veda a pena de morte, salvo em guerra declarada. Mas o cristão precisa ter posição. Eu não vim dizer o que pensar, e sim como pensar: lendo a Bíblia inteira, com honestidade, ouvindo os dois lados. De Noé a Moisés, de Cristo a Paulo, onde chegamos?</p>
+  <p><b>A resposta do cristão termina na vida, na graça e na esperança.</b> Escolhemos o perdão, o recomeço e a vida.</p>
+  <p>Que a paz do Senhor esteja com todos vocês. Amém!</p>
   <p class="fonte">Texto bíblico: Almeida Revista e Corrigida (ARC).</p>
 </section>
 </div>
