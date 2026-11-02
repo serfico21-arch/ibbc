@@ -1,161 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Ética Cristã e a Pena de Morte — Roteiro 10 min (pró e contra)</title>
+<title>Pena de Morte: Roteiro (Lado CONTRA)</title>
 <style>
-:root{
-  --fs:19px;
-  --navy:#1f2a44; --paper:#ffffff; --ink:#26303f; --muted:#6b7280;
-  --fav:#1b7a3a; --fav-bg:#e3f3e8; --fav-bar:#2e9e4f;
-  --con:#b3261e; --con-bg:#fde3e1; --con-bar:#d6453d;
-  --neu:#8a6100; --neu-bg:#fff3c4; --neu-bar:#d99a00;
-  --cos:#6b4aa0; --cos-bg:#efe8fa;
-}
-@media (prefers-color-scheme:dark){
-  :root{--paper:#141a2a;--ink:#e6e9f0;--muted:#9aa3b5;--navy:#2a3a63;
-    --fav:#5fd08a;--fav-bg:#143324;--con:#ff8a80;--con-bg:#3a1b1b;--neu:#f2c86b;--neu-bg:#3a3014;
-    --cos:#c3a6f2;--cos-bg:#2a1f45}
-}
-*{box-sizing:border-box}
-html{font-size:var(--fs)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55}
-.wrap{max-width:46rem;margin:0 auto;padding:1rem 1rem 4rem}
-header{padding:1.2rem 0 .4rem}
-h1{font-size:1.9rem;line-height:1.15;margin:0 0 .25rem;color:var(--navy)}
-@media (prefers-color-scheme:dark){h1{color:#fff}}
-.sub{font-style:italic;color:var(--muted);margin:0 0 .8rem}
-.legenda{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 .6rem;padding:0;list-style:none;font-size:.8rem;font-weight:700}
-.legenda li{padding:.15rem .6rem;border-radius:.3rem;color:#fff}
-.legenda .f{background:var(--fav)}.legenda .c{background:var(--con)}.legenda .n{background:var(--neu-bar);color:#222}.legenda .k{background:var(--cos)}
-.ferr{position:sticky;top:0;z-index:5;display:flex;gap:.4rem;align-items:center;justify-content:flex-end;padding:.4rem 0;background:var(--paper);font-size:.75rem;color:var(--muted)}
-.ferr button{font:inherit;font-weight:700;border:1px solid var(--muted);background:transparent;color:var(--ink);border-radius:.3rem;padding:.2rem .7rem;cursor:pointer}
-.ferr button:focus-visible,.ferr button:hover{outline:2px solid var(--neu-bar)}
-section{margin:1.6rem 0}
-h2{margin:0 0 .7rem;padding:.45rem .8rem;background:var(--navy);color:#fff;font-size:1.05rem;border-radius:.25rem;line-height:1.3;display:flex;justify-content:space-between;gap:.8rem}
-h2 .t{font-weight:400;white-space:nowrap;font-size:.9rem;opacity:.9}
-p{margin:.45rem 0}
-.arg{margin:1.1rem 0 0}
-.tag{margin:0 0 .3rem;font-weight:700}
-.tag b{display:inline-block;padding:.05rem .55rem;border-radius:.25rem;color:#fff;font-size:.8rem;margin-right:.4rem;vertical-align:.05em}
-.favor .tag{color:var(--fav)}.favor .tag b{background:var(--fav)}
-.contra .tag{color:var(--con)}.contra .tag b{background:var(--con)}
-blockquote{margin:.4rem 0;padding:.55rem .8rem;font-size:.95rem;font-style:italic;border-left:.28rem solid;border-radius:0 .25rem .25rem 0}
-blockquote cite{font-style:normal;font-weight:700;margin-right:.2rem}
-.favor blockquote{background:var(--fav-bg);border-color:var(--fav-bar)}
-.contra blockquote{background:var(--con-bg);border-color:var(--con-bar)}
-.neutro blockquote{background:var(--neu-bg);border-color:var(--neu-bar)}
-.nb{margin:.9rem 0 0;padding:.1rem .8rem .25rem;border-left:.28rem solid;border-radius:0 .25rem .25rem 0}
-.nb .tag{font-size:.85rem;margin:.3rem 0 .1rem}
-.nb.ilu{background:var(--neu-bg);border-color:var(--neu-bar)}.nb.ilu .tag{color:var(--neu)}
-.nb.apl{background:var(--fav-bg);border-color:var(--fav-bar)}.nb.apl .tag{color:var(--fav)}
-.nb.cos{background:var(--cos-bg);border-color:var(--cos)}.nb.cos .tag{color:var(--cos)}
-ul{margin:.4rem 0;padding-left:1.3rem}li{margin:.25rem 0}
-.fonte{font-size:.7rem;font-style:italic;color:var(--muted)}
-@media print{.ferr{display:none}html{font-size:11.5pt}.wrap{max-width:none;padding:0}
-  h2,.legenda li,.tag b{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  blockquote,.arg,.nb{break-inside:avoid}h2{break-after:avoid}}
-.rot{display:inline-block;padding:.02rem .5rem;margin-right:.4rem;border-radius:.25rem;color:#fff;font-size:.7rem;font-weight:700;vertical-align:.1em}
-.rot.e{background:var(--navy)}.rot.i{background:var(--neu-bar);color:#222}.rot.a{background:var(--fav)}.rot.t{background:var(--cos)}
-blockquote.f{background:var(--fav-bg);border-color:var(--fav-bar)}blockquote.c{background:var(--con-bg);border-color:var(--con-bar)}blockquote.n{background:var(--neu-bg);border-color:var(--neu-bar)}
-.pro{color:var(--fav);font-weight:700}.ctr{color:var(--con);font-weight:700}
-.tr{color:var(--cos);font-weight:700}
+  :root { --bg:#fffdf8; --fg:#1d1d1f; --muted:#5b5b60; --accent:#7a1f1f; --card:#ffffff; --line:#e4dccb;
+          --dizem:#fdecea; --dizem-b:#c0392b; --resp:#e8f4ea; --resp-b:#2e7d32; --dia:#fff6dc; --dia-b:#b8860b; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17171a; --fg:#f2f0ea; --muted:#b4b2ab; --accent:#e8a6a6; --card:#202024; --line:#34343a;
+            --dizem:#3a1f1f; --dizem-b:#ef7b6d; --resp:#1c3322; --resp-b:#6fcf7a; --dia:#3a321a; --dia-b:#e0b94a; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:Georgia,"Times New Roman",serif;
+         font-size:22px; line-height:1.6; }
+  main { max-width:820px; margin:0 auto; padding:24px 16px 80px; }
+  h1 { font-size:1.6em; line-height:1.25; color:var(--accent); margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 24px; font-size:.8em; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:0 0 22px; }
+  h2 { margin:0 0 12px; font-size:1.2em; color:var(--accent); display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  h2 small { font-size:.6em; color:var(--muted); font-weight:normal; }
+  .box { border-left:6px solid; border-radius:8px; padding:10px 14px; margin:10px 0; }
+  .box b.tag { display:block; font-size:.7em; letter-spacing:.06em; margin-bottom:4px; }
+  .dizem { background:var(--dizem); border-color:var(--dizem-b); }
+  .resp  { background:var(--resp);  border-color:var(--resp-b); }
+  .dia   { background:var(--dia);   border-color:var(--dia-b); }
+  ul, ol { margin:6px 0 6px 1.1em; padding:0; }
+  li { margin:6px 0; }
+  p { margin:8px 0; }
+  .big { font-size:1.1em; font-weight:bold; text-align:center; color:var(--accent); }
+  .final { text-align:center; }
+  .v { display:block; font-size:.5em; line-height:1.3; font-style:italic; background:#fff3a0; color:#3a2f00;
+       border-radius:4px; padding:2px 6px; margin:3px 0 0; }
+  .v b { font-style:normal; }
+  @media (prefers-color-scheme: dark) { .v { background:#4a4116; color:#ffe98a; } }
+  @media print { body { font-size:16px; background:#fff; color:#000; } section { break-inside:avoid; } }
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="ferr" role="group" aria-label="Tamanho da letra">Letra
-  <button type="button" id="menos" aria-label="Diminuir letra">A−</button>
-  <button type="button" id="mais" aria-label="Aumentar letra">A+</button>
-</div>
-<header>
-  <h1>A Ética Cristã e a Pena de Morte</h1>
-  <p class="sub">Roteiro de apresentação — 10 minutos — texto final para o púlpito</p>
-  <ul class="legenda"><li class="f">A FAVOR</li><li class="c">CONTRA</li><li class="n">Ilustração</li><li class="k">Transição</li></ul>
-</header>
+<main>
+  <h1>Pena de Morte: Roteiro para Ler (10 min)</h1>
+  <p class="sub">Lado CONTRA · Texto bíblico: ARC · Ordem de cada ponto: ELES DIZEM → RESPONDA → DIA A DIA</p>
 
-<section class="neutro">
-  <h2><span>ABERTURA</span><span class="t">1 min</span></h2>
-  <p><b>A Paz do Senhor a todos!</b></p>
-  <p>Uma pergunta rápida: se um assunto polêmico batesse hoje à porta da nossa igreja, nós teríamos uma resposta da Bíblia ou só uma opinião?</p>
-  <p>Opinião muda com o vento. Convicção bíblica permanece. Hoje vamos treinar isso com um caso difícil: a pena de morte. Vamos caminhar pela Bíblia na ordem em que Deus a revelou e, em cada passo, ouvir os dois lados com honestidade. Começamos com Noé.</p>
-</section>
+  <section>
+    <h2>Introdução <small>1 min</small></h2>
+    <p><b>A paz do Senhor Jesus, amados irmãos e queridos professores!</b></p>
+    <p>Agradeço a Deus pela vida de cada um e por estarmos juntos na Palavra.</p>
+    <p>Hoje o assunto é difícil: <b>a pena de morte</b>. Parece distante, mas <b>tudo tem a mesma raiz</b>:</p>
+    <ul>
+      <li>Quando o homem decide sobre o <b>criminoso</b> → pena de morte.</li>
+      <li>Quando o homem decide sobre o <b>doente</b> → eutanásia.</li>
+      <li>Quando o homem decide sobre a criança no <b>ventre</b> → aborto.</li>
+      <li>Quando o homem decide sobre a <b>própria vida</b> → suicídio.</li>
+    </ul>
+    <p class="big">Nós cremos que o único que pode decidir quando a vida termina é o Autor da vida.</p>
+    <p>Só o Autor da vida:</p>
+    <ul>
+      <li><b>Dt 32:39</b> "...eu mato e eu faço viver..."</li>
+      <li><b>1Co 6:19-20</b> "...não sois de vós mesmos..."</li>
+    </ul>
+    <p>No Brasil a pena de morte não é aceita, mas o cristão precisa ter posição. Vamos ver os argumentos de quem defende e o que a Bíblia responde.</p>
+  </section>
 
-<section>
-  <h2><span>BLOCO 1 — Lei Noaica (Gênesis 9)</span><span class="t">1 min 30 s</span></h2>
-  <p><span class="rot e">Explicação</span>Depois do dilúvio, Deus fala com Noé, o pai de todos os povos:</p>
-  <blockquote class="f"><cite>Gn 9:6 —</cite> “Quem derramar o sangue do homem, pelo homem o seu sangue será derramado; porque Deus fez o homem conforme a sua imagem.”</blockquote>
-  <p><span class="pro">Esse é o lado a favor:</span> a vida é tão santa que quem a tira responde por ela. E repare: isso foi dito a toda a humanidade, e não só a Israel.</p>
-  <p>Mas a Bíblia não para aí. Voltemos um pouco, a Caim:</p>
-  <blockquote class="c"><cite>Gn 4:15 —</cite> “Disse-lhe, porém, o Senhor: Portanto qualquer que matar a Caim, sete vezes será castigado. E pôs o Senhor um sinal em Caim, para que o não ferisse qualquer que o achasse.”</blockquote>
-  <p><span class="ctr">Esse é o lado contra:</span> Caim matou o próprio irmão e Deus não o executou. Protegeu-o com um sinal. A pena capital não é regra absoluta.</p>
-  <p><span class="rot i">Ilustração</span>É como uma regra de trânsito com exceção: a regra existe, mas foi o próprio Deus que abriu a primeira exceção.</p>
-  <p><span class="rot a">Aplicação</span>Antes de opinar sobre qualquer assunto, comece pelo valor da vida e leia todos os textos, e não só o que ajuda o seu lado.</p>
-  <p><span class="rot t">Transição</span><span class="tr">Mas Noé é só o princípio. Quando Deus formou uma nação, a lei ficou detalhada. Vamos ao Sinai.</span></p>
-</section>
+  <section>
+    <h2>1. Gênesis 9:6 <small>1,5 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"Quem derramar sangue, pelo homem seu sangue será derramado." (essa lei não é absoluta)</div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li>Se fosse, Deus <b>não teria poupado Caim</b> (Gn 4:15).<span class="v"><b>Gn 4:15</b> "...pôs o Senhor um sinal em Caim, para que o não ferisse qualquer que o achasse."</span></li>
+        <li>Se fosse, Deus <b>não teria poupado Davi</b> (adultério e morte de Urias). Deus disse: <b>"não morrerás"</b> (2Sm 12:13).<span class="v"><b>2Sm 12:13</b> "...Também o Senhor perdoou o teu pecado; não morrerás."</span></li>
+      </ul>
+      <p><b>FECHE:</b> O próprio Deus abriu exceção. Quem somos nós para ser mais duros que Ele?</p>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b>Quando alguém erra conosco, queremos justiça, mas também queremos outra chance.</div>
+  </section>
 
-<section>
-  <h2><span>BLOCO 2 — Lei Mosaica (Êxodo a Deuteronômio)</span><span class="t">2 min</span></h2>
-  <p><span class="rot e">Explicação</span>Pela mão de Moisés, Deus entrega a Lei a Israel: 613 mandamentos para um povo separado. E o lado a favor aparece com clareza:</p>
-  <blockquote class="f"><cite>Êx 21:12 —</cite> “Quem ferir alguém, de modo que este morra, certamente será morto.”</blockquote>
-  <p>Quem matava de propósito respondia com a própria vida.</p>
-  <p><span class="ctr">Só que a mesma Lei diz mais.</span> Veja o que ela manda fazer com o filho rebelde:</p>
-  <blockquote class="c"><cite>Dt 21:20-21 —</cite> “E dirão aos anciãos da sua cidade: Este nosso filho é contumaz e rebelde, não dá ouvidos à nossa voz; é um comilão e um beberrão. Então, todos os homens da sua cidade o apedrejarão com pedras, para que morra; e tirarás o mal do meio de ti, e todo o Israel o ouvirá e temerá.”</blockquote>
-  <p>Isso mesmo: apedrejado. Então a pergunta é inevitável: se a Lei vale para o homicida, por que não vale para o filho rebelde?</p>
-  <p><span class="rot i">Ilustração</span>É como um cardápio: ninguém pode escolher só o prato de que gosta e deixar o resto. E a Bíblia avisa:</p>
-  <blockquote class="n"><cite>Tg 2:10 —</cite> “Porque qualquer que guardar toda a lei e tropeçar em um só ponto tornou-se culpado de todos.”</blockquote>
-  <p><span class="rot a">Aplicação</span>Quem usa a Lei de Moisés como argumento precisa cumprir a Lei inteira. Senão, está usando a Bíblia para provar o que já pensava. Isso vale para a pena de morte e para qualquer assunto.</p>
-  <p><span class="rot t">Transição</span><span class="tr">E quem consegue cumprir a Lei inteira? Só Um conseguiu. Vamos a Jesus.</span></p>
-</section>
+  <section>
+    <h2>2. Lei de Moisés <small>1,5 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"A Lei mandava matar o homicida" (Êx 21:12).<span class="v"><b>Êx 21:12</b> "Quem ferir alguém, e este morrer, certamente morrerá."</span></div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <p><b>A mesma Lei que pune o homicida com a morte pune o filho rebelde</b> (Dt 21:18-21).<span class="v"><b>Dt 21:18-21</b> "...todos os homens da sua cidade o apedrejarão com pedras, até que morra..."</span></p>
+      <ul>
+        <li>Quem usa uma parte tem de cumprir tudo (Tg 2:10).<span class="v"><b>Tg 2:10</b> "...qualquer que guardar toda a lei e tropeçar em um ponto, tornou-se culpado de todos."</span></li>
+        <li>A Lei foi só para Israel e nos levou a Cristo (Gl 3:24-25).<span class="v"><b>Gl 3:24</b> "...a lei nos serviu de aio, para nos conduzir a Cristo..."</span></li>
+      </ul>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b><i>Levante a mão quem nunca desobedeceu pai e mãe.</i> Ninguém aqui quer matar o filho teimoso.</div>
+  </section>
 
-<section>
-  <h2><span>BLOCO 3 — Ensinos de Cristo</span><span class="t">1 min 30 s</span></h2>
-  <p><span class="rot e">Explicação</span>Jesus não veio acabar com a Lei, veio cumprir. E ele mostra o lado a favor:</p>
-  <blockquote class="f"><cite>Mt 5:21 —</cite> “Ouvistes que foi dito aos antigos: Não matarás; mas qualquer que matar será réu de juízo.”</blockquote>
-  <p>Ele confirma que matar é grave e, no versículo seguinte, vai à raiz: o ódio no coração já é pecado.</p>
-  <p><span class="ctr">Mas olhe o lado contra.</span> Trazem a Jesus uma mulher pega em adultério, e a Lei mandava apedrejar. Ele diz:</p>
-  <blockquote class="c"><cite>Jo 8:7 —</cite> “Aquele que de entre vós está sem pecado seja o primeiro que atire pedra contra ela.”</blockquote>
-  <p>E, quando todos se foram:</p>
-  <blockquote class="c"><cite>Jo 8:11 —</cite> “Disse ela: Senhor, ninguém. E disse-lhe Jesus: Nem eu também te condeno; vai-te, e não peques mais.”</blockquote>
-  <p><span class="rot i">Ilustração</span>Imagine a cena: pedras nas mãos e, uma a uma, caindo no chão.</p>
-  <p><span class="rot a">Aplicação</span>Graça não aprova o pecado: “não peques mais”. Mas justiça sem misericórdia também não é a justiça de Cristo. Ele une as duas.</p>
-  <p><span class="rot t">Transição</span><span class="tr">Então o Estado fica sem papel? Paulo responde.</span></p>
-</section>
+  <section>
+    <h2>3. Ananias e Safira <small>1 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"Foram mortos por mentir" (At 5).<span class="v"><b>At 5:5</b> "...Ananias, ouvindo estas palavras, caiu e expirou."</span></div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li><b>Deus</b> os julgou. Nenhum tribunal os matou.</li>
+        <li>Foi caso único. Depois, a igreja <b>afastava e restaurava</b>, nunca matava (1Co 5; 2Co 2:6-8).<span class="v"><b>1Co 5:5</b> "...para que o espírito seja salvo no dia do Senhor Jesus."</span><span class="v"><b>2Co 2:7</b> "...deveis antes perdoar-lhe e consolá-lo..."</span></li>
+      </ul>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b>Se mentira merecesse morte, quantos estariam aqui hoje?</div>
+  </section>
 
-<section>
-  <h2><span>BLOCO 4 — Paulo: a espada e a vingança (Romanos)</span><span class="t">1 min 30 s</span></h2>
-  <p><span class="rot e">Explicação</span>Escrevendo aos romanos, Paulo fala do governo. Lado a favor:</p>
-  <blockquote class="f"><cite>Rm 13:4 —</cite> “Porque ela é ministro de Deus para o teu bem. Mas, se fizeres o mal, teme, porque não traz debalde a espada; pois é ministro de Deus, vingador, para castigar o que faz o mal.”</blockquote>
-  <p>O Estado é ministro de Deus, e a espada é o poder de punir. Há debate se isso inclui a pena de morte, porque o texto não diz isso com todas as letras.</p>
-  <p><span class="ctr">Mas, um capítulo antes, o lado contra:</span></p>
-  <blockquote class="c"><cite>Rm 12:19 —</cite> “Não vos vingueis a vós mesmos, amados, mas dai lugar à ira de Deus, porque está escrito: Minha é a vingança; eu retribuirei, diz o Senhor.”</blockquote>
-  <p><span class="rot i">Ilustração</span>É como o juiz: no tribunal, ele julga em nome da lei; fora dele, se fizer justiça com as próprias mãos, vira criminoso. Mesma pessoa, dois papéis.</p>
-  <p><span class="rot a">Aplicação</span>A nossa pergunta nunca é “quero que sofra?”. É “o que é justo e honra a Deus?”.</p>
-  <p><span class="rot t">Transição</span><span class="tr">O Estado tem a espada. Mas espada não tem volta. E é aqui que chego ao que mais importa.</span></p>
-</section>
+  <section>
+    <h2>4. A espada, Rm 13:4 <small>1,5 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"O Estado carrega a espada."<span class="v"><b>Rm 13:4</b> "...não traz debalde a espada; pois é ministro de Deus..."</span></div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li>Paulo fala de <b>obedecer às autoridades</b>, não cita pena de morte.</li>
+        <li>Antes disso ele diz: <b>"minha é a vingança"</b> (Rm 12:19).<span class="v"><b>Rm 12:19</b> "...Minha é a vingança; eu recompensarei, diz o Senhor."</span></li>
+        <li>Essa espada matou Tiago (At 12:2). <b>Governos erram.</b><span class="v"><b>At 12:2</b> "E matou à espada Tiago, irmão de João."</span></li>
+      </ul>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b>O jornal mostra gente presa que depois foi provada inocente. Executada, não haveria volta.</div>
+  </section>
 
-<section class="neutro">
-  <h2><span>CONCLUSÃO — vida, graça e esperança</span><span class="t">2 min 30 s</span></h2>
-  <p>Imagine um homem condenado. Anos depois, descobre-se que era inocente. Com a prisão, ainda dá tempo de corrigir o erro. Com a execução, não. <b>Inocentes podem morrer.</b></p>
-  <p>E há algo ainda mais grave: a execução fecha a porta do arrependimento. Ouça o que Deus diz:</p>
-  <blockquote class="n"><cite>Ez 18:32 —</cite> “Porque eu não tenho prazer na morte do que morre, diz o Senhor Deus; convertei-vos, pois, e vivei.”</blockquote>
-  <p>Deus não tem prazer na morte de ninguém. Ele quer que a pessoa se converta e viva. Saulo perseguiu a igreja e foi alcançado por Cristo. Se o tempo dele tivesse acabado antes, não teríamos o apóstolo Paulo.</p>
-  <p>No Brasil, a Constituição veda a pena de morte, salvo em guerra declarada. Mas o cristão precisa ter posição. Eu não vim dizer o que pensar, e sim como pensar: lendo a Bíblia inteira, com honestidade, ouvindo os dois lados. De Noé a Moisés, de Cristo a Paulo, onde chegamos?</p>
-  <p><b>A resposta do cristão termina na vida, na graça e na esperança.</b> Escolhemos o perdão, o recomeço e a vida.</p>
-  <p>Que a paz do Senhor esteja com todos vocês. Amém!</p>
-  <p class="fonte">Texto bíblico: Almeida Revista e Corrigida (ARC).</p>
-</section>
-</div>
+  <section>
+    <h2>5. Paulo e 1 Timóteo <small>1 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"Paulo aceitou a pena de morte" (At 25:11) e "a lei é para homicidas" (1Tm 1:9-10).<span class="v"><b>At 25:11</b> "...não recuso morrer; mas, se nada há das coisas de que estes me acusam..."</span><span class="v"><b>1Tm 1:9-10</b> "...a lei não é feita para o justo... para os homicidas."</span></div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li>At 25:11: Paulo só defende sua <b>inocência</b>. Não é ensino.</li>
+        <li>1Tm 1:15: Paulo diz que Cristo veio salvar pecadores, <b>"dos quais eu sou o principal"</b>. Ele consentiu na morte de Estêvão e recebeu misericórdia.<span class="v"><b>1Tm 1:15</b> "...Cristo Jesus veio ao mundo, para salvar os pecadores, dos quais eu sou o principal."</span></li>
+      </ul>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b>Se Paulo tivesse sido executado antes de se converter, perderíamos metade do Novo Testamento.</div>
+  </section>
 
-<script>
-(function(){
-  var r=document.documentElement,min=14,max=30;
-  function get(){return parseFloat(getComputedStyle(r).getPropertyValue('--fs'))||19}
-  function set(v){r.style.setProperty('--fs',Math.max(min,Math.min(max,v))+'px')}
-  document.getElementById('mais').addEventListener('click',function(){set(get()+2)});
-  document.getElementById('menos').addEventListener('click',function(){set(get()-2)});
-})();
-</script>
+  <section>
+    <h2>6. Olho por olho <small>1 min</small></h2>
+    <div class="box dizem"><b class="tag">ELES DIZEM</b>"Justiça é retribuição" (Êx 21:23-24).<span class="v"><b>Êx 21:23-24</b> "...darás vida por vida, olho por olho, dente por dente..."</span></div>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li>Jesus corrigiu: <b>"Eu, porém, vos digo que não resistais ao mal"</b> (Mt 5:38-39).<span class="v"><b>Mt 5:38-39</b> "...Eu, porém, vos digo que não resistais ao mal; mas, se qualquer te bater na face direita, oferece-lhe também a outra."</span></li>
+        <li>A prisão protege a sociedade <b>sem fechar a porta do arrependimento</b>.</li>
+      </ul>
+    </div>
+    <div class="box dia"><b class="tag">DIA A DIA</b>A dor de quem perdeu um filho merece respeito. Mas outra morte não traz o filho de volta.</div>
+  </section>
+
+  <section>
+    <h2>7. "A pena assusta o criminoso" <small>0,5 min</small></h2>
+    <div class="box resp"><b class="tag">RESPONDA</b>
+      <ul>
+        <li>Não há prova de que reduza o crime.</li>
+        <li>Inocente executado <b>não tem conserto</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2 style="justify-content:center">Conclusão <small>1 min</small></h2>
+    <ul style="text-align:left">
+      <li>Jesus foi um <b>inocente</b> executado pela justiça de sua época.</li>
+      <li>Deus <b>"não tem prazer na morte do que morre... convertei-vos, pois, e vivei"</b> (Ez 18:32).</li>
+      <li>A pena de morte fecha a porta do arrependimento.</li>
+    </ul>
+    <p class="big">Se Deus poupou Caim, poupou Davi e nos poupou, quem somos nós para fechar a porta que Ele deixou aberta?</p>
+    <p><b>Para o cristão, a resposta não é a morte, mas o perdão, o recomeço e a vida.</b></p>
+    <p><b>Que a paz do Senhor Jesus esteja com todos!</b></p>
+  </section>
+
+</main>
 </body>
 </html>
